@@ -1,0 +1,17 @@
+
+    Page No.     1
+    12/23/2013
+                        SBC M.C. - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141425/MC123456
+   ** BRANCH NAME ----> 168 BRANCH
+
+    440821100608    2     
+   ** Subtotal ** 
+                    2
+
+   *** Total ***  
+                    2

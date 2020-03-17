@@ -1,0 +1,10 @@
+F0201400180181037108002SAN REMIGIO TRUCKING                                    12605CKR
+F0201400180181037108002SERVICES, INC.                                          22600CKR
+F0201400180181055168168*************                                            2702CKC
+F0201400180181059898001NEW TRADING ENTERPRISES,                                12601CK1
+F0201400180181059898001INCORPORATED                                            22600CK1
+F0101403290461039958002FUSION INTEGRATED SERVICE                               12620CKR
+F0101403290461039958002COOPERATIVE                                             22600CKR
+F0101408530516226243001PABLO P. PAULINO                                         2501CKO
+F1201400280671028218001WINACA DEVELOPMENT CORP.                                12605CKO
+F12014002806710282180016715500030                                              22600CKO

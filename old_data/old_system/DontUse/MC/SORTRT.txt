@@ -1,0 +1,24 @@
+
+    Page No.     1
+    07/09/2014
+                        SBC M.C. - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141111/MC070814
+   ** BRANCH NAME ----> CONNECTICUT - GREENHILLS BRANCH
+
+    276821100608    5     
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141276/MC070814
+   ** BRANCH NAME ----> PASIG-SHAW BOULEVARD BRANCH
+
+    476821100608    2     
+   ** Subtotal ** 
+                    2
+
+   *** Total ***  
+                    7

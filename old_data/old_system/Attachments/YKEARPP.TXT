@@ -1,0 +1,25 @@
+REPORT ID :  YKEARPP                                 SECURITY BANK CORPORATION                                    PAGE    :    1
+PROGRAM ID:  YAERPRLE               CHEQUE BOOK REQUISITION PROOFLIST FOR CHECKONE - CONSOLIDATED                 RUN-DATE:  5/19/17
+UNIT      :  SBC                                     EQUATION ACCOUNT NUMBERS                                     PHASE   : DAY
+                                                     REPORT DATE  :   5/19/2017
+CARD CLEARING BANK TRANSIT ACCOUNT                                                                ACCOUNT BOOK     ORDER  ACCOUNT
+TYPE CODE     ID   NO.     NUMBER        A C C O U N T  N A M E                                   TYPE    CODE NO. QTY.   BOOK TYPE
+---- -------- ---- ------- ------------  -----------------------------------                      ------- -------- -----  ---------
+>>>  CheckOne - Personal
+ F   01       014  0565    0322694925001  ADAD JR., EMMANUEL CERVANTES                             DY       25      01     CKO
+                                                                                                                  -----
+                                                                                                         TOTAL :     1
+                                                                                                                  -----
+ F   01       014  0853    0516397748001  MARIGOLD P. TANGCO                                       DY       25      02     CKO
+ F   01       014  0853    0516501941001  DENNIS C. TANGCO OR MARIGOLD P.                          DY       25      02     CKO
+                                                                                                                  -----
+                                                                                                         TOTAL :     4
+                                                                                                                  -----
+ F   41       014  0026    0812039607020  TRINIDAD GERALDINE PURUGGANAN                            DY       25      02     CKO
+                                                                                                                  -----
+                                                                                                         TOTAL :     2
+                                                                                                                  -----
+                                                                                                   GRAND TOTAL :     7
+                                                                                                                  =====
+                                                   *** E N D   O F   R E P O R T ***
+

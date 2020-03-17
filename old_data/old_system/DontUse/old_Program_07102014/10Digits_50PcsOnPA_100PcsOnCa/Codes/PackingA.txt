@@ -1,0 +1,18 @@
+  Page No. 1
+  Jun. 01, 2012
+                             CAPTIVE PRINTING CORPORATION
+                          SBTC - Personal Checks Summary
+
+  ACCT_NO          ACCOUNT NAME                   QTY CT START #    END #
+
+ ** ORDERS OF BRSTN 010140073 ERMITA BRANCH
+
+ * Batch Number 10CP0530
+
+     111-006965-4  **********                       1 A  0848901    0848950
+     111-006966-5  **********                       1 A  0848951    0849000
+     111-006967-6  **********                       1 A  0849001    0849050
+     111-006968-7  **********                       1 A  0849051    0849100
+     111-006969-8  **********                       1 A  0849101    0849150
+
+ ** Sub Total ** 5

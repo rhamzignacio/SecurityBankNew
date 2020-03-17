@@ -1,0 +1,22 @@
+﻿
+  Page No. 1
+  3/26/2013
+                                CAPTIVE PRINTING CORPORATION
+                        SBTC RURAL BANK OF SAN MATEO  - Personal Checks Summary
+
+  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #
+
+
+ ** ORDERS OF BRSTN 260140014 SANTIAGO BRANCH
+
+ * BATCH #: 03252013
+  691-013600-001                                     1 A  0275001    0275050
+  691-013600-001                                     1 A  0275051    0275100
+  691-013600-001                                     1 A  0275101    0275150
+  691-013600-001                                     1 A  0275151    0275200
+  691-013600-001                                     1 A  0275201    0275250
+  691-013600-001                                     1 A  0275251    0275300
+  691-013600-001                                     1 A  0275301    0275350
+  691-013600-001                                     1 A  0275351    0275400
+
+  * * * Sub Total * * * 8

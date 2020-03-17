@@ -1,0 +1,13 @@
+
+        Page No.     1
+        11/29/2013
+                     SBTC - SUMMARY OF BLOCK - GIFTCHECK(GC)
+
+            RUSH, CANCELLED AND HOLD PRINT JOBS SHOULD ALWAYS HAVE
+                   AN ATTACHED MEMO OR EMAIL FROM THE BANK!!!
+
+        BLOCK RT_NO     M ACCT_NO         START_NO.  END_NO.
+ 
+       ** BLOCK   1
+            1 260140014   691821200608    110301    110350 
+            1 260140014   691821200608    110351    110400 

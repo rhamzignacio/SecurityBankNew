@@ -1,0 +1,774 @@
+
+    Page No.     1
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140015/13CP0529
+   ** BRANCH NAME ----> HEAD OFFICE BRANCH
+
+    000000525455    1   BUNDA, RYAN CULAS  
+    061232035003    1   NORBERTO REYES OR SOLEDAD REYES  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140044/13CP0529
+   ** BRANCH NAME ----> CUBAO BRANCH
+
+    000000029445    1   ABRAZADO, APRIL BERNALDO  
+    000000337637    1   DOMINIQUE FAYE C. CERBAS  
+    161030637001    5   AREMCI BUILDERS  
+    161471044001    5   SHERWIN T GERBUYOS OR  
+                        CRISTINA I GERBU
+    161478374089    1   ROSEMARIE C. CERBAS  
+    161525001139    1   JEMARIE S. SALUDAR  
+   ** Subtotal ** 
+                   14
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140109/13CP0529
+   ** BRANCH NAME ----> UST BRANCH
+
+    171197706002    2   LINA M. PAGUILA  
+    171661846001    1   ALEJANDRO S. BERNARDO  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140167/13CP0529
+   ** BRANCH NAME ----> ANNAPOLIS - GREENHILLS BRANCH
+
+    271192707006    1   FEDERICO C. LIM OR TORRES,  
+                        VIRGINIA CHRISTINE L.
+    271518087001    1   * * * * * * *  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140196/13CP0529
+   ** BRANCH NAME ----> SOLER BRANCH
+
+    121238845001    1   **********  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140206/13CP0529
+   ** BRANCH NAME ----> VALLE VERDE BRANCH
+
+    351367584001    1   JAVA, MARY ANN VILLEGAS  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140235/13CP0529
+   ** BRANCH NAME ----> SUCAT BRANCH
+
+    321336040001    2   CHERRY O. OGAYON  
+    321597544001    1   ROBERTO T. ARSITIO OR  
+
+
+    Page No.     2
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+                        LUVIZMINDA L. ARSITIO
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140303/13CP0529
+   ** BRANCH NAME ----> REINA REGENTE BRANCH
+
+    441464115001    1   **********  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140332/13CP0529
+   ** BRANCH NAME ----> MARIKINA BRANCH
+
+    471400801001    3   MARILEN I. CRUZ  
+                        OR DENNIS MICHAEL CRUZ
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140345/13CP0529
+   ** BRANCH NAME ----> BINONDO BRANCH
+
+    521238265001    2   **********  
+    521238302001    2   **********  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140400/13CP0529
+   ** BRANCH NAME ----> SALCEDO BRANCH
+
+    000000574583    1   JOSE, VAN SIMON CARMONA  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140565/13CP0529
+   ** BRANCH NAME ----> BF PARANAQUE BRANCH
+
+    322539535001    2   ******  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140581/13CP0529
+   ** BRANCH NAME ----> DIVISORIA II BRANCH
+
+    072504630001    1   LIM, BEE SUAN  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140662/13CP0529
+   ** BRANCH NAME ----> TEKTITE BRANCH
+
+    000001686462    2   DURAN, ROBERT CHING DBU RCD GEN  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140675/13CP0529
+   ** BRANCH NAME ----> LAS PINAS BRANCH
+
+    000001491896    1   AGUILOS, MARY AMBROSE MACALINO  
+    000001491903    1   LIBAY, SANDY FRANCISCO  
+
+
+    Page No.     3
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140714/13CP0529
+   ** BRANCH NAME ----> DEL MONTE AVE BRANCH
+
+    213161554001    1   ANALYN M. SAMBALE OR  
+                        ALBERTO V. SAMBALE
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140756/13CP0529
+   ** BRANCH NAME ----> MALINTA - PASO DE BLAS BRANCH
+
+    000001276233    1   EUSTAQUIO, DYESEBEL BONANZA  
+    686035938001    3   JERDAN AUTO SUPPLY  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140772/13CP0529
+   ** BRANCH NAME ----> MEDICAL PLAZA BRANCH
+
+    602332279002    1   CAYCO, ANTONIO V. OR  
+                        CAYCO, MARGARITA
+    602396293001   10   KANAPI, MANUEL LOPEZ OR  
+                        KANAPI, GLYNISH
+    602396506002    1   DR. ESTELA Z. CABRERA  
+    602415232037    1   MA. TERESA CALAUD  
+   ** Subtotal ** 
+                   13
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140824/13CP0529
+   ** BRANCH NAME ----> AYALA-ALABANG BRANCH
+
+    000000521822    1   MANGLAPUS JR., RAUL LAO  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140840/13CP0529
+   ** BRANCH NAME ----> MARKET!MARKET! BRANCH
+
+    000001213654    1   MARQUEZ, MAYLENE  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140882/13CP0529
+   ** BRANCH NAME ----> EDSA - KALOOKAN BRANCH
+
+    333315935001   10   DONATO M. PAMILOZA OR  
+                        LUCITA P. PAMILO
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010140905/13CP0529
+   ** BRANCH NAME ----> EASTWOOD BRANCH
+
+    000000999528    1   TRIA, JAYA PATRICIA MAREE DE GU  
+    000000999562    1   PUNZALAN, SALVE MARIE SOLIDUM  
+    000000999642    1   CASTILLO, ASHRICK REIGN BELLO  
+
+
+    Page No.     4
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+    000000999682    1   ANDAL, LOUIE ROBLES  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141030/13CP0529
+   ** BRANCH NAME ----> ST. IGNATIUS-KATIPUNAN BRANCH
+
+    663752531001    1   *****  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141056/13CP0529
+   ** BRANCH NAME ----> TAFT-NAKPIL BRANCH
+
+    000001291054    2   QUIAMBAO, ALYSSA MARIE FRANCO  
+    110478374013    1   CYNTHIA EVANGELISTA MENDOZA  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141085/13CP0529
+   ** BRANCH NAME ----> ROXAS BOULEVARD BRANCH
+
+    000000005778    1   *****  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141137/13CP0529
+   ** BRANCH NAME ----> PASAY TAFT BRANCH
+
+    022790042001    1   HELEN L. CO OR MICHEL S. CO  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141140/13CP0529
+   ** BRANCH NAME ----> MAKATI AVENUE-CONSTELLATION BRANCH
+
+    000001280331    1   ROMAN, CHRISTIAN HIZON  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141195/13CP0529
+   ** BRANCH NAME ----> KARUHATAN BRANCH
+
+    000000490813    1   KARRYLYN F. LECTURA OR  
+                        ARVIN MARI N. LECTURA
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141221/13CP0529
+   ** BRANCH NAME ----> FORT-NAC TOWER BRANCH
+
+    000001236231    1   ITO, SHIRLEY MORENO  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141234/13CP0529
+   ** BRANCH NAME ----> ALABANG-INSULAR BRANCH
+
+    000000044802    1   MANDAP, JOAN MARIE ISAIS  
+
+
+    Page No.     5
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+    000001017769    1   LUZARAN, FERNANDO DELA TORRE OR  
+                        LUZARAN, CERIZA DELA CRUZ
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141263/13CP0529
+   ** BRANCH NAME ----> MANDALUYONG-EDSA BRANCH
+
+    000001485332    1   BERNADAS, GRACIELA COMODA  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141289/13CP0529
+   ** BRANCH NAME ----> MARIKINA-GIL FERNANDO AVENUE BRANCH
+
+    000000007514    2   RICO T RIVERA DBU WISEMIX  
+                        CONSTRUCTION SUP
+    000001056360    1   AMIDO, NORMA GUEVARA  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141292/13CP0529
+   ** BRANCH NAME ----> ALIMALL BRANCH
+
+    000000042019    1   **********  
+    000001313717    1   *******  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141344/13CP0529
+   ** BRANCH NAME ----> DILIMAN-MATALINO BRANCH
+
+    000001472782    5   MONSAY, MARY ROSE P.  
+                        AND EVALE, ANALIE S.
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141357/13CP0529
+   ** BRANCH NAME ----> DON ANTONIO HEIGHTS BRANCH
+
+    000001069483    1   JOSEFINA E. GAMIL  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141386/13CP0529
+   ** BRANCH NAME ----> ADRIATICO-P. FAURA BRANCH
+
+    000001911382    1   BANACIA, JERRALD BOMBEE DE VERA  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/010141412/13CP0529
+   ** BRANCH NAME ----> VISAYAS AVENUE-PROJECT 6 BRANCH
+
+    000000649025    1   GERNESON ESPENORIO OR  
+                        RHEA ESPENORIO
+    000000875594    1   ARNOLD ARROYO AND SILVESTRA  
+                        SORONDO
+    000001751377    2   KITMA, SILVAN VIRGILIO ENRIQUEZ  
+    000001751388    1   LVQ MERCHANDISING  
+
+
+    Page No.     6
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/020140092/13CP0529
+   ** BRANCH NAME ----> MANDAUE-NORTH ROAD BRANCH
+
+    375036567001   10   VIRLO CONSTRUCTION  
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/050140017/13CP0529
+   ** BRANCH NAME ----> DAGUPAN BRANCH
+
+    481043466001    3   RUSKIN MARKETING  
+    481717828001    1   TAN JR., ANDREW KUA OR  
+                        TAN, NATHALIE I.
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/060140010/13CP0529
+   ** BRANCH NAME ----> ANGELES BRANCH
+
+    000001442791    1   MANDAP, LARRY CORTEZ DBU LC MAN  
+    000001442808    2   BERNARDO, LILIAN VILLAPANA  
+    081318637001    1   CABRERA, CYNTHIA NARCISO  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/090140022/13CP0529
+   ** BRANCH NAME ----> ZAMBOANGA - CANELAR BRANCH
+
+    000000425045    1   LOZADA, ELIZABETH GO  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/110140012/13CP0529
+   ** BRANCH NAME ----> TACLOBAN BRANCH
+
+    000001547291    1   REAS JR., ARISTON NARTIA  
+    313542847001   10   LAO, WILSON JOSE S. OR LAO,  
+                        JOVITA T. OR LAO, WILBERT
+   ** Subtotal ** 
+                   11
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/120140015/13CP0529
+   ** BRANCH NAME ----> BAGUIO BRANCH
+
+    421257377001    6   SANAUNA OR MANNY PUNDOGAR  
+   ** Subtotal ** 
+                    6
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/130140021/13CP0529
+   ** BRANCH NAME ----> MALOLOS BRANCH
+
+    000000983815    1   FELICITAS S SUNGA  
+   ** Subtotal ** 
+                    1
+
+
+    Page No.     7
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/130140034/13CP0529
+   ** BRANCH NAME ----> MEYCAUAYAN BRANCH
+
+    000001415612    1   ********  
+    000001415634    1   ********  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/160140017/13CP0529
+   ** BRANCH NAME ----> LEGAZPI BRANCH
+
+    000000036502    1   SEADOG DINER  
+    000000421047    1   JUVY G. VILLANUEVA DBU  
+                        THE BICOL GREENLEAF FRILL
+    000000497467    2   ADOLFO J. RUBILLOS JR.  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/190140029/13CP0529
+   ** BRANCH NAME ----> LIPA BRANCH
+
+    000001363031    1   OBLATES OF SAINT JOSEPH  
+                        (PHIL. PROVINCE) INC.
+    000001363042    1   SIASON, JEMALYN P.  
+                        DBU VONHESSEN TRANSPORT
+    000001363053   10   RUDY B MANGUIAT  
+    000001363064    1   MARIANO BENEDICTO GUTIERREZ JR.  
+    261692693001    1   SUZELLE MARIZ JAVIER LUMBERA  
+   ** Subtotal ** 
+                   14
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/240140018/13CP0529
+   ** BRANCH NAME ----> GEN. SANTOS BRANCH
+
+    000000428033    1   BANISIL, BEATRIZ FUSTER  
+    000000826233    1   OXALES, HANNAH LOUISE RAQUEDAN  
+    000001676980    1   BAUTISTA, LUELLEN MABITAD  
+    000001676991    1   CASABUENA, RICHARD JOHN JOHN  
+                        FRANCISCO
+    000001677001    1   WONG, RUDILYN ARSA  
+    411023998002    3   ENE MARKETING  
+    411042912088    2   QUISHA FOODS  
+    411478374039    1   ABRENICA, COSMECIA L.  
+    411478374054    1   LUENGO, IMELDA AMPO  
+    411561848001    1   CANAS, ANICETA REJAS  
+    411623548001    3   ASIS, CITA DELIA CABADING  
+    411688592001    2   DUCENA, RONNIE PIZON  
+   ** Subtotal ** 
+                   18
+
+
+    Page No.     8
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/260140027/13CP0529
+   ** BRANCH NAME ----> CAUAYAN BRANCH
+
+    000000561551    1   RODERICK E. MADRIDEO OR  
+                        JUANITA S. MADRIDEO
+    302698462001    1   ALBERT OR NELIA LIM  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/280140023/13CP0529
+   ** BRANCH NAME ----> OLONGAPO BRANCH
+
+    000000937606    1   NTN TRADING  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/300140013/13CP0529
+   ** BRANCH NAME ----> BUTUAN BRANCH
+
+    000001271534    1   PULIDO, PEARL ANN DAY  
+    000001271545    1   SAKURAI, CRISEL NUNEZ  
+    230687368088   10   XXXXXXXXXX  
+    230767566021    2   MONTALBAN JR., ANTONIO S.  
+   ** Subtotal ** 
+                   14
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/310140016/13CP0529
+   ** BRANCH NAME ----> CALAMBA BRANCH
+
+    000001792101    1   MARK Y BARRIOS  
+    221220177001    2   ROGER T. PEREZ  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/310140087/13CP0529
+   ** BRANCH NAME ----> STA. ROSA-GREENFIELD BRANCH
+
+    000001146430    1   YU SENG, ONG CHI BENG  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/410140039/13CP0529
+   ** BRANCH NAME ----> ROSARIO, CAVITE BRANCH
+
+    000001732485    1   DELA CRUZ, LUISITO VILLEGAS  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/410140042/13CP0529
+   ** BRANCH NAME ----> IMUS, CAVITE BRANCH
+
+    814478374174    1   CUEVAS, AILENE V.  
+    814480121001    2   FABREAG, DELIA FLORES OR  
+                        FABREAG, BOBBY F
+    814520766094    1   LODILYN P. VILLAMOR  
+
+
+    Page No.     9
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/410140055/13CP0529
+   ** BRANCH NAME ----> MOLINO BRANCH
+
+    000000981831    1   BESANA, ARDITH GALVAN  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/550140012/13CP0529
+   ** BRANCH NAME ----> KORONADAL BRANCH
+
+    410094343001    1   PINEDA, VICTORINA GOLENG  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140044/13CP0529
+   ** BRANCH NAME ----> CUBAO BRANCH
+
+    000000335453    1   SAGUDO, ELLEN SANCHEZ  
+    161787260001    2   MUSNI, MARIAN BAUTISTA  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140109/13CP0529
+   ** BRANCH NAME ----> UST BRANCH
+
+    171201379001    1   PROGRAPHICS ENTERPRISES, INC.  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140167/13CP0529
+   ** BRANCH NAME ----> ANNAPOLIS - GREENHILLS BRANCH
+
+    271026619001   10   N S J ENTERPRISES, INC.  
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140332/13CP0529
+   ** BRANCH NAME ----> MARIKINA BRANCH
+
+    000001647116    1   SMILE CONCEPT DENTAL CENTER  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140345/13CP0529
+   ** BRANCH NAME ----> BINONDO BRANCH
+
+    521476625001    1   PIMENTEL, ROSSETTEE CO  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140400/13CP0529
+   ** BRANCH NAME ----> SALCEDO BRANCH
+
+    000000460991    2   DAVID'S SALON INC.  
+   ** Subtotal ** 
+                    2
+
+
+    Page No.     10
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140442/13CP0529
+   ** BRANCH NAME ----> MALABON BRANCH
+
+    631021798001    4   POLYMAN MANUFACTURING CORPORATION  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140549/13CP0529
+   ** BRANCH NAME ----> BICUTAN BRANCH
+
+    000001092488    5   NORTHSHORE HARDWARE & CONSTRUCTION  
+                        SUPPLY
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140565/13CP0529
+   ** BRANCH NAME ----> BF PARANAQUE BRANCH
+
+    322033184002    5   ASIA PLUS CORPORATION  
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140581/13CP0529
+   ** BRANCH NAME ----> DIVISORIA II BRANCH
+
+    072012504001    2   **********  
+    072083905001    1   HONG, HAN MING  
+    072412798001    3   **********  
+    072412798002    3   **********  
+   ** Subtotal ** 
+                    9
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140646/13CP0529
+   ** BRANCH NAME ----> ORTIGAS - GREENHILLS BRANCH
+
+    272075548001    2   IVAPRO LAND CORPORATION  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140662/13CP0529
+   ** BRANCH NAME ----> TEKTITE BRANCH
+
+    273018522001    1   VALYERMO TRADING CORPORATION  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140675/13CP0529
+   ** BRANCH NAME ----> LAS PINAS BRANCH
+
+    852047743001   10   EUROBRANDS DISTRIBUTOR, INC.  
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140714/13CP0529
+   ** BRANCH NAME ----> DEL MONTE AVE BRANCH
+
+    213387771002    5   **********  
+
+
+    Page No.     11
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140727/13CP0529
+   ** BRANCH NAME ----> TOMAS MORATO BRANCH
+
+    162019023001   10   PHILIPPINE BATTERIES,  
+                        INCORPORATED
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140743/13CP0529
+   ** BRANCH NAME ----> NINOY AQUINO AVE. BRANCH
+
+    503036950001    1   PASSAGES MANPOWER, INC.  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140824/13CP0529
+   ** BRANCH NAME ----> AYALA-ALABANG BRANCH
+
+    711025397001    5   KINGSMEN CORPORATION  
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010140882/13CP0529
+   ** BRANCH NAME ----> EDSA - KALOOKAN BRANCH
+
+    333041843001    1   SERVICTORY CO. LTD.  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010141292/13CP0529
+   ** BRANCH NAME ----> ALIMALL BRANCH
+
+    000000042071    2   SW TRAVELTIME INC.  
+   ** Subtotal ** 
+                    2
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/010141412/13CP0529
+   ** BRANCH NAME ----> VISAYAS AVENUE-PROJECT 6 BRANCH
+
+    000000399093    4   *****  
+   ** Subtotal ** 
+                    4
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/020140076/13CP0529
+   ** BRANCH NAME ----> CEBU BUS. PARK BRANCH
+
+    374035335001   10   MECHAIRE, INC.  
+   ** Subtotal ** 
+                   10
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/060140010/13CP0529
+   ** BRANCH NAME ----> ANGELES BRANCH
+
+    000000142145    3   MULTI PLY PAPER VENTURES, INC.  
+    081044499001    1   CLARK ELECTRIC DISTRIBUTION CORPORATION  
+   ** Subtotal ** 
+                    4
+
+
+    Page No.     12
+    05/30/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/100140035/13CP0529
+   ** BRANCH NAME ----> CDO - VELEZ BRANCH
+
+    000000017154    3   STRONGHOLD INSURANCE CO., INC  
+   ** Subtotal ** 
+                    3
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/100140048/13CP0529
+   ** BRANCH NAME ----> CDO-LIMKETKAI BRANCH
+
+    000000133593    1   DELUXE RANCH TRANSPORT CORPORATION  
+   ** Subtotal ** 
+                    1
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/240140018/13CP0529
+   ** BRANCH NAME ----> GEN. SANTOS BRANCH
+
+    411338845003    5   ROBERTO OR JANET PERALES JT ANTONIO OR  
+                        ADELENE PERALES
+   ** Subtotal ** 
+                    5
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  B/410140042/13CP0529
+   ** BRANCH NAME ----> IMUS, CAVITE BRANCH
+
+    814042599001   10   ASIA MEDIC DIAGNOSTIC AND SPECIALTY  
+   ** Subtotal ** 
+                   10
+
+   *** Total ***  
+                  323

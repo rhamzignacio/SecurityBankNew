@@ -1,0 +1,912 @@
+For Delivery Date: Jun. 12, 2018
+
+Personal Pre-Encoded     13CP0606     010140646     000018632961     **********                                                            0216851        0216900        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018632972     **********                                                            0216901        0216950        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018632983     **********                                                            0216951        0217000        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018632994     **********                                                            0217001        0217050        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633008     **********                                                            0217051        0217100        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633019     **********                                                            0217101        0217150        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633020     **********                                                            0217151        0217200        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633031     **********                                                            0217201        0217250        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633042     **********                                                            0217251        0217300        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633053     **********                                                            0217301        0217350        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633060     **********                                                            0217351        0217400        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633071     **********                                                            0217401        0217450        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633082     **********                                                            0217451        0217500        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633093     **********                                                            0217501        0217550        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140646     000018633100     **********                                                            0217551        0217600        ORTIGAS - GREENHILLS BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632210     **********                                                            0582851        0582900        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632221     **********                                                            0582901        0582950        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632232     **********                                                            0582951        0583000        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632243     **********                                                            0583001        0583050        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632250     **********                                                            0583051        0583100        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632261     **********                                                            0583101        0583150        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632272     **********                                                            0583151        0583200        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632283     **********                                                            0583201        0583250        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632294     **********                                                            0583251        0583300        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632301     **********                                                            0583301        0583350        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632312     **********                                                            0583351        0583400        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632323     **********                                                            0583401        0583450        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632330     **********                                                            0583451        0583500        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632341     **********                                                            0583501        0583550        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140727     000018632352     **********                                                            0583551        0583600        TOMAS MORATO BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634610     **********                                                            0555101        0555150        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634621     **********                                                            0555151        0555200        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634632     **********                                                            0555201        0555250        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634643     **********                                                            0555251        0555300        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634650     **********                                                            0555301        0555350        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634661     **********                                                            0555351        0555400        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634672     **********                                                            0555401        0555450        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634683     **********                                                            0555451        0555500        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634694     **********                                                            0555501        0555550        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634701     **********                                                            0555551        0555600        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634712     **********                                                            0555601        0555650        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634723     **********                                                            0555651        0555700        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634730     **********                                                            0555701        0555750        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634741     **********                                                            0555751        0555800        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634752     **********                                                            0555801        0555850        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634763     **********                                                            0555851        0555900        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634774     **********                                                            0555901        0555950        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634785     **********                                                            0555951        0556000        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634796     **********                                                            0556001        0556050        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634803     **********                                                            0556051        0556100        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634810     **********                                                            0556101        0556150        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634821     **********                                                            0556151        0556200        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634832     **********                                                            0556201        0556250        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634843     **********                                                            0556251        0556300        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634854     **********                                                            0556301        0556350        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634865     **********                                                            0556351        0556400        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634876     **********                                                            0556401        0556450        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634887     **********                                                            0556451        0556500        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634898     **********                                                            0556501        0556550        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634901     **********                                                            0556551        0556600        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634912     **********                                                            0556601        0556650        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634923     **********                                                            0556651        0556700        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634934     **********                                                            0556701        0556750        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634945     **********                                                            0556751        0556800        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634956     **********                                                            0556801        0556850        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634967     **********                                                            0556851        0556900        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634978     **********                                                            0556901        0556950        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634989     **********                                                            0556951        0557000        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018634990     **********                                                            0557001        0557050        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635000     **********                                                            0557051        0557100        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635011     **********                                                            0557101        0557150        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635022     **********                                                            0557151        0557200        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635033     **********                                                            0557201        0557250        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635044     **********                                                            0557251        0557300        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635055     **********                                                            0557301        0557350        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635066     **********                                                            0557351        0557400        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635077     **********                                                            0557401        0557450        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635088     **********                                                            0557451        0557500        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635099     **********                                                            0557501        0557550        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010140840     000018635102     **********                                                            0557551        0557600        MARKET!MARKET! BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633111     **********                                                            0034751        0034800        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633122     **********                                                            0034801        0034850        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633133     **********                                                            0034851        0034900        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633140     **********                                                            0034901        0034950        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633151     **********                                                            0034951        0035000        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633162     **********                                                            0035001        0035050        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633173     **********                                                            0035051        0035100        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633184     **********                                                            0035101        0035150        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633195     **********                                                            0035151        0035200        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     010141124     000018633202     **********                                                            0035201        0035250        G. ARANETA BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636116     **********                                                            0585451        0585500        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636127     **********                                                            0585501        0585550        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636138     **********                                                            0585551        0585600        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636149     **********                                                            0585601        0585650        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636150     **********                                                            0585651        0585700        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636161     **********                                                            0585701        0585750        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636172     **********                                                            0585751        0585800        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636183     **********                                                            0585801        0585850        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636190     **********                                                            0585851        0585900        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636207     **********                                                            0585901        0585950        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636218     **********                                                            0585951        0586000        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636229     **********                                                            0586001        0586050        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636230     **********                                                            0586051        0586100        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636241     **********                                                            0586101        0586150        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     050140017     000018636252     **********                                                            0586151        0586200        DAGUPAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641211     **********                                                            0536201        0536250        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641222     **********                                                            0536251        0536300        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641233     **********                                                            0536301        0536350        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641240     **********                                                            0536351        0536400        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641251     **********                                                            0536401        0536450        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641262     **********                                                            0536451        0536500        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641273     **********                                                            0536501        0536550        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641284     **********                                                            0536551        0536600        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641295     **********                                                            0536601        0536650        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641302     **********                                                            0536651        0536700        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641313     **********                                                            0536701        0536750        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641320     **********                                                            0536751        0536800        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641331     **********                                                            0536801        0536850        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641342     **********                                                            0536851        0536900        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641353     **********                                                            0536901        0536950        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641364     **********                                                            0536951        0537000        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641375     **********                                                            0537001        0537050        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641386     **********                                                            0537051        0537100        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641397     **********                                                            0537101        0537150        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     130140034     000018641400     **********                                                            0537151        0537200        MEYCAUAYAN BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636412     **********                                                            0071251        0071300        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636423     **********                                                            0071301        0071350        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636430     **********                                                            0071351        0071400        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636441     **********                                                            0071401        0071450        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636452     **********                                                            0071451        0071500        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636463     **********                                                            0071501        0071550        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636474     **********                                                            0071551        0071600        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636485     **********                                                            0071601        0071650        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636496     **********                                                            0071651        0071700        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636503     **********                                                            0071701        0071750        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636510     **********                                                            0071751        0071800        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636521     **********                                                            0071801        0071850        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636532     **********                                                            0071851        0071900        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636543     **********                                                            0071901        0071950        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636554     **********                                                            0071951        0072000        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636565     **********                                                            0072001        0072050        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636576     **********                                                            0072051        0072100        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636587     **********                                                            0072101        0072150        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636598     **********                                                            0072151        0072200        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636601     **********                                                            0072201        0072250        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636612     **********                                                            0072251        0072300        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636623     **********                                                            0072301        0072350        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636634     **********                                                            0072351        0072400        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636645     **********                                                            0072401        0072450        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     160140017     000018636656     **********                                                            0072451        0072500        LEGAZPI BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641411     **********                                                            0122661        0122710        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641422     **********                                                            0122711        0122760        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641433     **********                                                            0122761        0122810        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641444     **********                                                            0122811        0122860        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641455     **********                                                            0122861        0122910        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641466     **********                                                            0122911        0122960        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641477     **********                                                            0122961        0123010        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641488     **********                                                            0123011        0123060        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641499     **********                                                            0123061        0123110        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641502     **********                                                            0123111        0123160        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641513     **********                                                            0123161        0123210        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641524     **********                                                            0123211        0123260        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641535     **********                                                            0123261        0123310        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641546     **********                                                            0123311        0123360        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641557     **********                                                            0123361        0123410        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641568     **********                                                            0123411        0123460        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641579     **********                                                            0123461        0123510        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641580     **********                                                            0123511        0123560        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641591     **********                                                            0123561        0123610        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641604     **********                                                            0123611        0123660        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641615     **********                                                            0123661        0123710        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641626     **********                                                            0123711        0123760        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641637     **********                                                            0123761        0123810        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641648     **********                                                            0123811        0123860        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641659     **********                                                            0123861        0123910        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641660     **********                                                            0123911        0123960        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641671     **********                                                            0123961        0124010        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641682     **********                                                            0124011        0124060        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641693     **********                                                            0124061        0124110        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     170140023     000018641706     **********                                                            0124111        0124160        LAOAG BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636918     **********                                                            0430401        0430450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636929     **********                                                            0430451        0430500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636930     **********                                                            0430501        0430550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636941     **********                                                            0430551        0430600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636952     **********                                                            0430601        0430650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636963     **********                                                            0430651        0430700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636970     **********                                                            0430701        0430750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636981     **********                                                            0430751        0430800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018636992     **********                                                            0430801        0430850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637006     **********                                                            0430851        0430900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637017     **********                                                            0430901        0430950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637028     **********                                                            0430951        0431000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637039     **********                                                            0431001        0431050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637040     **********                                                            0431051        0431100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637051     **********                                                            0431101        0431150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637062     **********                                                            0431151        0431200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637073     **********                                                            0431201        0431250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637080     **********                                                            0431251        0431300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637091     **********                                                            0431301        0431350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637108     **********                                                            0431351        0431400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637119     **********                                                            0431401        0431450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637120     **********                                                            0431451        0431500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637131     **********                                                            0431501        0431550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637142     **********                                                            0431551        0431600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637153     **********                                                            0431601        0431650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637160     **********                                                            0431651        0431700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637171     **********                                                            0431701        0431750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637182     **********                                                            0431751        0431800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637193     **********                                                            0431801        0431850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637200     **********                                                            0431851        0431900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637211     **********                                                            0431901        0431950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637222     **********                                                            0431951        0432000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637233     **********                                                            0432001        0432050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637240     **********                                                            0432051        0432100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637251     **********                                                            0432101        0432150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637262     **********                                                            0432151        0432200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637273     **********                                                            0432201        0432250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637284     **********                                                            0432251        0432300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637295     **********                                                            0432301        0432350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637302     **********                                                            0432351        0432400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637313     **********                                                            0432401        0432450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637320     **********                                                            0432451        0432500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637331     **********                                                            0432501        0432550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637342     **********                                                            0432551        0432600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637353     **********                                                            0432601        0432650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637364     **********                                                            0432651        0432700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637375     **********                                                            0432701        0432750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637386     **********                                                            0432751        0432800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637397     **********                                                            0432801        0432850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637400     **********                                                            0432851        0432900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637411     **********                                                            0432901        0432950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637422     **********                                                            0432951        0433000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637433     **********                                                            0433001        0433050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637444     **********                                                            0433051        0433100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637455     **********                                                            0433101        0433150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637466     **********                                                            0433151        0433200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637477     **********                                                            0433201        0433250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637488     **********                                                            0433251        0433300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637499     **********                                                            0433301        0433350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637502     **********                                                            0433351        0433400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637513     **********                                                            0433401        0433450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637524     **********                                                            0433451        0433500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637535     **********                                                            0433501        0433550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637546     **********                                                            0433551        0433600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637557     **********                                                            0433601        0433650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637568     **********                                                            0433651        0433700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637579     **********                                                            0433701        0433750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637580     **********                                                            0433751        0433800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637591     **********                                                            0433801        0433850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637604     **********                                                            0433851        0433900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637615     **********                                                            0433901        0433950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637626     **********                                                            0433951        0434000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637637     **********                                                            0434001        0434050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637648     **********                                                            0434051        0434100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637659     **********                                                            0434101        0434150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637660     **********                                                            0434151        0434200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637671     **********                                                            0434201        0434250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637682     **********                                                            0434251        0434300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637693     **********                                                            0434301        0434350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637706     **********                                                            0434351        0434400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637717     **********                                                            0434401        0434450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637728     **********                                                            0434451        0434500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637739     **********                                                            0434501        0434550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637740     **********                                                            0434551        0434600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637751     **********                                                            0434601        0434650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637762     **********                                                            0434651        0434700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637773     **********                                                            0434701        0434750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637780     **********                                                            0434751        0434800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637791     **********                                                            0434801        0434850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637808     **********                                                            0434851        0434900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637819     **********                                                            0434901        0434950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637820     **********                                                            0434951        0435000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637831     **********                                                            0435001        0435050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637842     **********                                                            0435051        0435100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637853     **********                                                            0435101        0435150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637860     **********                                                            0435151        0435200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637871     **********                                                            0435201        0435250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637882     **********                                                            0435251        0435300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637893     **********                                                            0435301        0435350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637900     **********                                                            0435351        0435400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637911     **********                                                            0435401        0435450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637922     **********                                                            0435451        0435500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637933     **********                                                            0435501        0435550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637940     **********                                                            0435551        0435600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637951     **********                                                            0435601        0435650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637962     **********                                                            0435651        0435700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637973     **********                                                            0435701        0435750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637984     **********                                                            0435751        0435800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018637995     **********                                                            0435801        0435850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638009     **********                                                            0435851        0435900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638010     **********                                                            0435901        0435950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638021     **********                                                            0435951        0436000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638032     **********                                                            0436001        0436050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638043     **********                                                            0436051        0436100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638050     **********                                                            0436101        0436150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638061     **********                                                            0436151        0436200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638072     **********                                                            0436201        0436250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638083     **********                                                            0436251        0436300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638094     **********                                                            0436301        0436350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638101     **********                                                            0436351        0436400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638112     **********                                                            0436401        0436450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638123     **********                                                            0436451        0436500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638130     **********                                                            0436501        0436550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638141     **********                                                            0436551        0436600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638152     **********                                                            0436601        0436650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638163     **********                                                            0436651        0436700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638174     **********                                                            0436701        0436750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638185     **********                                                            0436751        0436800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638196     **********                                                            0436801        0436850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638203     **********                                                            0436851        0436900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638210     **********                                                            0436901        0436950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638221     **********                                                            0436951        0437000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638232     **********                                                            0437001        0437050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638243     **********                                                            0437051        0437100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638254     **********                                                            0437101        0437150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638265     **********                                                            0437151        0437200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638276     **********                                                            0437201        0437250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638287     **********                                                            0437251        0437300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638298     **********                                                            0437301        0437350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638301     **********                                                            0437351        0437400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638312     **********                                                            0437401        0437450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638323     **********                                                            0437451        0437500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638334     **********                                                            0437501        0437550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638345     **********                                                            0437551        0437600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638356     **********                                                            0437601        0437650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638367     **********                                                            0437651        0437700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638378     **********                                                            0437701        0437750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638389     **********                                                            0437751        0437800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638390     **********                                                            0437801        0437850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638403     **********                                                            0437851        0437900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638414     **********                                                            0437901        0437950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638425     **********                                                            0437951        0438000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638436     **********                                                            0438001        0438050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638447     **********                                                            0438051        0438100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638458     **********                                                            0438101        0438150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638469     **********                                                            0438151        0438200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638470     **********                                                            0438201        0438250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638481     **********                                                            0438251        0438300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638492     **********                                                            0438301        0438350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638505     **********                                                            0438351        0438400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638516     **********                                                            0438401        0438450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638527     **********                                                            0438451        0438500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638538     **********                                                            0438501        0438550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638549     **********                                                            0438551        0438600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638550     **********                                                            0438601        0438650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638561     **********                                                            0438651        0438700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638572     **********                                                            0438701        0438750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638583     **********                                                            0438751        0438800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638590     **********                                                            0438801        0438850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638607     **********                                                            0438851        0438900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638618     **********                                                            0438901        0438950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638629     **********                                                            0438951        0439000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638630     **********                                                            0439001        0439050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638641     **********                                                            0439051        0439100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638652     **********                                                            0439101        0439150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638663     **********                                                            0439151        0439200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638670     **********                                                            0439201        0439250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638681     **********                                                            0439251        0439300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638692     **********                                                            0439301        0439350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638709     **********                                                            0439351        0439400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638710     **********                                                            0439401        0439450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638721     **********                                                            0439451        0439500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638732     **********                                                            0439501        0439550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638743     **********                                                            0439551        0439600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638750     **********                                                            0439601        0439650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638761     **********                                                            0439651        0439700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638772     **********                                                            0439701        0439750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638783     **********                                                            0439751        0439800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638794     **********                                                            0439801        0439850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638801     **********                                                            0439851        0439900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638812     **********                                                            0439901        0439950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638823     **********                                                            0439951        0440000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638830     **********                                                            0440001        0440050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638841     **********                                                            0440051        0440100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638852     **********                                                            0440101        0440150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638863     **********                                                            0440151        0440200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638874     **********                                                            0440201        0440250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638885     **********                                                            0440251        0440300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638896     **********                                                            0440301        0440350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638903     **********                                                            0440351        0440400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638910     **********                                                            0440401        0440450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638921     **********                                                            0440451        0440500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638932     **********                                                            0440501        0440550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638943     **********                                                            0440551        0440600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638954     **********                                                            0440601        0440650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638965     **********                                                            0440651        0440700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638976     **********                                                            0440701        0440750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638987     **********                                                            0440751        0440800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018638998     **********                                                            0440801        0440850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639002     **********                                                            0440851        0440900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639013     **********                                                            0440901        0440950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639020     **********                                                            0440951        0441000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639031     **********                                                            0441001        0441050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639042     **********                                                            0441051        0441100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639053     **********                                                            0441101        0441150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639064     **********                                                            0441151        0441200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639075     **********                                                            0441201        0441250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639086     **********                                                            0441251        0441300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639097     **********                                                            0441301        0441350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639100     **********                                                            0441351        0441400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639111     **********                                                            0441401        0441450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639122     **********                                                            0441451        0441500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639133     **********                                                            0441501        0441550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639144     **********                                                            0441551        0441600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639155     **********                                                            0441601        0441650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639166     **********                                                            0441651        0441700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639177     **********                                                            0441701        0441750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639188     **********                                                            0441751        0441800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639199     **********                                                            0441801        0441850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639202     **********                                                            0441851        0441900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639213     **********                                                            0441901        0441950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639224     **********                                                            0441951        0442000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639235     **********                                                            0442001        0442050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639246     **********                                                            0442051        0442100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639257     **********                                                            0442101        0442150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639268     **********                                                            0442151        0442200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639279     **********                                                            0442201        0442250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639280     **********                                                            0442251        0442300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639291     **********                                                            0442301        0442350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639304     **********                                                            0442351        0442400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639315     **********                                                            0442401        0442450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639326     **********                                                            0442451        0442500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639337     **********                                                            0442501        0442550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639348     **********                                                            0442551        0442600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639359     **********                                                            0442601        0442650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639360     **********                                                            0442651        0442700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639371     **********                                                            0442701        0442750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639382     **********                                                            0442751        0442800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639393     **********                                                            0442801        0442850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639406     **********                                                            0442851        0442900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639417     **********                                                            0442901        0442950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639428     **********                                                            0442951        0443000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639439     **********                                                            0443001        0443050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639440     **********                                                            0443051        0443100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639451     **********                                                            0443101        0443150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639462     **********                                                            0443151        0443200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639473     **********                                                            0443201        0443250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639480     **********                                                            0443251        0443300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639491     **********                                                            0443301        0443350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639508     **********                                                            0443351        0443400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639519     **********                                                            0443401        0443450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639520     **********                                                            0443451        0443500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639531     **********                                                            0443501        0443550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639542     **********                                                            0443551        0443600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639553     **********                                                            0443601        0443650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639560     **********                                                            0443651        0443700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639571     **********                                                            0443701        0443750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639582     **********                                                            0443751        0443800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639593     **********                                                            0443801        0443850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639600     **********                                                            0443851        0443900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639611     **********                                                            0443901        0443950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639622     **********                                                            0443951        0444000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639633     **********                                                            0444001        0444050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639640     **********                                                            0444051        0444100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639651     **********                                                            0444101        0444150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639662     **********                                                            0444151        0444200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639673     **********                                                            0444201        0444250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639684     **********                                                            0444251        0444300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639695     **********                                                            0444301        0444350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639702     **********                                                            0444351        0444400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639713     **********                                                            0444401        0444450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639720     **********                                                            0444451        0444500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639731     **********                                                            0444501        0444550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639742     **********                                                            0444551        0444600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639753     **********                                                            0444601        0444650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639764     **********                                                            0444651        0444700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639775     **********                                                            0444701        0444750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639786     **********                                                            0444751        0444800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639797     **********                                                            0444801        0444850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639800     **********                                                            0444851        0444900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639811     **********                                                            0444901        0444950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639822     **********                                                            0444951        0445000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639833     **********                                                            0445001        0445050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639844     **********                                                            0445051        0445100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639855     **********                                                            0445101        0445150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639866     **********                                                            0445151        0445200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639877     **********                                                            0445201        0445250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639888     **********                                                            0445251        0445300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639899     **********                                                            0445301        0445350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639902     **********                                                            0445351        0445400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639913     **********                                                            0445401        0445450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639924     **********                                                            0445451        0445500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639935     **********                                                            0445501        0445550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639946     **********                                                            0445551        0445600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639957     **********                                                            0445601        0445650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639968     **********                                                            0445651        0445700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639979     **********                                                            0445701        0445750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639980     **********                                                            0445751        0445800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018639991     **********                                                            0445801        0445850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640003     **********                                                            0445851        0445900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640014     **********                                                            0445901        0445950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640025     **********                                                            0445951        0446000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640036     **********                                                            0446001        0446050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640047     **********                                                            0446051        0446100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640058     **********                                                            0446101        0446150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640069     **********                                                            0446151        0446200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640070     **********                                                            0446201        0446250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640081     **********                                                            0446251        0446300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640092     **********                                                            0446301        0446350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640105     **********                                                            0446351        0446400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640116     **********                                                            0446401        0446450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640127     **********                                                            0446451        0446500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640138     **********                                                            0446501        0446550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640149     **********                                                            0446551        0446600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640150     **********                                                            0446601        0446650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640161     **********                                                            0446651        0446700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640172     **********                                                            0446701        0446750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640183     **********                                                            0446751        0446800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640190     **********                                                            0446801        0446850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640207     **********                                                            0446851        0446900        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640218     **********                                                            0446901        0446950        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640229     **********                                                            0446951        0447000        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640230     **********                                                            0447001        0447050        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640241     **********                                                            0447051        0447100        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640252     **********                                                            0447101        0447150        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640263     **********                                                            0447151        0447200        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640270     **********                                                            0447201        0447250        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640281     **********                                                            0447251        0447300        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640292     **********                                                            0447301        0447350        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640309     **********                                                            0447351        0447400        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640310     **********                                                            0447401        0447450        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640321     **********                                                            0447451        0447500        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640332     **********                                                            0447501        0447550        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640343     **********                                                            0447551        0447600        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640350     **********                                                            0447601        0447650        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640361     **********                                                            0447651        0447700        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640372     **********                                                            0447701        0447750        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640383     **********                                                            0447751        0447800        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640394     **********                                                            0447801        0447850        TARLAC BRANCH
+Personal Pre-Encoded     13CP0606     220140025     000018640401     **********                                                            0447851        0447900        TARLAC BRANCH
+Regular Commercial       13CP0606     010140015     061011181001     BIO MINERALS DEVELOPMENT CORP.                                        0003142501     0003142600     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061011181001     BIO MINERALS DEVELOPMENT CORP.                                        0003142601     0003142700     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061011181001     BIO MINERALS DEVELOPMENT CORP.                                        0003142701     0003142800     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003142801     0003142900     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003142901     0003143000     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143001     0003143100     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143101     0003143200     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143201     0003143300     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143301     0003143400     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143401     0003143500     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143501     0003143600     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143601     0003143700     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061024381001     EVERGREEN LOGISTICS PHILS. CORP.                                      0003143701     0003143800     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061036959001     PINNACLE ASIA, INC.                                                   0003143801     0003143900     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061036959001     PINNACLE ASIA, INC.                                                   0003143901     0003144000     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061036959001     PINNACLE ASIA, INC.                                                   0003144001     0003144100     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061040628001     ARPAPHIL SHIPPING CORPORATION                                         0003144101     0003144200     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061040628001     ARPAPHIL SHIPPING CORPORATION                                         0003144201     0003144300     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061085874001     ANNING CORPORATION                                                    0003144301     0003144400     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140015     061085874001     ANNING CORPORATION                                                    0003144401     0003144500     MAIN OFFICE BRANCH (MOB)
+Regular Commercial       13CP0606     010140206     351009368001     RESINS, INC.                                                          0000940501     0000940600     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351009368001     RESINS, INC.                                                          0000940601     0000940700     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351009368001     RESINS, INC.                                                          0000940701     0000940800     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351009368001     RESINS, INC.                                                          0000940801     0000940900     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351019160001     COMPOSITE MATERIALS, INC.                                             0000940901     0000941000     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351019160001     COMPOSITE MATERIALS, INC.                                             0000941001     0000941100     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351019160001     COMPOSITE MATERIALS, INC.                                             0000941101     0000941200     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351019160001     COMPOSITE MATERIALS, INC.                                             0000941201     0000941300     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140206     351019160001     COMPOSITE MATERIALS, INC.                                             0000941301     0000941400     VALLE VERDE BRANCH
+Regular Commercial       13CP0606     010140293     381042032001     GLOBAL STRATEGIC SOLUTIONS AND SERVICES INC.                          0001042701     0001042800     SAN MIGUEL AVE. BRANCH
+Regular Commercial       13CP0606     010140293     381042032001     GLOBAL STRATEGIC SOLUTIONS AND SERVICES INC.                          0001042801     0001042900     SAN MIGUEL AVE. BRANCH
+Regular Commercial       13CP0606     010140303     441241050001     **********                                                            0000502851     0000502950     REINA REGENTE BRANCH
+Regular Commercial       13CP0606     010140303     441241050001     **********                                                            0000502951     0000503050     REINA REGENTE BRANCH
+Regular Commercial       13CP0606     010140345     000002975655     ***************                                                       0003001401     0003001500     BINONDO BRANCH
+Regular Commercial       13CP0606     010140345     000002975655     ***************                                                       0003001501     0003001600     BINONDO BRANCH
+Regular Commercial       13CP0606     010140345     000002975655     ***************                                                       0003001601     0003001700     BINONDO BRANCH
+Regular Commercial       13CP0606     010140345     521011882004     PAN PACIFIC TRAVEL CORPORATION                                        0003001701     0003001800     BINONDO BRANCH
+Regular Commercial       13CP0606     010140345     521011882004     PAN PACIFIC TRAVEL CORPORATION                                        0003001801     0003001900     BINONDO BRANCH
+Regular Commercial       13CP0606     010140345     521011882004     PAN PACIFIC TRAVEL CORPORATION                                        0003001901     0003002000     BINONDO BRANCH
+Regular Commercial       13CP0606     010140361     531009928002     LAMP METALS INDUSTRIES                                                0000467051     0000467150     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140361     531009928002     LAMP METALS INDUSTRIES                                                0000467151     0000467250     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140361     531035657001     A1 STEELFORMER CORP.                                                  0000467251     0000467350     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140361     531035657001     A1 STEELFORMER CORP.                                                  0000467351     0000467450     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140361     531518484001     A1 STEELFORMER CORP.                                                  0000467451     0000467550     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140361     531518484001     A1 STEELFORMER CORP.                                                  0000467551     0000467650     SAN PEDRO BRANCH
+Regular Commercial       13CP0606     010140549     000000019963     NAJIA MOVERS & PROJECT SPECIALIST INC.                                0000426651     0000426750     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000000019963     NAJIA MOVERS & PROJECT SPECIALIST INC.                                0000426751     0000426850     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000000019963     NAJIA MOVERS & PROJECT SPECIALIST INC.                                0000426851     0000426950     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000000019963     NAJIA MOVERS & PROJECT SPECIALIST INC.                                0000426951     0000427050     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000008380723     ORIENT STAR TRANSPORT PHILS. INC.                                     0000427051     0000427150     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000008380723     ORIENT STAR TRANSPORT PHILS. INC.                                     0000427151     0000427250     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000008380723     ORIENT STAR TRANSPORT PHILS. INC.                                     0000427251     0000427350     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140549     000008380723     ORIENT STAR TRANSPORT PHILS. INC.                                     0000427351     0000427450     BICUTAN BRANCH
+Regular Commercial       13CP0606     010140604     000003547620     LESINC SCIENTIFIC EQUIPMENT INC.                                      0000381001     0000381100     ELCANO BRANCH
+Regular Commercial       13CP0606     010140604     000003547620     LESINC SCIENTIFIC EQUIPMENT INC.                                      0000381101     0000381200     ELCANO BRANCH
+Regular Commercial       13CP0606     010140604     000003547620     LESINC SCIENTIFIC EQUIPMENT INC.                                      0000381201     0000381300     ELCANO BRANCH
+Regular Commercial       13CP0606     010140604     000003547620     LESINC SCIENTIFIC EQUIPMENT INC.                                      0000381301     0000381400     ELCANO BRANCH
+Regular Commercial       13CP0606     010140646     000000182370     WEE COMMUNITY DEVELOPERS, INC.                                        0000685501     0000685600     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182370     WEE COMMUNITY DEVELOPERS, INC.                                        0000685601     0000685700     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182370     WEE COMMUNITY DEVELOPERS, INC.                                        0000685701     0000685800     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182370     WEE COMMUNITY DEVELOPERS, INC.                                        0000685801     0000685900     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182370     WEE COMMUNITY DEVELOPERS, INC.                                        0000685901     0000686000     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182483     WEE COMMUNITY DEVELOPERS, INC.                                        0000686001     0000686100     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182483     WEE COMMUNITY DEVELOPERS, INC.                                        0000686101     0000686200     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182483     WEE COMMUNITY DEVELOPERS, INC.                                        0000686201     0000686300     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182483     WEE COMMUNITY DEVELOPERS, INC.                                        0000686301     0000686400     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140646     000000182483     WEE COMMUNITY DEVELOPERS, INC.                                        0000686401     0000686500     ORTIGAS - GREENHILLS BRANCH
+Regular Commercial       13CP0606     010140662     273031145002     KOHL INDUSTRIES CORPORATION                                           0001225251     0001225350     TEKTITE BRANCH
+Regular Commercial       13CP0606     010140772     602044366001     A. ILUSTRE & ASSOCIATES, ARCHITECTS                                   0000579401     0000579500     MEDICAL PLAZA BRANCH
+Regular Commercial       13CP0606     010140824     000013786946     TRESALMACEN CORP.                                                     0000715701     0000715800     AYALA-ALABANG BRANCH
+Regular Commercial       13CP0606     010140824     000013787089     BONNESMAINS SERVICES CORP.                                            0000715801     0000715900     AYALA-ALABANG BRANCH
+Regular Commercial       13CP0606     010140824     000013787089     BONNESMAINS SERVICES CORP.                                            0000715901     0000716000     AYALA-ALABANG BRANCH
+Regular Commercial       13CP0606     010141072     000011276743     DABALOS, ZARRIN ROSE DBU ZMDA HEALTHCARE MARKETING                    0000101401     0000101500     CONGRESSIONAL TOWER BRANCH
+Regular Commercial       13CP0606     010141166     000000032191     QUANTUM AMUSEMENT CORPORATION                                         0000033401     0000033500     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000000032191     QUANTUM AMUSEMENT CORPORATION                                         0000033501     0000033600     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000009219990     REDSTONE APPAREL, INC.                                                0000033601     0000033700     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000009219990     REDSTONE APPAREL, INC.                                                0000033701     0000033800     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000009219990     REDSTONE APPAREL, INC.                                                0000033801     0000033900     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000009219990     REDSTONE APPAREL, INC.                                                0000033901     0000034000     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141166     000009219990     REDSTONE APPAREL, INC.                                                0000034001     0000034100     MERALCO AVENUE BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000047601     0000047700     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000047701     0000047800     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000047801     0000047900     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000047901     0000048000     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000048001     0000048100     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000048101     0000048200     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000048201     0000048300     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141247     000002086353     ISABELA ASIA STAR CORP.                                               0000048301     0000048400     P. GUEVARRA-WILSON BRANCH
+Regular Commercial       13CP0606     010141331     133057300002     THINKSCAPE RESEARCH SERVICES INC.                                     0000011901     0000012000     MANDALUYONG- LIBERTAD BRANCH
+Regular Commercial       13CP0606     010141331     133057300002     THINKSCAPE RESEARCH SERVICES INC.                                     0000012001     0000012100     MANDALUYONG- LIBERTAD BRANCH
+Regular Commercial       13CP0606     010141331     133057300002     THINKSCAPE RESEARCH SERVICES INC.                                     0000012101     0000012200     MANDALUYONG- LIBERTAD BRANCH
+Regular Commercial       13CP0606     010141357     000013276923     JEZREEL TRAVEL AND TOURS INC.                                         0000033401     0000033500     DON ANTONIO HEIGHTS BRANCH
+Regular Commercial       13CP0606     030140066     000012086743     ASIA PACIFIC EXPRESS CORPORATION                                      0000223301     0000223400     DAVAO-LANANG BRANCH
+Regular Commercial       13CP0606     030140082     000017664047     LOQUINTE, MACARIO P. DBU JAMM BREADHAUS                               0000079101     0000079200     DIGOS BRANCH
+Regular Commercial       13CP0606     050140017     481018109002     CSI WAREHOUSE CLUB INC.                                               0000915951     0000916050     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481018109002     CSI WAREHOUSE CLUB INC.                                               0000916051     0000916150     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481018109002     CSI WAREHOUSE CLUB INC.                                               0000916151     0000916250     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481025398002     COSTSAVER'S SUPERMARKET, INC.                                         0000916251     0000916350     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481258347003     COLEGIO DE SAN JUAN DE LETRAN- MANAOAG INC.                           0000916351     0000916450     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481258347003     COLEGIO DE SAN JUAN DE LETRAN- MANAOAG INC.                           0000916451     0000916550     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481258347003     COLEGIO DE SAN JUAN DE LETRAN- MANAOAG INC.                           0000916551     0000916650     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481258347003     COLEGIO DE SAN JUAN DE LETRAN- MANAOAG INC.                           0000916651     0000916750     DAGUPAN BRANCH
+Regular Commercial       13CP0606     050140017     481258347003     COLEGIO DE SAN JUAN DE LETRAN- MANAOAG INC.                           0000916751     0000916850     DAGUPAN BRANCH
+Regular Commercial       13CP0606     060140036     000015474269     TAT-PRINTING PHILS. INC.                                              0000121901     0000122000     CLARK-ANGELES BRANCH
+Regular Commercial       13CP0606     060140036     000015474269     TAT-PRINTING PHILS. INC.                                              0000122001     0000122100     CLARK-ANGELES BRANCH
+Regular Commercial       13CP0606     100140035     233032957001     PCCI FINANCE CORPORATION                                              0000272601     0000272700     CDO - VELEZ BRANCH
+Regular Commercial       13CP0606     100140048     000000133593     DELUXE RANCH TRANSPORT CORPORATION                                    0000073001     0000073100     CDO-LIMKETKAI BRANCH
+Regular Commercial       13CP0606     100140048     000000133593     DELUXE RANCH TRANSPORT CORPORATION                                    0000073101     0000073200     CDO-LIMKETKAI BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597301     0000597400     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597401     0000597500     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597501     0000597600     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597601     0000597700     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597701     0000597800     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597801     0000597900     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000597901     0000598000     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000598001     0000598100     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000598101     0000598200     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140021     000013219233     NU CETUS LENDING INC.                                                 0000598201     0000598300     MALOLOS BRANCH
+Regular Commercial       13CP0606     130140076     000007820660     VICTOR R. DEL ROSARIO RICE MILL CORP.                                 0000082901     0000083000     CABANATUAN-MAHARLIKA BRANCH
+Regular Commercial       13CP0606     130140076     000007820660     VICTOR R. DEL ROSARIO RICE MILL CORP.                                 0000083001     0000083100     CABANATUAN-MAHARLIKA BRANCH
+Regular Commercial       13CP0606     130140076     000007820660     VICTOR R. DEL ROSARIO RICE MILL CORP.                                 0000083101     0000083200     CABANATUAN-MAHARLIKA BRANCH
+Regular Commercial       13CP0606     130140076     000007820660     VICTOR R. DEL ROSARIO RICE MILL CORP.                                 0000083201     0000083300     CABANATUAN-MAHARLIKA BRANCH
+Regular Commercial       13CP0606     130140076     000007820660     VICTOR R. DEL ROSARIO RICE MILL CORP.                                 0000083301     0000083400     CABANATUAN-MAHARLIKA BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476201     0000476300     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476301     0000476400     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476401     0000476500     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476501     0000476600     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476601     0000476700     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476701     0000476800     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476801     0000476900     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000476901     0000477000     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000477001     0000477100     SUBIC BRANCH
+Regular Commercial       13CP0606     280140010     712043405001     MALAYAN TOWAGE & SALVAGE CORPORATION - SUBIC                          0000477101     0000477200     SUBIC BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000058601     0000058700     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000058701     0000058800     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000058801     0000058900     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000058901     0000059000     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059001     0000059100     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059101     0000059200     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059201     0000059300     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059301     0000059400     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059401     0000059500     OLONGAPO BRANCH
+Regular Commercial       13CP0606     280140023     000005253561     PRAGMATIC DEVELOPMENT & CONSTRUCTION CORP.                            0000059501     0000059600     OLONGAPO BRANCH
+Regular Commercial       13CP0606     720140017     000007185562     CARUMBA, MARGIE SEPADA OR CARUMBA, DANIECITO PASCO                    0000045851     0000045950     PAGADIAN BRANCH
+Regular Commercial       13CP0606     720140017     000007185562     CARUMBA, MARGIE SEPADA OR CARUMBA, DANIECITO PASCO                    0000045951     0000046050     PAGADIAN BRANCH
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420401        2420450        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420451        2420500        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420501        2420550        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420551        2420600        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420601        2420650        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394625     KATIGBAK, CARMENCITA D.                                               2420651        2420700        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000002394692     CLERIGO, JOHN CARLOS BALOIS                                           2420701        2420750        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000003141482     CABRERA JR., PELAGIO ESPERAT                                          2420751        2420800        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000003141482     CABRERA JR., PELAGIO ESPERAT                                          2420801        2420850        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000009995153     NICDAO, MELINDA DOLOSO                                                2420851        2420900        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     000009995153     NICDAO, MELINDA DOLOSO                                                2420901        2420950        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140015     061396165001     SANTIAGO, MA. SOCORRO S. OR PACIFICADOR, AIN                          2420951        2421000        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0606     010140044     000016569434     GUNTANG, RIZALYN VILLAPANDO                                           0830351        0830400        CUBAO BRANCH
+Regular Personal         13CP0606     010140044     161525001052     MARY B. MONDRAGON                                                     0830401        0830450        CUBAO BRANCH
+Regular Personal         13CP0606     010140086     011516486001     **********                                                            1469351        1469400        STA. ELENA BRANCH
+Regular Personal         13CP0606     010140109     000005320392     ANDRES, MYKA ANGELIQUE ORENSE                                         1378551        1378600        UST BRANCH
+Regular Personal         13CP0606     010140125     000017479462     GARCIA, MA. VERONICA SAYAT                                            0531351        0531400        PASAY LIBERTAD BRANCH
+Regular Personal         13CP0606     010140125     021478374001     BAGTAS, JOSEPHINE P.                                                  0531401        0531450        PASAY LIBERTAD BRANCH
+Regular Personal         13CP0606     010140138     000001820002     LEY, RICHMOND REGAN CO                                                0604151        0604200        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     000001820002     LEY, RICHMOND REGAN CO                                                0604201        0604250        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     000001820002     LEY, RICHMOND REGAN CO                                                0604251        0604300        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     000001820002     LEY, RICHMOND REGAN CO                                                0604301        0604350        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201554626001     BANGURAN, MYRNA BRINGAS                                               0604351        0604400        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201618189001     CINCO, ROSA OR LAM, LAURENCE                                          0604401        0604450        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201618189001     CINCO, ROSA OR LAM, LAURENCE                                          0604451        0604500        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201618189001     CINCO, ROSA OR LAM, LAURENCE                                          0604501        0604550        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201618189001     CINCO, ROSA OR LAM, LAURENCE                                          0604551        0604600        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140138     201618189001     CINCO, ROSA OR LAM, LAURENCE                                          0604601        0604650        PASAY MACAPAGAL AVENUE BRANCH
+Regular Personal         13CP0606     010140206     000011455166     CASTILLO, IRISH MAE PAREDES                                           0624251        0624300        VALLE VERDE BRANCH
+Regular Personal         13CP0606     010140206     000011455166     CASTILLO, IRISH MAE PAREDES                                           0624301        0624350        VALLE VERDE BRANCH
+Regular Personal         13CP0606     010140235     000016545461     SANTOS, FRANZ JOSEF SIA                                               0618601        0618650        SUCAT BRANCH
+Regular Personal         13CP0606     010140235     000016545461     SANTOS, FRANZ JOSEF SIA                                               0618651        0618700        SUCAT BRANCH
+Regular Personal         13CP0606     010140277     391757431003     CHAN, HAYDEE CHUA OR CHAN, PAULINO COYIT                              0788301        0788350        TAYTAY BRANCH
+Regular Personal         13CP0606     010140293     381205376002     ROGELIO LUSONG OR EVELYN LUSONG                                       0725801        0725850        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0606     010140293     381205376002     ROGELIO LUSONG OR EVELYN LUSONG                                       0725851        0725900        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0606     010140345     521238178001     **********                                                            1678801        1678850        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521238178001     **********                                                            1678851        1678900        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521239867001     **********                                                            1678901        1678950        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521239867001     **********                                                            1678951        1679000        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521239867001     **********                                                            1679001        1679050        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679051        1679100        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679101        1679150        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679151        1679200        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679201        1679250        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679251        1679300        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679301        1679350        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679351        1679400        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679401        1679450        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679451        1679500        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679501        1679550        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679551        1679600        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679601        1679650        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679651        1679700        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679701        1679750        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679751        1679800        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679801        1679850        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679851        1679900        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679901        1679950        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1679951        1680000        BINONDO BRANCH
+Regular Personal         13CP0606     010140345     521441986001     ***********                                                           1680001        1680050        BINONDO BRANCH
+Regular Personal         13CP0606     010140358     000005961931     VERA, RUFIA DOROTHY C.                                                0802751        0802800        PASEO DE ROXAS BRANCH
+Regular Personal         13CP0606     010140358     000005961931     VERA, RUFIA DOROTHY C.                                                0802801        0802850        PASEO DE ROXAS BRANCH
+Regular Personal         13CP0606     010140358     000005961931     VERA, RUFIA DOROTHY C.                                                0802851        0802900        PASEO DE ROXAS BRANCH
+Regular Personal         13CP0606     010140358     000005961931     VERA, RUFIA DOROTHY C.                                                0802901        0802950        PASEO DE ROXAS BRANCH
+Regular Personal         13CP0606     010140358     000005961931     VERA, RUFIA DOROTHY C.                                                0802951        0803000        PASEO DE ROXAS BRANCH
+Regular Personal         13CP0606     010140361     000017059291     CAINTIC, VIVIAN GARCIA                                                0571151        0571200        SAN PEDRO BRANCH
+Regular Personal         13CP0606     010140426     611549185001     REYES JR., ROSENDO ALCAFARAS                                          0797531        0797580        GUADALUPE BRANCH
+Regular Personal         13CP0606     010140549     000000126496     MARONILLA, CONNIE ARCELO                                              0612551        0612600        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     000002253010     ROSEMAE J. SISON                                                      0612601        0612650        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     000006300152     OGOT, PABLITO BINUNGCAL                                               0612651        0612700        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     000006300152     OGOT, PABLITO BINUNGCAL                                               0612701        0612750        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     392589729001     SUSAN O. DU                                                           0612751        0612800        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     392589729001     SUSAN O. DU                                                           0612801        0612850        BICUTAN BRANCH
+Regular Personal         13CP0606     010140549     392589729001     SUSAN O. DU                                                           0612851        0612900        BICUTAN BRANCH
+Regular Personal         13CP0606     010140581     000001021321     ***********                                                           0818651        0818700        DIVISORIA II BRANCH
+Regular Personal         13CP0606     010140594     512155818001     ANTONIO C. KO OR LEE MEE LING                                         0404651        0404700        PASONG TAMO EXT. BRANCH
+Regular Personal         13CP0606     010140594     512155818001     ANTONIO C. KO OR LEE MEE LING                                         0404701        0404750        PASONG TAMO EXT. BRANCH
+Regular Personal         13CP0606     010140604     000014388577     DAVID, CASEY ANNE PASCO                                               0280601        0280650        ELCANO BRANCH
+Regular Personal         13CP0606     010140604     000014388577     DAVID, CASEY ANNE PASCO                                               0280651        0280700        ELCANO BRANCH
+Regular Personal         13CP0606     010140604     000014388577     DAVID, CASEY ANNE PASCO                                               0280701        0280750        ELCANO BRANCH
+Regular Personal         13CP0606     010140604     112208430001     PRISCILA C. RAMOS                                                     0280751        0280800        ELCANO BRANCH
+Regular Personal         13CP0606     010140604     112208430001     PRISCILA C. RAMOS                                                     0280801        0280850        ELCANO BRANCH
+Regular Personal         13CP0606     010140662     000006317860     DELGADO, JUDY GRACE TIONGCO                                           0750701        0750750        TEKTITE BRANCH
+Regular Personal         13CP0606     010140662     000006317860     DELGADO, JUDY GRACE TIONGCO                                           0750751        0750800        TEKTITE BRANCH
+Regular Personal         13CP0606     010140675     000005666817     CDB ACCOUNTING AND TAXATION SERVICES                                  0646951        0647000        STARMALL-LAS PINAS BRANCH
+Regular Personal         13CP0606     010140675     000005666817     CDB ACCOUNTING AND TAXATION SERVICES                                  0647001        0647050        STARMALL-LAS PINAS BRANCH
+Regular Personal         13CP0606     010140727     000017833064     BAYOT, CYNTHIA PARRILLA                                               0582801        0582850        TOMAS MORATO BRANCH
+Regular Personal         13CP0606     010140772     602415232033     ROSEMARIE C. ONG                                                      1036251        1036300        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0606     010140824     711487311001     RACHO, DESIDERIO OR TRANQUILINA OR ANNA OR ARTHUR                     0561701        0561750        AYALA-ALABANG BRANCH
+Regular Personal         13CP0606     010140824     711487311001     RACHO, DESIDERIO OR TRANQUILINA OR ANNA OR ARTHUR                     0561751        0561800        AYALA-ALABANG BRANCH
+Regular Personal         13CP0606     010140837     382597245001     DR. NIKKOH P. MUNOZ                                                   0433351        0433400        MEDICAL CITY BRANCH
+Regular Personal         13CP0606     010140837     382597245001     DR. NIKKOH P. MUNOZ                                                   0433401        0433450        MEDICAL CITY BRANCH
+Regular Personal         13CP0606     010140837     382597245001     DR. NIKKOH P. MUNOZ                                                   0433451        0433500        MEDICAL CITY BRANCH
+Regular Personal         13CP0606     010140837     382660357001     DRS. THERESA MARIE R. CACAS OR JEANNE MARIE R. MARQUEZ                0433501        0433550        MEDICAL CITY BRANCH
+Regular Personal         13CP0606     010140840     000005782294     COMETA, EMER T.                                                       0555051        0555100        MARKET!MARKET! BRANCH
+Regular Personal         13CP0606     010140853     000018613948     CATUGAL, JOHNSAN SUMINGUIT                                            0178301        0178350        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018613982     DESTRAJO, PATRICK BALIOS                                              0178351        0178400        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614058     DUADUA, TEDD CENT ANTHONY BABIL                                       0178401        0178450        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614105     FELISCO, RITCHEL AMARAN                                               0178451        0178500        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614150     FEROLINO, MARJORIE ANNE ESPANO                                        0178501        0178550        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614190     HERNIA, JOHN PAUL EVANGELISTA                                         0178551        0178600        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614230     HUDIERES, PRINCESS MAE CABLINDA                                       0178601        0178650        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614309     LAPINIED, MARK DOUGHLAS CANILAO                                       0178651        0178700        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614343     MACAHILO, MA KATRINA ALYSSA BAT                                       0178701        0178750        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614383     MAIZ, JOEL TEJONES                                                    0178751        0178800        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614423     NUDALO, ARNIE JANE VILLARTE                                           0178801        0178850        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614452     PANGCOGA, ADAM ABELLANOSA                                             0178851        0178900        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614496     PATOSA, ANGIELY SUMALINOG                                             0178901        0178950        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614521     SALERA, ANGELA .                                                      0178951        0179000        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614554     TACUBAN, JEMALYN PASTOLERO                                            0179001        0179050        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614598     AGULLANA, LUIGI LYNE VILLAPAZ                                         0179051        0179100        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614623     ALBARILLO, CHRISTIAN JOHN BASAY                                       0179101        0179150        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614678     AMOREN, CHINA JANE AGUDERA                                            0179151        0179200        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614703     ATON, PRINCESS SHANADRA CABALLE                                       0179201        0179250        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614736     AYUPAN, RENZ MIKHAEL FLORES                                           0179251        0179300        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614769     BALANE, JUNA TOLEDO                                                   0179301        0179350        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614805     BENASING, AIDALYN MAMARINTA                                           0179351        0179400        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614849     BROWN, CAMILLE SALIGUMBA                                              0179401        0179450        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614872     ELLARINA, RANNIE CERVANTES                                            0179451        0179500        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614907     FLORES, NICHOL LUMAGOD                                                0179501        0179550        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614941     HAYAG, MICHELLE ORDIZ                                                 0179551        0179600        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018614981     LAPINIG, GLADY GRACE TANDAYAG                                         0179601        0179650        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615017     LUGA, JOMARI .                                                        0179651        0179700        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615040     MONTER, MAYVEER ELLIONADO                                             0179701        0179750        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615073     MUSTAPHA, AMIRAH UMPARA                                               0179751        0179800        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615119     PAGADUAN, ALDREN NAPALA                                               0179801        0179850        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615153     PARAN, JOHN REY PACIONES                                              0179851        0179900        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615182     PAULO, CHRISTOPHER REY BARTE                                          0179901        0179950        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615211     REYES, CHRISTIAN CEDIE LOGRONIO                                       0179951        0180000        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     000018615251     SILONGAN, ALMAILEEN LAUBAN                                            0180001        0180050        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140853     516571877170     CHRISTIAN T. SILAGAN                                                  0180051        0180100        BEL-AIR BRANCH
+Regular Personal         13CP0606     010140905     000009981122     REYES, MA. LOURDES GARCIA                                             0117151        0117200        EASTWOOD BRANCH
+Regular Personal         13CP0606     010140918     000001237343     CAMPA, CARLOS NIETO                                                   0073001        0073050        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0606     010140918     000001237343     CAMPA, CARLOS NIETO                                                   0073051        0073100        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0606     010140921     000009966825     EVANGELISTA JR., CARLITO ACAR                                         0072751        0072800        FORT BONIFACIO - NET CUBE BRANCH
+Regular Personal         13CP0606     010141014     000006015407     EDORIA, DBU MLE VALVE ENTERPRIS                                       0067051        0067100        PASIG MABINI BRANCH
+Regular Personal         13CP0606     010141014     000006015407     EDORIA, DBU MLE VALVE ENTERPRIS                                       0067101        0067150        PASIG MABINI BRANCH
+Regular Personal         13CP0606     010141014     000006015407     EDORIA, DBU MLE VALVE ENTERPRIS                                       0067151        0067200        PASIG MABINI BRANCH
+Regular Personal         13CP0606     010141056     000003562190     POLOTAN, KATRINA LYN JAVIER OR POLOTAN, CHRISTIAN WARDE               0064501        0064550        TAFT-NAKPIL BRANCH
+Regular Personal         13CP0606     010141056     000010317738     TENG, MARIA FE TERESA EDRALIN DBU YALA BAGS TRADING                   0064551        0064600        TAFT-NAKPIL BRANCH
+Regular Personal         13CP0606     010141218     000000908390     LIM, LEA YAP                                                          0038401        0038450        CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Personal         13CP0606     010141221     000012172126     ROXAS, AURORA RHODORA VILLEGAS                                        0051651        0051700        FORT-NAC TOWER BRANCH
+Regular Personal         13CP0606     010141221     000012172126     ROXAS, AURORA RHODORA VILLEGAS                                        0051701        0051750        FORT-NAC TOWER BRANCH
+Regular Personal         13CP0606     010141221     000012172126     ROXAS, AURORA RHODORA VILLEGAS                                        0051751        0051800        FORT-NAC TOWER BRANCH
+Regular Personal         13CP0606     010141234     000003343502     PHILIP S. GARCIA                                                      0095051        0095100        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000010660061     ESTAYANI, ZHARA LY M.                                                 0095101        0095150        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000010660061     ESTAYANI, ZHARA LY M.                                                 0095151        0095200        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000017937881     EDWIN V. MATULIN                                                      0095201        0095250        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000017937881     EDWIN V. MATULIN                                                      0095251        0095300        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000017937881     EDWIN V. MATULIN                                                      0095301        0095350        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000017937881     EDWIN V. MATULIN                                                      0095351        0095400        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141234     000017937881     EDWIN V. MATULIN                                                      0095401        0095450        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0606     010141250     000018623646     SAGMAQUEN, REYVIE VENTURA                                             0034951        0035000        WEST AVENUE BRANCH
+Regular Personal         13CP0606     010141315     000006294233     HUANG, LIANGLIANG                                                     0046201        0046250        ONGPIN BRANCH
+Regular Personal         13CP0606     010141315     000006294233     HUANG, LIANGLIANG                                                     0046251        0046300        ONGPIN BRANCH
+Regular Personal         13CP0606     010141315     000016613757     UNG, REBEKAH ONG                                                      0046301        0046350        ONGPIN BRANCH
+Regular Personal         13CP0606     010141315     000016613757     UNG, REBEKAH ONG                                                      0046351        0046400        ONGPIN BRANCH
+Regular Personal         13CP0606     010141331     000015039751     MASCARDO, GUIAN CARLO ARBOLEDA                                        0041351        0041400        MANDALUYONG- LIBERTAD BRANCH
+Regular Personal         13CP0606     010141331     000018629053     SANTIBANEZ, ALFRED GARCIA                                             0041401        0041450        MANDALUYONG- LIBERTAD BRANCH
+Regular Personal         13CP0606     010141344     000016444343     SALCEDO, JEANNETTE OR SALCEDO, ERIC                                   0070251        0070300        DILIMAN-MATALINO BRANCH
+Regular Personal         13CP0606     010141344     000016444343     SALCEDO, JEANNETTE OR SALCEDO, ERIC                                   0070301        0070350        DILIMAN-MATALINO BRANCH
+Regular Personal         13CP0606     010141344     000018606363     VILLAMOR, NANCY MAGLENTE OR VILLAMOR, CONCEPCION                      0070351        0070400        DILIMAN-MATALINO BRANCH
+Regular Personal         13CP0606     010141386     000001886946     FERNANDEZ, DOLORES GOZON                                              0114301        0114350        ADRIATICO-P. FAURA BRANCH
+Regular Personal         13CP0606     010141386     000001886946     FERNANDEZ, DOLORES GOZON                                              0114351        0114400        ADRIATICO-P. FAURA BRANCH
+Regular Personal         13CP0606     010141386     000018622136     OBSIOMA, CHERANE EBUNA                                                0114401        0114450        ADRIATICO-P. FAURA BRANCH
+Regular Personal         13CP0606     030140079     000005691990     EMBALSADO JR., ALBERTO GEMPESAW                                       0046201        0046250        DAVAO-TORIL BRANCH
+Regular Personal         13CP0606     030140079     000005691990     EMBALSADO JR., ALBERTO GEMPESAW                                       0046251        0046300        DAVAO-TORIL BRANCH
+Regular Personal         13CP0606     030140095     000013857322     ANG, DANIEL TE                                                        0067551        0067600        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0606     030140095     000013857322     ANG, DANIEL TE                                                        0067601        0067650        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0606     050140017     481610785001     TAMBAOAN, JEAN ESTOQUE                                                0585401        0585450        DAGUPAN BRANCH
+Regular Personal         13CP0606     060140010     000002072668     SAN JOSE, ERNESTO ALBUERO                                             0738101        0738150        ANGELES BRANCH
+Regular Personal         13CP0606     060140010     081382865005     REYES, LIBERATO OR GLORIA                                             0738151        0738200        ANGELES BRANCH
+Regular Personal         13CP0606     060140023     000003015550     SAMIA, RETINA PANGILINAN                                              0509801        0509850        SAN FERNANDO BRANCH
+Regular Personal         13CP0606     060140023     000017769254     BONUS, HECTOR BRIONES                                                 0509851        0509900        SAN FERNANDO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0076901        0076950        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0076951        0077000        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077001        0077050        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077051        0077100        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077101        0077150        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077151        0077200        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077201        0077250        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077251        0077300        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077301        0077350        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000005943702     IMPACT BALIBAGO ARTS AND CRAFTS                                       0077351        0077400        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000009516792     GONZALES, ELIZABETH BONDOC DBU EBG TRADING                            0077401        0077450        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000009516792     GONZALES, ELIZABETH BONDOC DBU EBG TRADING                            0077451        0077500        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     060140052     000009516792     GONZALES, ELIZABETH BONDOC DBU EBG TRADING                            0077501        0077550        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0606     070140026     000009912876     SOLA, MA EVA ICARO                                                    0044101        0044150        NAGA DIVERSION ROAD BRANCH
+Regular Personal         13CP0606     070140026     000013603571     SOLA, VEA ROMELLE ICARO                                               0044151        0044200        NAGA DIVERSION ROAD BRANCH
+Regular Personal         13CP0606     070140026     000013603760     BARRION, DELFIN CLUTARIO                                              0044201        0044250        NAGA DIVERSION ROAD BRANCH
+Regular Personal         13CP0606     070140026     000017068532     REDBURN, MARISSA REORIZO                                              0044251        0044300        NAGA DIVERSION ROAD BRANCH
+Regular Personal         13CP0606     070140026     000017068674     JOSON, FLORINDA ABOGADO                                               0044301        0044350        NAGA DIVERSION ROAD BRANCH
+Regular Personal         13CP0606     080140016     000016201179     AMARANTE, JOSELYN MAPRANGALA                                          0437951        0438000        ILOILO BRANCH
+Regular Personal         13CP0606     080140016     000016201179     AMARANTE, JOSELYN MAPRANGALA                                          0438001        0438050        ILOILO BRANCH
+Regular Personal         13CP0606     100140035     000000017165     MEN DBU A&L MARKETING SOLUTIONS                                       0174501        0174550        CDO - VELEZ BRANCH
+Regular Personal         13CP0606     100140048     000014023580     ELIZAR, CATHERINE GRACE B DBU CATHY'S BOOKKEEPING SERVI               0076451        0076500        CDO-LIMKETKAI BRANCH
+Regular Personal         13CP0606     100140048     000014023580     ELIZAR, CATHERINE GRACE B DBU CATHY'S BOOKKEEPING SERVI               0076501        0076550        CDO-LIMKETKAI BRANCH
+Regular Personal         13CP0606     130140047     000005394254     KATHERINE MALONES PANAHON OR MIROFE JUAN MALONES                      0326151        0326200        CABANATUAN BRANCH
+Regular Personal         13CP0606     140140011     000017625300     DE VERO, ROBERTO TANEDO DBU BOM                                       0608201        0608250        LUCENA BRANCH
+Regular Personal         13CP0606     140140011     000017625300     DE VERO, ROBERTO TANEDO DBU BOM                                       0608251        0608300        LUCENA BRANCH
+Regular Personal         13CP0606     140140011     000017625300     DE VERO, ROBERTO TANEDO DBU BOM                                       0608301        0608350        LUCENA BRANCH
+Regular Personal         13CP0606     140140011     000017625300     DE VERO, ROBERTO TANEDO DBU BOM                                       0608351        0608400        LUCENA BRANCH
+Regular Personal         13CP0606     190140016     000016900413     ILUSTRE, JOEL REYES                                                   0512651        0512700        BATANGAS BRANCH
+Regular Personal         13CP0606     190140016     000016900413     ILUSTRE, JOEL REYES                                                   0512701        0512750        BATANGAS BRANCH
+Regular Personal         13CP0606     190140016     491298552008     VILMA F FALCUNAYA                                                     0512751        0512800        BATANGAS BRANCH
+Regular Personal         13CP0606     190140016     491298552008     VILMA F FALCUNAYA                                                     0512801        0512850        BATANGAS BRANCH
+Regular Personal         13CP0606     190140029     000001975255     JIAO, AGNES TUBILLEJA                                                 1133801        1133850        LIPA BRANCH
+Regular Personal         13CP0606     190140029     000001975255     JIAO, AGNES TUBILLEJA                                                 1133851        1133900        LIPA BRANCH
+Regular Personal         13CP0606     190140029     261244564002     ANITA LUMBERA SAUZ                                                    1133901        1133950        LIPA BRANCH
+Regular Personal         13CP0606     190140029     261244564002     ANITA LUMBERA SAUZ                                                    1133951        1134000        LIPA BRANCH
+Regular Personal         13CP0606     190140029     261244564002     ANITA LUMBERA SAUZ                                                    1134001        1134050        LIPA BRANCH
+Regular Personal         13CP0606     240140018     000000073527     LAFARDZ MARKETING                                                     0841301        0841350        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     000000073527     LAFARDZ MARKETING                                                     0841351        0841400        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     000000073527     LAFARDZ MARKETING                                                     0841401        0841450        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     000012748619     TUPAS, BEATRIZ PALACIOS                                               0841451        0841500        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     000012748619     TUPAS, BEATRIZ PALACIOS                                               0841501        0841550        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     411478374044     UGAT, ELVA T.                                                         0841551        0841600        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     240140018     411478374044     UGAT, ELVA T.                                                         0841601        0841650        GEN. SANTOS BRANCH
+Regular Personal         13CP0606     280140010     000002253549     PARAZO, DARLOW BALMORES OR PARAZO, RAYDA PA                           0318901        0318950        SUBIC BRANCH
+Regular Personal         13CP0606     280140010     000002253549     PARAZO, DARLOW BALMORES OR PARAZO, RAYDA PA                           0318951        0319000        SUBIC BRANCH
+Regular Personal         13CP0606     280140023     000005752387     BALDEO, ROSA MARIA BUSTAMANTE OR MONTANO, GENEVIEVE                   0054851        0054900        OLONGAPO BRANCH
+Regular Personal         13CP0606     280140023     000005752387     BALDEO, ROSA MARIA BUSTAMANTE OR MONTANO, GENEVIEVE                   0054901        0054950        OLONGAPO BRANCH
+Regular Personal         13CP0606     280140023     000005752387     BALDEO, ROSA MARIA BUSTAMANTE OR MONTANO, GENEVIEVE                   0054951        0055000        OLONGAPO BRANCH
+Regular Personal         13CP0606     310140016     000014143870     OBLEA, PORTIA TOLENTINO                                               0495051        0495100        CALAMBA BRANCH
+Regular Personal         13CP0606     310140074     000016514711     KING, MYLENE AVILES                                                   0032901        0032950        BATINO-CALAMBA BRANCH
+Regular Personal         13CP0606     380140017     000002302983     RENATO L ABALOS                                                       0044401        0044450        CALAPAN BRANCH
+Regular Personal         13CP0606     410140026     000016254329     TOMARONG, ANA P. DBU LUCKY BUDDIES PHARMACY                           0563001        0563050        DASMARINAS BRANCH
+Regular Personal         13CP0606     410140026     000016254329     TOMARONG, ANA P. DBU LUCKY BUDDIES PHARMACY                           0563051        0563100        DASMARINAS BRANCH
+Regular Personal         13CP0606     410140026     000016254329     TOMARONG, ANA P. DBU LUCKY BUDDIES PHARMACY                           0563101        0563150        DASMARINAS BRANCH
+Regular Personal         13CP0606     410140039     813478374008     FELICITAS CORTEZ                                                      0358251        0358300        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0606     410140042     000003309004     MEMBERS OF, NATASHA SHOECAT INC VILLAR, LUCIA                         0632001        0632050        IMUS, CAVITE BRANCH
+Regular Personal         13CP0606     410140055     000006044424     MEDIAVILLO, MARK CHRISTIAN AGUI                                       0140851        0140900        MOLINO BRANCH
+Regular Personal         13CP0606     720140017     000010016056     GANANCIAL JR., CARLOS FUENTES                                         0058401        0058450        PAGADIAN BRANCH
+Regular Personal         13CP0606     720140017     000010016056     GANANCIAL JR., CARLOS FUENTES                                         0058451        0058500        PAGADIAN BRANCH
+Regular Personal         13CP0606     720140017     000018578762     CHUA, DENNIS TY OR CHUA, CATHERINE TIO                                0058501        0058550        PAGADIAN BRANCH

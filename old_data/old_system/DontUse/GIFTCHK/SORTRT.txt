@@ -1,0 +1,17 @@
+
+    Page No.     1
+    06/16/2014
+                          SBC - Summary of RT nos / # of Books
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  A/030140095/GC061314
+   ** BRANCH NAME ----> DAVAO-BAJADA BRANCH
+
+    196821200608    2     
+   ** Subtotal ** 
+                    2
+
+   *** Total ***  
+                    2

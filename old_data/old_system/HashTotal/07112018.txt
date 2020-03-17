@@ -1,0 +1,418 @@
+For Delivery Date: Jul. 11, 2018
+
+CheckOne Personal        13CS0705     010140772     602170297001     MACASAET JR., ROBERTO MONTINOLA                              0013326        0013350        MEDICAL PLAZA BRANCH
+CheckOne Personal        13CS0705     010140772     602170297001     MACASAET JR., ROBERTO MONTINOLA                              0013351        0013375        MEDICAL PLAZA BRANCH
+Personal Pre-Encoded     13CP0705     010140015     000019163892     **********                                                   2430001        2430050        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163905     **********                                                   2430051        2430100        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163916     **********                                                   2430101        2430150        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163927     **********                                                   2430151        2430200        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163938     **********                                                   2430201        2430250        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163949     **********                                                   2430251        2430300        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163950     **********                                                   2430301        2430350        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163961     **********                                                   2430351        2430400        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163972     **********                                                   2430401        2430450        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163983     **********                                                   2430451        2430500        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019163990     **********                                                   2430501        2430550        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164004     **********                                                   2430551        2430600        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164015     **********                                                   2430601        2430650        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164026     **********                                                   2430651        2430700        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164037     **********                                                   2430701        2430750        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164048     **********                                                   2430751        2430800        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164059     **********                                                   2430801        2430850        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164060     **********                                                   2430851        2430900        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164071     **********                                                   2430901        2430950        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164082     **********                                                   2430951        2431000        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164093     **********                                                   2431001        2431050        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164106     **********                                                   2431051        2431100        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164117     **********                                                   2431101        2431150        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164128     **********                                                   2431151        2431200        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164139     **********                                                   2431201        2431250        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164140     **********                                                   2431251        2431300        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164151     **********                                                   2431301        2431350        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164162     **********                                                   2431351        2431400        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164173     **********                                                   2431401        2431450        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140015     000019164180     **********                                                   2431451        2431500        MAIN OFFICE BRANCH (MOB)
+Personal Pre-Encoded     13CP0705     010140358     000019166142     **********                                                   0805501        0805550        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166153     **********                                                   0805551        0805600        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166164     **********                                                   0805601        0805650        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166175     **********                                                   0805651        0805700        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166186     **********                                                   0805701        0805750        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166197     **********                                                   0805751        0805800        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166200     **********                                                   0805801        0805850        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166211     **********                                                   0805851        0805900        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166222     **********                                                   0805901        0805950        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166233     **********                                                   0805951        0806000        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166244     **********                                                   0806001        0806050        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166255     **********                                                   0806051        0806100        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166266     **********                                                   0806101        0806150        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166277     **********                                                   0806151        0806200        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166288     **********                                                   0806201        0806250        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166299     **********                                                   0806251        0806300        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166302     **********                                                   0806301        0806350        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166313     **********                                                   0806351        0806400        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166324     **********                                                   0806401        0806450        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166335     **********                                                   0806451        0806500        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166346     **********                                                   0806501        0806550        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166357     **********                                                   0806551        0806600        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166368     **********                                                   0806601        0806650        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166379     **********                                                   0806651        0806700        PASEO DE ROXAS BRANCH
+Personal Pre-Encoded     13CP0705     010140358     000019166380     **********                                                   0806701        0806750        PASEO DE ROXAS BRANCH
+Regular Commercial       13CP0705     010140044     161007363001     HARMONICS ELECTRICAL SERVICES                                0000520501     0000520600     CUBAO BRANCH
+Regular Commercial       13CP0705     010140044     161007363001     HARMONICS ELECTRICAL SERVICES                                0000520601     0000520700     CUBAO BRANCH
+Regular Commercial       13CP0705     010140044     161007363001     HARMONICS ELECTRICAL SERVICES                                0000520701     0000520800     CUBAO BRANCH
+Regular Commercial       13CP0705     010140044     161007363001     HARMONICS ELECTRICAL SERVICES                                0000520801     0000520900     CUBAO BRANCH
+Regular Commercial       13CP0705     010140044     161007363001     HARMONICS ELECTRICAL SERVICES                                0000520901     0000521000     CUBAO BRANCH
+Regular Commercial       13CP0705     010140057     000003451556     DE LOS SANTOS MEDICAL CENTER, INC.                           0000473401     0000473500     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140057     000003451556     DE LOS SANTOS MEDICAL CENTER, INC.                           0000473501     0000473600     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140057     000003451556     DE LOS SANTOS MEDICAL CENTER, INC.                           0000473601     0000473700     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140057     281047910001     SACRED HEART OF JESUS PARISH-SVD                             0000473701     0000473800     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140057     281047910001     SACRED HEART OF JESUS PARISH-SVD                             0000473801     0000473900     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140057     281047910001     SACRED HEART OF JESUS PARISH-SVD                             0000473901     0000474000     E.RODRIGUEZ BRANCH
+Regular Commercial       13CP0705     010140125     021006617001     SPEARHEAD MACHINE SHOP CORPORATION                           0000427101     0000427200     PASAY LIBERTAD BRANCH
+Regular Commercial       13CP0705     010140125     021006617001     SPEARHEAD MACHINE SHOP CORPORATION                           0000427201     0000427300     PASAY LIBERTAD BRANCH
+Regular Commercial       13CP0705     010140125     021006617001     SPEARHEAD MACHINE SHOP CORPORATION                           0000427301     0000427400     PASAY LIBERTAD BRANCH
+Regular Commercial       13CP0705     010140345     521017837001     **********                                                   0003009801     0003009900     BINONDO BRANCH
+Regular Commercial       13CP0705     010140358     000010847391     THE CONTAGIOUS SECTION PRODUCTIONS                           0001716651     0001716750     PASEO DE ROXAS BRANCH
+Regular Commercial       13CP0705     010140361     000006637114     RD PAWNSHOP, INC.                                            0000469151     0000469250     SAN PEDRO BRANCH
+Regular Commercial       13CP0705     010140361     000006637114     RD PAWNSHOP, INC.                                            0000469251     0000469350     SAN PEDRO BRANCH
+Regular Commercial       13CP0705     010140361     000006637114     RD PAWNSHOP, INC.                                            0000469351     0000469450     SAN PEDRO BRANCH
+Regular Commercial       13CP0705     010140361     000006637114     RD PAWNSHOP, INC.                                            0000469451     0000469550     SAN PEDRO BRANCH
+Regular Commercial       13CP0705     010140426     000000157015     INTERPRO FOOD SPECIALIST INC.                                0001238431     0001238530     GUADALUPE BRANCH
+Regular Commercial       13CP0705     010140426     000000157015     INTERPRO FOOD SPECIALIST INC.                                0001238531     0001238630     GUADALUPE BRANCH
+Regular Commercial       13CP0705     010140426     000000157015     INTERPRO FOOD SPECIALIST INC.                                0001238631     0001238730     GUADALUPE BRANCH
+Regular Commercial       13CP0705     010140426     000000157015     INTERPRO FOOD SPECIALIST INC.                                0001238731     0001238830     GUADALUPE BRANCH
+Regular Commercial       13CP0705     010140426     000000157015     INTERPRO FOOD SPECIALIST INC.                                0001238831     0001238930     GUADALUPE BRANCH
+Regular Commercial       13CP0705     010140549     392030564001     NEW FS COOL AIRE INDUSTRIES, INC.                            0000429451     0000429550     BICUTAN BRANCH
+Regular Commercial       13CP0705     010140549     392030564001     NEW FS COOL AIRE INDUSTRIES, INC.                            0000429551     0000429650     BICUTAN BRANCH
+Regular Commercial       13CP0705     010140549     392030564001     NEW FS COOL AIRE INDUSTRIES, INC.                            0000429651     0000429750     BICUTAN BRANCH
+Regular Commercial       13CP0705     010140662     000000962403     GEOWORKS INTERNATIONAL CORPORATION                           0001228951     0001229050     TEKTITE BRANCH
+Regular Commercial       13CP0705     010140662     273545544001     SUMMIT TEAM WELLNESS CORP.                                   0001229051     0001229150     TEKTITE BRANCH
+Regular Commercial       13CP0705     010140879     000016571745     EUROTILES INDUSTRIAL CORP.                                   0000141401     0000141500     EMERALD BRANCH
+Regular Commercial       13CP0705     010140879     000016571745     EUROTILES INDUSTRIAL CORP.                                   0000141501     0000141600     EMERALD BRANCH
+Regular Commercial       13CP0705     010140879     000016571745     EUROTILES INDUSTRIAL CORP.                                   0000141601     0000141700     EMERALD BRANCH
+Regular Commercial       13CP0705     010140918     000009085281     DELA CRUZ, DENNIS TABUJARA DBU DTDC BUILDERS                 0000110201     0000110300     FORT BONIFACIO - INFINITY BRANCH
+Regular Commercial       13CP0705     010140918     000009085281     DELA CRUZ, DENNIS TABUJARA DBU DTDC BUILDERS                 0000110301     0000110400     FORT BONIFACIO - INFINITY BRANCH
+Regular Commercial       13CP0705     010140918     000009085281     DELA CRUZ, DENNIS TABUJARA DBU DTDC BUILDERS                 0000110401     0000110500     FORT BONIFACIO - INFINITY BRANCH
+Regular Commercial       13CP0705     010140918     000009085281     DELA CRUZ, DENNIS TABUJARA DBU DTDC BUILDERS                 0000110501     0000110600     FORT BONIFACIO - INFINITY BRANCH
+Regular Commercial       13CP0705     010140918     000009085281     DELA CRUZ, DENNIS TABUJARA DBU DTDC BUILDERS                 0000110601     0000110700     FORT BONIFACIO - INFINITY BRANCH
+Regular Commercial       13CP0705     010140992     000019052543     MOJICA, VICTORIA DL. DBU FAT COUSINS DINER JT.               0000037301     0000037400     LAGRO BRANCH
+Regular Commercial       13CP0705     010141030     000000026417     PHILIPPINE COLLEGE OF RADIOLOGY, IN                          0000048101     0000048200     ST. IGNATIUS-KATIPUNAN BRANCH
+Regular Commercial       13CP0705     010141085     000013190842     EMERALD GARDEN, INC.                                         0000068451     0000068550     ROXAS BOULEVARD BRANCH
+Regular Commercial       13CP0705     010141085     000013190842     EMERALD GARDEN, INC.                                         0000068551     0000068650     ROXAS BOULEVARD BRANCH
+Regular Commercial       13CP0705     010141218     000000333617     STA. ANA IMPORT-EXPORT, INC.                                 0000096801     0000096900     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000000333617     STA. ANA IMPORT-EXPORT, INC.                                 0000096901     0000097000     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000000333617     STA. ANA IMPORT-EXPORT, INC.                                 0000097001     0000097100     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000003275192     SOLIDPOINT MANPOWER AND ALLIED SERV                          0000097101     0000097200     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000003275192     SOLIDPOINT MANPOWER AND ALLIED SERV                          0000097201     0000097300     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000003275192     SOLIDPOINT MANPOWER AND ALLIED SERV                          0000097301     0000097400     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000003275192     SOLIDPOINT MANPOWER AND ALLIED SERV                          0000097401     0000097500     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141218     000003275192     SOLIDPOINT MANPOWER AND ALLIED SERV                          0000097501     0000097600     CHINO ROCES AVENUE-DON BOSCO BRANCH
+Regular Commercial       13CP0705     010141289     000019081811     TASTY PALATE FOOD LAB INC.                                   0000048501     0000048600     MARIKINA-GIL FERNANDO AVENUE BRANCH
+Regular Commercial       13CP0705     010141412     000000399100     LPA AND PARTNERS CO.                                         0000084801     0000084900     VISAYAS AVENUE-PROJECT 6 BRANCH
+Regular Commercial       13CP0705     020140076     000011325630     IRESPONSE BUSINESS SOLUTIONS INC.                            0000431601     0000431700     CEBU BUS. PARK BRANCH
+Regular Commercial       13CP0705     020140076     000011325630     IRESPONSE BUSINESS SOLUTIONS INC.                            0000431701     0000431800     CEBU BUS. PARK BRANCH
+Regular Commercial       13CP0705     020140076     000013668870     MANGLAPUS, MIKHAEL MARTIN APAWAN DBU DIGI M GRAFIX DE        0000431801     0000431900     CEBU BUS. PARK BRANCH
+Regular Commercial       13CP0705     020140076     000013668870     MANGLAPUS, MIKHAEL MARTIN APAWAN DBU DIGI M GRAFIX DE        0000431901     0000432000     CEBU BUS. PARK BRANCH
+Regular Commercial       13CP0705     020140102     000000005307     ALEGRE AQUACULTURE DEVELOPMENT                               0000063801     0000063900     LAPU LAPU BRANCH
+Regular Commercial       13CP0705     030140095     000011415062     TIPICON ENGINEERING INNOVATIONS                              0000078951     0000079050     DAVAO-BAJADA BRANCH
+Regular Commercial       13CP0705     080140016     000001289932     RD PAWNSHOP, INC. - ILOILO NORTH                             0000825601     0000825700     ILOILO BRANCH
+Regular Commercial       13CP0705     080140016     000001289932     RD PAWNSHOP, INC. - ILOILO NORTH                             0000825701     0000825800     ILOILO BRANCH
+Regular Commercial       13CP0705     080140016     000001289932     RD PAWNSHOP, INC. - ILOILO NORTH                             0000825801     0000825900     ILOILO BRANCH
+Regular Commercial       13CP0705     110140012     000000652904     COASTALVIEW FOODS CORPORATION                                0000235901     0000236000     TACLOBAN BRANCH
+Regular Commercial       13CP0705     110140012     000000652904     COASTALVIEW FOODS CORPORATION                                0000236001     0000236100     TACLOBAN BRANCH
+Regular Commercial       13CP0705     110140012     000000652904     COASTALVIEW FOODS CORPORATION                                0000236101     0000236200     TACLOBAN BRANCH
+Regular Commercial       13CP0705     110140012     000000652904     COASTALVIEW FOODS CORPORATION                                0000236201     0000236300     TACLOBAN BRANCH
+Regular Commercial       13CP0705     110140012     000000652904     COASTALVIEW FOODS CORPORATION                                0000236301     0000236400     TACLOBAN BRANCH
+Regular Commercial       13CP0705     130140021     000008173911     FTC77 CORPORATION                                            0000600401     0000600500     MALOLOS BRANCH
+Regular Commercial       13CP0705     130140021     000008173911     FTC77 CORPORATION                                            0000600501     0000600600     MALOLOS BRANCH
+Regular Commercial       13CP0705     190140029     261038595002     B & V TRADING                                                0000824551     0000824650     LIPA BRANCH
+Regular Commercial       13CP0705     190140029     261038595002     B & V TRADING                                                0000824651     0000824750     LIPA BRANCH
+Regular Commercial       13CP0705     190140029     261038595002     B & V TRADING                                                0000824751     0000824850     LIPA BRANCH
+Regular Commercial       13CP0705     190140029     261038595002     B & V TRADING                                                0000824851     0000824950     LIPA BRANCH
+Regular Commercial       13CP0705     190140029     261038595002     B & V TRADING                                                0000824951     0000825050     LIPA BRANCH
+Regular Commercial       13CP0705     240140018     411014376002     PENBANK, INC. (A PRIVATE DEVELOPMENT BANK)                   0001268701     0001268800     GEN. SANTOS BRANCH
+Regular Commercial       13CP0705     240140018     411014376002     PENBANK, INC. (A PRIVATE DEVELOPMENT BANK)                   0001268801     0001268900     GEN. SANTOS BRANCH
+Regular Commercial       13CP0705     240140018     411014376002     PENBANK, INC. (A PRIVATE DEVELOPMENT BANK)                   0001268901     0001269000     GEN. SANTOS BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239351     0000239450     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239451     0000239550     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239551     0000239650     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239651     0000239750     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239751     0000239850     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239851     0000239950     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000239951     0000240050     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000240051     0000240150     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000240151     0000240250     KORONADAL BRANCH
+Regular Commercial       13CP0705     550140012     000012653526     HAPPY LIVING REALTY AND DEVELOPMENT                          0000240251     0000240350     KORONADAL BRANCH
+Regular Personal         13CP0705     010140015     000016750868     ALIMAGNO, MARY ANN CONCEPCION                                2429751        2429800        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0705     010140015     000016750868     ALIMAGNO, MARY ANN CONCEPCION                                2429801        2429850        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0705     010140015     000018661442     OLALIA, KAROLINE RIVERA                                      2429851        2429900        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0705     010140015     061232035003     NORBERTO REYES OR SOLEDAD REYES                              2429901        2429950        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0705     010140015     061569177001     YOUNG, ROLAND SAMUEL                                         2429951        2430000        MAIN OFFICE BRANCH (MOB)
+Regular Personal         13CP0705     010140044     000001440000     LAPASARAN, MARY GRACE FRANCISCO                              0833551        0833600        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     000001440000     LAPASARAN, MARY GRACE FRANCISCO                              0833601        0833650        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     000001440000     LAPASARAN, MARY GRACE FRANCISCO                              0833651        0833700        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     000016275866     BOHOLST, NORA MALINAO                                        0833701        0833750        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     000016275866     BOHOLST, NORA MALINAO                                        0833751        0833800        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     161670356001     MA. ESTELA CLEOFE                                            0833801        0833850        CUBAO BRANCH
+Regular Personal         13CP0705     010140044     161670356001     MA. ESTELA CLEOFE                                            0833851        0833900        CUBAO BRANCH
+Regular Personal         13CP0705     010140057     281225647001     YEUNG, YUEN CHING TONG                                       0721151        0721200        E.RODRIGUEZ BRANCH
+Regular Personal         13CP0705     010140073     000011613722     DIMACALI, LEONORA BARCELONA                                  1182601        1182650        ERMITA BRANCH
+Regular Personal         13CP0705     010140073     111772448001     BOCABEL, MARIFE DE GUZMAN                                    1182651        1182700        ERMITA BRANCH
+Regular Personal         13CP0705     010140086     011571320001     **********                                                   1476751        1476800        STA. ELENA BRANCH
+Regular Personal         13CP0705     010140086     011571320001     **********                                                   1476801        1476850        STA. ELENA BRANCH
+Regular Personal         13CP0705     010140086     011571320001     **********                                                   1476851        1476900        STA. ELENA BRANCH
+Regular Personal         13CP0705     010140086     011571320001     **********                                                   1476901        1476950        STA. ELENA BRANCH
+Regular Personal         13CP0705     010140086     011571320001     **********                                                   1476951        1477000        STA. ELENA BRANCH
+Regular Personal         13CP0705     010140109     171457831002     ERIC P. REDOTA OR RACHEL N. REDOTA                           1386201        1386250        UST BRANCH
+Regular Personal         13CP0705     010140109     171457831002     ERIC P. REDOTA OR RACHEL N. REDOTA                           1386251        1386300        UST BRANCH
+Regular Personal         13CP0705     010140125     000016824534     BANGA, MIRAFLOR ARDEMER                                      0533201        0533250        PASAY LIBERTAD BRANCH
+Regular Personal         13CP0705     010140167     000008015472     MACOMIS, MENCHIE JACABA                                      0680301        0680350        ANNAPOLIS - GREENHILLS BRANCH
+Regular Personal         13CP0705     010140167     271475286001     ALBERNINA PASCUAL-LOPEZ                                      0680351        0680400        ANNAPOLIS - GREENHILLS BRANCH
+Regular Personal         13CP0705     010140167     271475286001     ALBERNINA PASCUAL-LOPEZ                                      0680401        0680450        ANNAPOLIS - GREENHILLS BRANCH
+Regular Personal         13CP0705     010140235     321323061001     ANGELA A. FERRER                                             0623301        0623350        SUCAT BRANCH
+Regular Personal         13CP0705     010140251     000006356910     PASTRANA, RONALD MANAL                                       0612351        0612400        MENDIOLA BRANCH
+Regular Personal         13CP0705     010140251     000006356910     PASTRANA, RONALD MANAL                                       0612401        0612450        MENDIOLA BRANCH
+Regular Personal         13CP0705     010140251     341198071001     ROSEMARIE I. SO                                              0612451        0612500        MENDIOLA BRANCH
+Regular Personal         13CP0705     010140293     000000859770     METT MOTIVATIONAL ENGLISH TRAINING                           0729801        0729850        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000000859770     METT MOTIVATIONAL ENGLISH TRAINING                           0729851        0729900        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0729901        0729950        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0729951        0730000        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0730001        0730050        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0730051        0730100        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0730101        0730150        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     000003710621     FAVILA, ALICE A. OR ABIOG, ARLENE A.                         0730151        0730200        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140293     381423656005     EXCELSIS V. ANTOLIN                                          0730201        0730250        SAN MIGUEL AVE. BRANCH
+Regular Personal         13CP0705     010140332     471205971001     CESAR S. GODOY                                               0718491        0718540        MARIKINA BRANCH
+Regular Personal         13CP0705     010140345     000006055665     ***********                                                  1682751        1682800        BINONDO BRANCH
+Regular Personal         13CP0705     010140361     531762297001     HO, HELEN TAN OR TAN, DOLORES LIM                            0573401        0573450        SAN PEDRO BRANCH
+Regular Personal         13CP0705     010140361     531762297001     HO, HELEN TAN OR TAN, DOLORES LIM                            0573451        0573500        SAN PEDRO BRANCH
+Regular Personal         13CP0705     010140361     531762297001     HO, HELEN TAN OR TAN, DOLORES LIM                            0573501        0573550        SAN PEDRO BRANCH
+Regular Personal         13CP0705     010140413     000009342525     MAYUGA, VANESSA MARCIAL                                      0629501        0629550        DELA ROSA BRANCH
+Regular Personal         13CP0705     010140426     000001725639     ************                                                 0799681        0799730        GUADALUPE BRANCH
+Regular Personal         13CP0705     010140426     000001725639     ************                                                 0799731        0799780        GUADALUPE BRANCH
+Regular Personal         13CP0705     010140426     000001725639     ************                                                 0799781        0799830        GUADALUPE BRANCH
+Regular Personal         13CP0705     010140484     000005396949     ESPORLAS, AURA AREVALO                                       0776301        0776350        ALABANG ACACIA BRANCH
+Regular Personal         13CP0705     010140484     000005396949     ESPORLAS, AURA AREVALO                                       0776351        0776400        ALABANG ACACIA BRANCH
+Regular Personal         13CP0705     010140484     000005396949     ESPORLAS, AURA AREVALO                                       0776401        0776450        ALABANG ACACIA BRANCH
+Regular Personal         13CP0705     010140646     272289071002     KO, MARINA THERESA TAN                                       0218101        0218150        ORTIGAS - GREENHILLS BRANCH
+Regular Personal         13CP0705     010140662     000000051061     MANCILLA, MICHAEL LEE OR MANCILLA, MIL                       0753201        0753250        TEKTITE BRANCH
+Regular Personal         13CP0705     010140662     000000051061     MANCILLA, MICHAEL LEE OR MANCILLA, MIL                       0753251        0753300        TEKTITE BRANCH
+Regular Personal         13CP0705     010140662     000004925964     REFUERZO, DIDITH KATIGBAK                                    0753301        0753350        TEKTITE BRANCH
+Regular Personal         13CP0705     010140675     000017168880     CUNANAN, MARAELLE JOHN ANDRADE                               0648651        0648700        STARMALL-LAS PINAS BRANCH
+Regular Personal         13CP0705     010140675     000017168880     CUNANAN, MARAELLE JOHN ANDRADE                               0648701        0648750        STARMALL-LAS PINAS BRANCH
+Regular Personal         13CP0705     010140727     162501845001     PINILI, DOMINIC MANABAT                                      0584001        0584050        TOMAS MORATO BRANCH
+Regular Personal         13CP0705     010140727     162501845001     PINILI, DOMINIC MANABAT                                      0584051        0584100        TOMAS MORATO BRANCH
+Regular Personal         13CP0705     010140769     652474247001     **********                                                   0581701        0581750        COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010140769     652474247001     **********                                                   0581751        0581800        COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010140769     652474247001     **********                                                   0581801        0581850        COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010140772     602163314001     SALLY KING JOAQUINO OR JACQUELINE JOAQUINO                   1041201        1041250        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602163314001     SALLY KING JOAQUINO OR JACQUELINE JOAQUINO                   1041251        1041300        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602163314001     SALLY KING JOAQUINO OR JACQUELINE JOAQUINO                   1041301        1041350        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602163314001     SALLY KING JOAQUINO OR JACQUELINE JOAQUINO                   1041351        1041400        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602164307001     GABRIEL G. GABRIEL M.D. OR CAROLINE C. GABRIEL               1041401        1041450        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602164307001     GABRIEL G. GABRIEL M.D. OR CAROLINE C. GABRIEL               1041451        1041500        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602283353001     ERWIN HERNANDEZ OR AGNES HERNANDEZ                           1041501        1041550        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602338230001     JULIET A. YAP                                                1041551        1041600        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602338230001     JULIET A. YAP                                                1041601        1041650        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602355070002     SHERYLL MAGALIT-CORNEJO OR CARLO CORNEJO                     1041651        1041700        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602355070002     SHERYLL MAGALIT-CORNEJO OR CARLO CORNEJO                     1041701        1041750        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602384186003     SARMIENTO, JOSIERINA YANEZA                                  1041751        1041800        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602390297001     PREYSLER, MARIVIC G.                                         1041801        1041850        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602390297001     PREYSLER, MARIVIC G.                                         1041851        1041900        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602396595001     DR. MILAN P. TAMBUNTING                                      1041901        1041950        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602396595001     DR. MILAN P. TAMBUNTING                                      1041951        1042000        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602396595001     DR. MILAN P. TAMBUNTING                                      1042001        1042050        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602396595001     DR. MILAN P. TAMBUNTING                                      1042051        1042100        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602396595001     DR. MILAN P. TAMBUNTING                                      1042101        1042150        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602399337001     MARIO BENITO F. BAUTISTA OR JOSEPHINE L.                     1042151        1042200        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140772     602399337001     MARIO BENITO F. BAUTISTA OR JOSEPHINE L.                     1042201        1042250        MEDICAL PLAZA BRANCH
+Regular Personal         13CP0705     010140824     711384215003     LOURDES GRACE MAPALAD                                        0564701        0564750        AYALA-ALABANG BRANCH
+Regular Personal         13CP0705     010140824     711384215003     LOURDES GRACE MAPALAD                                        0564751        0564800        AYALA-ALABANG BRANCH
+Regular Personal         13CP0705     010140879     000013849233     DENNIS BAYOT                                                 0106901        0106950        EMERALD BRANCH
+Regular Personal         13CP0705     010140879     000019160808     CARINGAL, KRISTIA LORRAINE VILLAR                            0106951        0107000        EMERALD BRANCH
+Regular Personal         13CP0705     010140905     000013553072     CARLA A. MARTICIO                                            0119101        0119150        EASTWOOD BRANCH
+Regular Personal         13CP0705     010140918     000003310323     PANGILINAN, CHARISSE CRUZ                                    0077101        0077150        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000003310323     PANGILINAN, CHARISSE CRUZ                                    0077151        0077200        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000005326712     DELA CRUZ, DENNIS TABUJARA                                   0077201        0077250        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000005326712     DELA CRUZ, DENNIS TABUJARA                                   0077251        0077300        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000005326712     DELA CRUZ, DENNIS TABUJARA                                   0077301        0077350        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000005326712     DELA CRUZ, DENNIS TABUJARA                                   0077351        0077400        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140918     000005326712     DELA CRUZ, DENNIS TABUJARA                                   0077401        0077450        FORT BONIFACIO - INFINITY BRANCH
+Regular Personal         13CP0705     010140921     000006796112     UY, ELAINE GRACE PENALOSA                                    0074201        0074250        FORT BONIFACIO - NET CUBE BRANCH
+Regular Personal         13CP0705     010140921     000007864073     ANG, CYRIL VICTOR ISLA                                       0074251        0074300        FORT BONIFACIO - NET CUBE BRANCH
+Regular Personal         13CP0705     010141014     000009390730     SANDE, AMOR BONUS                                            0071451        0071500        PASIG MABINI BRANCH
+Regular Personal         13CP0705     010141069     000000710621     MALLARI JR., RO DBU ROMA PRINT                               0042901        0042950        BUENDIA-DIAN BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077051        0077100        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077101        0077150        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077151        0077200        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077201        0077250        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077251        0077300        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141085     000012549714     ANG, AMIRA SORIANO                                           0077301        0077350        ROXAS BOULEVARD BRANCH
+Regular Personal         13CP0705     010141140     000001140350     BARCELO, ANA RUBIE TALAG                                     0043801        0043850        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000001140350     BARCELO, ANA RUBIE TALAG                                     0043851        0043900        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000001140350     BARCELO, ANA RUBIE TALAG                                     0043901        0043950        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0043951        0044000        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0044001        0044050        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0044051        0044100        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0044101        0044150        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0044151        0044200        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148591     SHEN, MENGSI                                                 0044201        0044250        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044251        0044300        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044301        0044350        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044351        0044400        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044401        0044450        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044451        0044500        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141140     000017148608     WANG, QIAOMIN                                                0044501        0044550        MAKATI AVENUE-CONSTELLATION BRANCH
+Regular Personal         13CP0705     010141166     000018079713     DEL ROSARIO, ALMA LEA ALIMANGOH                              0052301        0052350        MERALCO AVENUE BRANCH
+Regular Personal         13CP0705     010141234     000003341482     CABUNAG, RAINIER A.                                          0096651        0096700        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0705     010141234     000003341482     CABUNAG, RAINIER A.                                          0096701        0096750        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0705     010141234     000007305564     ELNA O. GALAROZA                                             0096751        0096800        ALABANG-INSULAR BRANCH
+Regular Personal         13CP0705     010141250     000019153945     ONG, BENJAMIN S. OR MARIA OR ELLAINE OR BERNARDO             0035851        0035900        WEST AVENUE BRANCH
+Regular Personal         13CP0705     010141250     000019160524     DE VILLA, VICENTE MARTIN TAMBUN                              0035901        0035950        WEST AVENUE BRANCH
+Regular Personal         13CP0705     010141289     000002747868     MOSES ELEAZAR B. PUA                                         0098951        0099000        MARIKINA-GIL FERNANDO AVENUE BRANCH
+Regular Personal         13CP0705     010141289     000007095732     TRABALLO, M DBU MARK ANTHONY ROCK SUPPLY                     0099001        0099050        MARIKINA-GIL FERNANDO AVENUE BRANCH
+Regular Personal         13CP0705     010141289     000007095732     TRABALLO, M DBU MARK ANTHONY ROCK SUPPLY                     0099051        0099100        MARIKINA-GIL FERNANDO AVENUE BRANCH
+Regular Personal         13CP0705     010141289     000018329434     EZRAH MAE UYAMMI LUPAIS                                      0099101        0099150        MARIKINA-GIL FERNANDO AVENUE BRANCH
+Regular Personal         13CP0705     010141386     000007558270     BORROWERS OF FIRST DIGITAL FINA                              0115451        0115500        ADRIATICO-P. FAURA BRANCH
+Regular Personal         13CP0705     010141386     000010298952     AL-HAZAR, DIANA GOLING                                       0115501        0115550        ADRIATICO-P. FAURA BRANCH
+Regular Personal         13CP0705     010141399     000018479873     BANIQUED, RONALD ALLAN E. OR BANIQUED, REZALYN Y.            0064451        0064500        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141399     657068745001     CLORES, RICARDO R. DBU SAMUEL JOSEPH STORE                   0064501        0064550        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141399     657068745001     CLORES, RICARDO R. DBU SAMUEL JOSEPH STORE                   0064551        0064600        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141399     657068745001     CLORES, RICARDO R. DBU SAMUEL JOSEPH STORE                   0064601        0064650        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141399     657068745001     CLORES, RICARDO R. DBU SAMUEL JOSEPH STORE                   0064651        0064700        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141399     657068745001     CLORES, RICARDO R. DBU SAMUEL JOSEPH STORE                   0064701        0064750        FAIRVIEW-COMMONWEALTH BRANCH
+Regular Personal         13CP0705     010141409     000016879473     OCSAN, MELITO TORIO                                          0050401        0050450        TAFT-LA SALLE BRANCH
+Regular Personal         13CP0705     010141409     000016879473     OCSAN, MELITO TORIO                                          0050451        0050500        TAFT-LA SALLE BRANCH
+Regular Personal         13CP0705     010141409     000016879491     HEDRIANA, DEMOSTHENES OR HEDRIANA, GLORIA                    0050501        0050550        TAFT-LA SALLE BRANCH
+Regular Personal         13CP0705     010141409     000016879491     HEDRIANA, DEMOSTHENES OR HEDRIANA, GLORIA                    0050551        0050600        TAFT-LA SALLE BRANCH
+Regular Personal         13CP0705     030140053     000003087363     LEGASPINO, HERMENEGILDA AARON                                0276501        0276550        TAGUM BRANCH
+Regular Personal         13CP0705     030140053     193047804168     JULIE'S BAKESHOP                                             0276551        0276600        TAGUM BRANCH
+Regular Personal         13CP0705     030140053     193047804168     JULIE'S BAKESHOP                                             0276601        0276650        TAGUM BRANCH
+Regular Personal         13CP0705     030140066     000016080487     PERALTA, NINO KRISTOPHER REYES                               0097801        0097850        DAVAO-LANANG BRANCH
+Regular Personal         13CP0705     030140066     000016080487     PERALTA, NINO KRISTOPHER REYES                               0097851        0097900        DAVAO-LANANG BRANCH
+Regular Personal         13CP0705     030140079     000003969542     ******                                                       0047201        0047250        DAVAO-TORIL BRANCH
+Regular Personal         13CP0705     030140082     000002272033     ASARAK, YASIR A.                                             0089301        0089350        DIGOS BRANCH
+Regular Personal         13CP0705     030140082     000019109794     ARNADO, GUILLERMO A.                                         0089351        0089400        DIGOS BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071601        0071650        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071651        0071700        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071701        0071750        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071751        0071800        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071801        0071850        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000002251952     CAMINS, DENNIS C.  OR CAMINS, CECILE  A.                     0071851        0071900        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     030140095     000018858856     YAP, MARK ANTHONY CHUA                                       0071901        0071950        DAVAO-BAJADA BRANCH
+Regular Personal         13CP0705     050140017     000013648461     DE VERA, ROSELYN CANCINO                                     0588301        0588350        DAGUPAN BRANCH
+Regular Personal         13CP0705     050140017     000013648461     DE VERA, ROSELYN CANCINO                                     0588351        0588400        DAGUPAN BRANCH
+Regular Personal         13CP0705     050140020     292567569001     LARILYN D. GATCHALLAN                                        0089951        0090000        URDANETA BRANCH
+Regular Personal         13CP0705     060140023     000001687118     **********                                                   0518851        0518900        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000001687118     **********                                                   0518901        0518950        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000002649961     GARBES OLALIA TRADING CORPORATI                              0518951        0519000        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000002649961     GARBES OLALIA TRADING CORPORATI                              0519001        0519050        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000002649961     GARBES OLALIA TRADING CORPORATI                              0519051        0519100        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000002649961     GARBES OLALIA TRADING CORPORATI                              0519101        0519150        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000002649961     GARBES OLALIA TRADING CORPORATI                              0519151        0519200        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000006243114     CASTILLO, IVY CLAIRE PARUNGAO                                0519201        0519250        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000006243114     CASTILLO, IVY CLAIRE PARUNGAO                                0519251        0519300        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000017863693     PIMENTEL, AFRICA ABEDANA                                     0519301        0519350        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     000017863693     PIMENTEL, AFRICA ABEDANA                                     0519351        0519400        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140023     891788658001     LENON, DIOSDADO MANLUTAC OR LENON, CLARITA                   0519401        0519450        SAN FERNANDO BRANCH
+Regular Personal         13CP0705     060140036     000004915351     GOZUN, JOSE MIGUEL LACSAMANA                                 0072901        0072950        CLARK-ANGELES BRANCH
+Regular Personal         13CP0705     060140036     000004915351     GOZUN, JOSE MIGUEL LACSAMANA                                 0072951        0073000        CLARK-ANGELES BRANCH
+Regular Personal         13CP0705     060140052     000005943473     DALUSUNG, ANGELITO LIWAG                                     0078551        0078600        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0705     060140052     000016097702     DALUSUNG, ANGELITO LIWAG                                     0078601        0078650        ANGELES-STO. ROSARIO BRANCH
+Regular Personal         13CP0705     080140016     000011336542     FERRER, JADE MARIE AURELIO                                   0439401        0439450        ILOILO BRANCH
+Regular Personal         13CP0705     100140035     000015675279     QUILANG, LANI DELA ROSA                                      0176251        0176300        CDO - VELEZ BRANCH
+Regular Personal         13CP0705     100140035     000015675279     QUILANG, LANI DELA ROSA                                      0176301        0176350        CDO - VELEZ BRANCH
+Regular Personal         13CP0705     100140035     000015675279     QUILANG, LANI DELA ROSA                                      0176351        0176400        CDO - VELEZ BRANCH
+Regular Personal         13CP0705     100140035     000015675393     GO, ELVIRA LIBAGO                                            0176401        0176450        CDO - VELEZ BRANCH
+Regular Personal         13CP0705     100140035     233478374026     ANNABEL ESTOMO                                               0176451        0176500        CDO - VELEZ BRANCH
+Regular Personal         13CP0705     110140012     000000065110     BOLECHE, CLARA GACUTAN                                       0226401        0226450        TACLOBAN BRANCH
+Regular Personal         13CP0705     110140012     000003981168     MAHID M. SIDIC DBU MAHID CELLPHONE ACCESS                    0226451        0226500        TACLOBAN BRANCH
+Regular Personal         13CP0705     110140012     000003981168     MAHID M. SIDIC DBU MAHID CELLPHONE ACCESS                    0226501        0226550        TACLOBAN BRANCH
+Regular Personal         13CP0705     120140015     000017292781     ALIBA, ROLAND TITIWA                                         0721201        0721250        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     000017292781     ALIBA, ROLAND TITIWA                                         0721251        0721300        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421301485002     GO, ROLANDO DISTOR                                           0721301        0721350        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421301485002     GO, ROLANDO DISTOR                                           0721351        0721400        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421301485002     GO, ROLANDO DISTOR                                           0721401        0721450        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421543715001     CAMADO, JUSCILLE P. OR CAMADO, MILLER                        0721451        0721500        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421543715001     CAMADO, JUSCILLE P. OR CAMADO, MILLER                        0721501        0721550        BAGUIO BRANCH
+Regular Personal         13CP0705     120140015     421543715001     CAMADO, JUSCILLE P. OR CAMADO, MILLER                        0721551        0721600        BAGUIO BRANCH
+Regular Personal         13CP0705     130140021     000007669289     GONZALES, MARK OLIVER SANTIAGO                               0475651        0475700        MALOLOS BRANCH
+Regular Personal         13CP0705     130140021     000009982369     LORENZO, NOELIN CUNANAN                                      0475701        0475750        MALOLOS BRANCH
+Regular Personal         13CP0705     130140021     000009982369     LORENZO, NOELIN CUNANAN                                      0475751        0475800        MALOLOS BRANCH
+Regular Personal         13CP0705     130140047     000001299061     SHERWIN ORDONEZ CONSTANTINO                                  0329801        0329850        CABANATUAN BRANCH
+Regular Personal         13CP0705     130140047     000001299061     SHERWIN ORDONEZ CONSTANTINO                                  0329851        0329900        CABANATUAN BRANCH
+Regular Personal         13CP0705     130140047     000001299061     SHERWIN ORDONEZ CONSTANTINO                                  0329901        0329950        CABANATUAN BRANCH
+Regular Personal         13CP0705     130140047     000001299061     SHERWIN ORDONEZ CONSTANTINO                                  0329951        0330000        CABANATUAN BRANCH
+Regular Personal         13CP0705     130140047     000007863430     FERNANDEZ, JOANA DIALO                                       0330001        0330050        CABANATUAN BRANCH
+Regular Personal         13CP0705     130140047     252495255001     IMELDA IRENE V. ULIP OR JUANITO I. ULIP                      0330051        0330100        CABANATUAN BRANCH
+Regular Personal         13CP0705     140140011     000005945388     HOLANDA, W DBU COMPREMED TRADIN                              0610951        0611000        LUCENA BRANCH
+Regular Personal         13CP0705     140140011     000015925718     JOSEPH OR PAULITA OR JEFFREY OR JESSIE ALVARE                0611001        0611050        LUCENA BRANCH
+Regular Personal         13CP0705     140140011     000015925718     JOSEPH OR PAULITA OR JEFFREY OR JESSIE ALVARE                0611051        0611100        LUCENA BRANCH
+Regular Personal         13CP0705     140140011     000015925718     JOSEPH OR PAULITA OR JEFFREY OR JESSIE ALVARE                0611101        0611150        LUCENA BRANCH
+Regular Personal         13CP0705     140140011     000015925718     JOSEPH OR PAULITA OR JEFFREY OR JESSIE ALVARE                0611151        0611200        LUCENA BRANCH
+Regular Personal         13CP0705     140140011     000015925718     JOSEPH OR PAULITA OR JEFFREY OR JESSIE ALVARE                0611201        0611250        LUCENA BRANCH
+Regular Personal         13CP0705     190140016     000018195867     BUENAVENTURA, PAUL PANINGASAN                                0514951        0515000        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515001        0515050        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515051        0515100        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515101        0515150        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515151        0515200        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515201        0515250        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515251        0515300        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515301        0515350        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515351        0515400        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515401        0515450        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515451        0515500        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515501        0515550        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515551        0515600        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515601        0515650        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515651        0515700        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515701        0515750        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515751        0515800        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515801        0515850        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515851        0515900        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515901        0515950        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491035294001     BATANGAS CITY GOVERNMENT EMPLOYEES CREDIT                    0515951        0516000        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491343996001     MARIA DOROTHY M HERNANDEZ                                    0516001        0516050        BATANGAS BRANCH
+Regular Personal         13CP0705     190140016     491343996001     MARIA DOROTHY M HERNANDEZ                                    0516051        0516100        BATANGAS BRANCH
+Regular Personal         13CP0705     220140025     561293366001     JOSE ANGELO D. FLORES OR MELIZA TRACY MARGARET G             0452351        0452400        TARLAC BRANCH
+Regular Personal         13CP0705     220140025     561293366001     JOSE ANGELO D. FLORES OR MELIZA TRACY MARGARET G             0452401        0452450        TARLAC BRANCH
+Regular Personal         13CP0705     220140025     561478374006     ANGELINA P. QUIBALLO MEMBERS OF NATASHA                      0452451        0452500        TARLAC BRANCH
+Regular Personal         13CP0705     220140025     561478374006     ANGELINA P. QUIBALLO MEMBERS OF NATASHA                      0452501        0452550        TARLAC BRANCH
+Regular Personal         13CP0705     240140018     000007031574     HAO, YOLANDA GARCIA OR HAO, HENRY GO                         0845601        0845650        GEN. SANTOS BRANCH
+Regular Personal         13CP0705     280140023     000001734732     CITY REJUVENATING SPA                                        0056651        0056700        OLONGAPO BRANCH
+Regular Personal         13CP0705     280140023     000001734732     CITY REJUVENATING SPA                                        0056701        0056750        OLONGAPO BRANCH
+Regular Personal         13CP0705     280140023     000001734732     CITY REJUVENATING SPA                                        0056751        0056800        OLONGAPO BRANCH
+Regular Personal         13CP0705     310140045     000013874110     MARFORI, JO ANNE CATIPON                                     0517751        0517800        SAN PABLO BRANCH
+Regular Personal         13CP0705     310140045     000016637964     MIRABALLES, EDWARD UMALI                                     0517801        0517850        SAN PABLO BRANCH
+Regular Personal         13CP0705     310140045     000016637964     MIRABALLES, EDWARD UMALI                                     0517851        0517900        SAN PABLO BRANCH
+Regular Personal         13CP0705     410140026     000016685311     RELACION, REYNALDO RIEL OR RELACION, AMMIE                   0566701        0566750        DASMARINAS BRANCH
+Regular Personal         13CP0705     410140039     000000975173     NOAH'S ARK MANPOWER SERVICES                                 0359451        0359500        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0705     410140039     000000975173     NOAH'S ARK MANPOWER SERVICES                                 0359501        0359550        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0705     410140039     000000975173     NOAH'S ARK MANPOWER SERVICES                                 0359551        0359600        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0705     410140039     000000975173     NOAH'S ARK MANPOWER SERVICES                                 0359601        0359650        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0705     410140039     000000975173     NOAH'S ARK MANPOWER SERVICES                                 0359651        0359700        ROSARIO, CAVITE BRANCH
+Regular Personal         13CP0705     410140042     000019149290     BUGAYON, ROWENA CASTRO                                       0635601        0635650        IMUS, CAVITE BRANCH
+Regular Personal         13CP0705     410140042     814478374044     BERATIO, MARITES M.                                          0635651        0635700        IMUS, CAVITE BRANCH
+Regular Personal         13CP0705     410140042     814506413001     IBIAS, JOSEPHINE OCAMPO OR IBIAS, SEGISMUND                  0635701        0635750        IMUS, CAVITE BRANCH
+Regular Personal         13CP0705     410140042     814520766032     ALFARAS, READELL ORTEGA                                      0635751        0635800        IMUS, CAVITE BRANCH
+Regular Personal         13CP0705     410140055     000015887071     RIVERA, ROSALINDA LOVERIA                                    0143351        0143400        MOLINO BRANCH
+Regular Personal         13CP0705     410140055     000015887071     RIVERA, ROSALINDA LOVERIA                                    0143401        0143450        MOLINO BRANCH
+Regular Personal         13CP0705     410140055     000015887071     RIVERA, ROSALINDA LOVERIA                                    0143451        0143500        MOLINO BRANCH
+Regular Personal         13CP0705     410140055     000015887071     RIVERA, ROSALINDA LOVERIA                                    0143501        0143550        MOLINO BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196501        0196550        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196551        0196600        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196601        0196650        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196651        0196700        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196701        0196750        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196751        0196800        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196801        0196850        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196851        0196900        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196901        0196950        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000014838607     DELA PENA, MARIA HENRIETTA CHIU                              0196951        0197000        KORONADAL BRANCH
+Regular Personal         13CP0705     550140012     000017065759     FARROFO, JOHANNA PAULA CRUZ                                  0197001        0197050        KORONADAL BRANCH
+Regular Personal         13CP0705     660140012     000001370490     GALIT, VERNIE GAZO DBU RVG DIGITAL PRINTING                  0266251        0266300        CATARMAN BRANCH
+Regular Personal         13CP0705     660140012     000001370490     GALIT, VERNIE GAZO DBU RVG DIGITAL PRINTING                  0266301        0266350        CATARMAN BRANCH
+Regular Personal         13CP0705     660140012     000001370490     GALIT, VERNIE GAZO DBU RVG DIGITAL PRINTING                  0266351        0266400        CATARMAN BRANCH
+Regular Personal         13CP0705     660140012     000001370569     MONTERA, GLENDA GAZO DBU RONVER ENTERPRISES                  0266401        0266450        CATARMAN BRANCH
+Regular Personal         13CP0705     660140012     000001370569     MONTERA, GLENDA GAZO DBU RONVER ENTERPRISES                  0266451        0266500        CATARMAN BRANCH
+Regular Personal         13CP0705     660140012     000013857811     ESPINA III, SIXTO C. DBU LFCE P                              0266501        0266550        CATARMAN BRANCH

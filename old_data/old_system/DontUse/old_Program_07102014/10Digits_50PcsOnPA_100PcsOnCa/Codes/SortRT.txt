@@ -1,0 +1,40 @@
+
+    Page No. 1
+    Jun. 01, 2012
+                      Summary of RT nos / # of Books for SBTC
+                      SBTC Starter 50 Pcs Per Book on Personal
+                     SBTC Starter 100 Pcs Per Book on Commercial
+
+    ACCTNO       QTY ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BRANCH-->  A/ 010140073 / ERMITA BRANCH
+
+   * Batch # --> 10CP0530
+    1110069654   1 **********
+    1110069665   1 **********
+    1110069676   1 **********
+    1110069687   1 **********
+    1110069698   1 **********
+
+   ** Sub Total ** 5
+
+
+   ** CHECK TYPE/BRSTN/BRANCH-->  B/ 010140358 / PASEO DE ROXAS BRANCH
+
+   * Batch # --> 10CP0530
+    5110040509   1 **********
+    5110040510   1 **********
+    5110040520   1 **********
+    5110040531   1 **********
+    5110040542   1 **********
+    5110040553   1 **********
+    5110040564   1 **********
+    5110040575   1 **********
+    5110040586   1 **********
+    5110040597   1 **********
+
+   ** Sub Total ** 10
+
+
+   ** Grand Total ** 15

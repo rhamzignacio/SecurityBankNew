@@ -1,0 +1,16 @@
+
+    Page No. 1
+    Jun. 26, 2018
+                             Summary of RT nos / # of Books
+                               SBTC - Customized Checks
+
+    ACCTNO       QTY BRANCH                 ACCOUNT NAME
+
+
+   ** CHECK TYPE/BRSTN/BATCH # ---->  CUSTOM/250140011/
+   ** Branch: OZAMIZ BRANCH
+    000010453339  50 BRYANT MILLING & MARKETING
+
+    Sub Total: 50
+
+    Grand Total: 50

@@ -1,0 +1,20 @@
+
+  Page No.     1
+  11/29/2013
+                                CAPTIVE PRINTING CORPORATION
+                                 SBTC - Gift Checks Summary
+
+  ACCT_NO          ACCOUNT NAME                     QTY CT START #    END #
+
+
+ ** ORDERS OF BRSTN 260140014  SANTIAGO BRANCH
+
+ * BATCH #: GC112813
+  691-821200-608                                          1 A  0110301 0110350
+  691-821200-608                                          1 A  0110351 0110400
+ * Subsubtotal *                                        
+                                                          2
+ ** Subtotal **                                         
+                                                          2
+ *** Total ***                                          
+                                                          2

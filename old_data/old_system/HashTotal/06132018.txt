@@ -1,0 +1,64 @@
+For Delivery Date: Jun. 13, 2018
+
+Commercial Pre-Encoded     13CP0323      060140094     000017428816     **********                 0000000001     0000000100     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428827     **********                 0000000101     0000000200     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428838     **********                 0000000201     0000000300     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428849     **********                 0000000301     0000000400     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428850     **********                 0000000401     0000000500     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428861     **********                 0000000501     0000000600     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428872     **********                 0000000601     0000000700     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428883     **********                 0000000701     0000000800     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428890     **********                 0000000801     0000000900     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428907     **********                 0000000901     0000001000     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428918     **********                 0000001001     0000001100     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428929     **********                 0000001101     0000001200     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428930     **********                 0000001201     0000001300     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428941     **********                 0000001301     0000001400     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428952     **********                 0000001401     0000001500     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428963     **********                 0000001501     0000001600     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428970     **********                 0000001601     0000001700     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428981     **********                 0000001701     0000001800     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017428992     **********                 0000001801     0000001900     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429006     **********                 0000001901     0000002000     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429017     **********                 0000002001     0000002100     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429028     **********                 0000002101     0000002200     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429039     **********                 0000002201     0000002300     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429040     **********                 0000002301     0000002400     ANGELES-MCARTHUR HIGHWAY BRANCH
+Commercial Pre-Encoded     13CP0323      060140094     000017429051     **********                 0000002401     0000002500     ANGELES-MCARTHUR HIGHWAY BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000001     0000000100     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000101     0000000200     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000201     0000000300     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000301     0000000400     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000401     0000000500     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000501     0000000600     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000601     0000000700     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000701     0000000800     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000801     0000000900     ANGELES BRANCH
+Customized Checks          06062018A     060140010     081048602001     PRESCRIPTO CORPORATION     0000000901     0000001000     ANGELES BRANCH
+Gift Check                 GC032318H     060140094     563821200608                                000001         000050         ANGELES-MCARTHUR HIGHWAY BRANCH
+Gift Check                 GC032318H     060140094     563821200608                                000051         000100         ANGELES-MCARTHUR HIGHWAY BRANCH
+Manager's Checks           MC032318H     060140094     563821100608                                0000000001     0000000050     ANGELES-MCARTHUR HIGHWAY BRANCH
+Manager's Checks           MC032318H     060140094     563821100608                                0000000051     0000000100     ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429331     **********                 0000001        0000050        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429342     **********                 0000051        0000100        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429353     **********                 0000101        0000150        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429364     **********                 0000151        0000200        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429375     **********                 0000201        0000250        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429386     **********                 0000251        0000300        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429397     **********                 0000301        0000350        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429400     **********                 0000351        0000400        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429411     **********                 0000401        0000450        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429422     **********                 0000451        0000500        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429433     **********                 0000501        0000550        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429444     **********                 0000551        0000600        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429455     **********                 0000601        0000650        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429466     **********                 0000651        0000700        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429477     **********                 0000701        0000750        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429488     **********                 0000751        0000800        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429499     **********                 0000801        0000850        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429502     **********                 0000851        0000900        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429513     **********                 0000901        0000950        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429524     **********                 0000951        0001000        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429535     **********                 0001001        0001050        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429546     **********                 0001051        0001100        ANGELES-MCARTHUR HIGHWAY BRANCH
+Personal Pre-Encoded       13CP0323      060140094     000017429557     **********                 0001101        0001150        ANGELES-MCARTHUR HIGHWAY BRANCH

@@ -1,0 +1,7 @@
+Reporting-MTA: dns;SBCHO-EMAILSVR.sbcdom.com
+Received-From-MTA: dns;smtp.securitybank.com
+Arrival-Date: Wed, 10 May 2017 13:06:55 +0800
+
+Final-Recipient: rfc822;gsdpurchasing@securitybank.com.ph
+Action: failed
+Status: 5.1.1
