@@ -28,20 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dteDeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.btnCheckFiles = new System.Windows.Forms.Button();
             this.btnEncode = new System.Windows.Forms.Button();
             this.lstFiles = new System.Windows.Forms.ListBox();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblHashTotal = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.checkBoxSortRT = new System.Windows.Forms.CheckBox();
+            this.txtBoxBatchNo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBoxExt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBoxProcessBy = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblNotes = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -50,24 +58,26 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 78);
+            this.groupBox1.Size = new System.Drawing.Size(376, 78);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Delivery Date:";
             // 
             // dteDeliveryDate
             // 
-            this.dteDeliveryDate.Location = new System.Drawing.Point(16, 29);
+            this.dteDeliveryDate.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dteDeliveryDate.Location = new System.Drawing.Point(9, 30);
             this.dteDeliveryDate.Name = "dteDeliveryDate";
-            this.dteDeliveryDate.Size = new System.Drawing.Size(337, 30);
+            this.dteDeliveryDate.Size = new System.Drawing.Size(354, 34);
             this.dteDeliveryDate.TabIndex = 0;
+            this.dteDeliveryDate.ValueChanged += new System.EventHandler(this.dteDeliveryDate_ValueChanged);
             // 
             // btnCheckFiles
             // 
-            this.btnCheckFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnCheckFiles.Location = new System.Drawing.Point(379, 22);
+            this.btnCheckFiles.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnCheckFiles.Location = new System.Drawing.Point(394, 23);
             this.btnCheckFiles.Name = "btnCheckFiles";
-            this.btnCheckFiles.Size = new System.Drawing.Size(188, 67);
+            this.btnCheckFiles.Size = new System.Drawing.Size(199, 67);
             this.btnCheckFiles.TabIndex = 1;
             this.btnCheckFiles.Text = "Check Files on Head";
             this.btnCheckFiles.UseVisualStyleBackColor = false;
@@ -75,10 +85,10 @@
             // 
             // btnEncode
             // 
-            this.btnEncode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnEncode.Location = new System.Drawing.Point(573, 24);
+            this.btnEncode.BackColor = System.Drawing.Color.White;
+            this.btnEncode.Location = new System.Drawing.Point(600, 23);
             this.btnEncode.Name = "btnEncode";
-            this.btnEncode.Size = new System.Drawing.Size(132, 65);
+            this.btnEncode.Size = new System.Drawing.Size(132, 67);
             this.btnEncode.TabIndex = 2;
             this.btnEncode.Text = "Encode";
             this.btnEncode.UseVisualStyleBackColor = false;
@@ -88,20 +98,10 @@
             // 
             this.lstFiles.FormattingEnabled = true;
             this.lstFiles.ItemHeight = 23;
-            this.lstFiles.Location = new System.Drawing.Point(12, 96);
+            this.lstFiles.Location = new System.Drawing.Point(16, 170);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(359, 280);
+            this.lstFiles.Size = new System.Drawing.Size(359, 303);
             this.lstFiles.TabIndex = 3;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(377, 96);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(69, 23);
-            this.lblTotal.TabIndex = 4;
-            this.lblTotal.Text = "Total: 0";
             // 
             // backgroundWorker1
             // 
@@ -109,47 +109,155 @@
             // 
             // lblHashTotal
             // 
-            this.lblHashTotal.AutoSize = true;
             this.lblHashTotal.BackColor = System.Drawing.Color.Red;
             this.lblHashTotal.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHashTotal.ForeColor = System.Drawing.Color.White;
-            this.lblHashTotal.Location = new System.Drawing.Point(12, 387);
+            this.lblHashTotal.Location = new System.Drawing.Point(12, 476);
             this.lblHashTotal.Name = "lblHashTotal";
-            this.lblHashTotal.Size = new System.Drawing.Size(609, 52);
+            this.lblHashTotal.Size = new System.Drawing.Size(719, 52);
             this.lblHashTotal.TabIndex = 5;
             this.lblHashTotal.Text = "1 Hash Total hasn\'t been Sent yet";
             this.lblHashTotal.Visible = false;
             this.lblHashTotal.Click += new System.EventHandler(this.lblHashTotal_Click);
             this.lblHashTotal.DoubleClick += new System.EventHandler(this.lblHashTotal_DoubleClick);
             // 
-            // timer1
+            // lblTotal
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.lblTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(381, 170);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblTotal.Size = new System.Drawing.Size(318, 305);
+            this.lblTotal.TabIndex = 4;
+            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
-            // progressBar1
+            // checkBoxSortRT
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 442);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(688, 10);
-            this.progressBar1.TabIndex = 6;
-            this.progressBar1.Visible = false;
+            this.checkBoxSortRT.AutoSize = true;
+            this.checkBoxSortRT.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSortRT.ForeColor = System.Drawing.Color.White;
+            this.checkBoxSortRT.Location = new System.Drawing.Point(501, 102);
+            this.checkBoxSortRT.Name = "checkBoxSortRT";
+            this.checkBoxSortRT.Size = new System.Drawing.Size(231, 31);
+            this.checkBoxSortRT.TabIndex = 8;
+            this.checkBoxSortRT.Text = "Generate SortRT File";
+            this.checkBoxSortRT.UseVisualStyleBackColor = true;
             // 
-            // progressBar2
+            // txtBoxBatchNo
             // 
-            this.progressBar2.Location = new System.Drawing.Point(12, 458);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(688, 10);
-            this.progressBar2.TabIndex = 7;
-            this.progressBar2.Visible = false;
+            this.txtBoxBatchNo.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxBatchNo.Location = new System.Drawing.Point(12, 96);
+            this.txtBoxBatchNo.MaxLength = 8;
+            this.txtBoxBatchNo.Name = "txtBoxBatchNo";
+            this.txtBoxBatchNo.Size = new System.Drawing.Size(197, 45);
+            this.txtBoxBatchNo.TabIndex = 9;
+            this.txtBoxBatchNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxBatchNo_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(66, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 23);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Batch No";
+            // 
+            // txtBoxExt
+            // 
+            this.txtBoxExt.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxExt.Location = new System.Drawing.Point(229, 96);
+            this.txtBoxExt.MaxLength = 3;
+            this.txtBoxExt.Name = "txtBoxExt";
+            this.txtBoxExt.Size = new System.Drawing.Size(54, 45);
+            this.txtBoxExt.TabIndex = 11;
+            this.txtBoxExt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxExt_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(238, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 23);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Ext";
+            // 
+            // txtBoxProcessBy
+            // 
+            this.txtBoxProcessBy.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxProcessBy.Location = new System.Drawing.Point(298, 96);
+            this.txtBoxProcessBy.Name = "txtBoxProcessBy";
+            this.txtBoxProcessBy.Size = new System.Drawing.Size(197, 45);
+            this.txtBoxProcessBy.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(350, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 23);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Process By";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(212, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 23);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "-";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 585);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(743, 22);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = false;
+            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(250)))));
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(730, 17);
+            this.lblStatus.Text = "toolStripStatusLabel1";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblNotes
+            // 
+            this.lblNotes.ForeColor = System.Drawing.Color.White;
+            this.lblNotes.Location = new System.Drawing.Point(16, 531);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(714, 54);
+            this.lblNotes.TabIndex = 16;
+            this.lblNotes.Text = "Note: Check \"Generate SortRT File for manual process\r\n         Do not use \"0000\" " +
+    "for Batch No. for Testing only";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(711, 471);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(743, 607);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.lblNotes);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtBoxProcessBy);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtBoxExt);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtBoxBatchNo);
+            this.Controls.Add(this.checkBoxSortRT);
             this.Controls.Add(this.lblHashTotal);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lstFiles);
@@ -166,6 +274,8 @@
             this.Text = "Security Bank 2.0";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,12 +288,20 @@
         private System.Windows.Forms.Button btnCheckFiles;
         private System.Windows.Forms.Button btnEncode;
         private System.Windows.Forms.ListBox lstFiles;
-        private System.Windows.Forms.Label lblTotal;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblHashTotal;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.CheckBox checkBoxSortRT;
+        private System.Windows.Forms.TextBox txtBoxBatchNo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBoxExt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBoxProcessBy;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.Label lblNotes;
     }
 }
 

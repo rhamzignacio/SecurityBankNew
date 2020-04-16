@@ -36,9 +36,6 @@ namespace sbtc
         public static int status_bar;
         public static int status_bar_max;
 
-
-
-
         public static void ActivateMaxProgressBarCarbon()
         {
             string sql = "SELECT ChkType, FormType, SUM(OrderQty) FROM SBTC WHERE (ChkType = 'F' AND FormType = '25') OR (ChkType = 'F' AND FormType = '26') OR (ChkType = 'GC' AND FormType = '20') OR (ChkType = 'MC' AND FormType = '20') OR (ChkType = 'MC_1' AND FormType = '00') OR (ChkType = 'CUSTOM' AND FormType = '00') OR (ChkType = 'CUSTOM_PA' AND FormType = '00') OR (ChkType = 'CS') GROUP BY ChkType, FormType";
@@ -120,13 +117,6 @@ namespace sbtc
 
             mdb_status_bar_max = TotalMDB;
 
-
-
-
-
-
-
-
             sql = "SELECT SUM(OrderQty) FROM SBTC";
             conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
             command1 = new OleDbDataAdapter(sql, conn1);
@@ -146,8 +136,6 @@ namespace sbtc
             }
             conn1.Close();
         }
-
-
         public static string getAddress1(string brstn, int addressline, string ChequeName)
         {
             string address = "";
@@ -179,10 +167,6 @@ namespace sbtc
 
             return address;
         }
-
-
-
-
         public static void CreateTable()
         {
             if (System.IO.File.Exists("sbtc.dbf") == true)
@@ -234,9 +218,6 @@ namespace sbtc
 
             conn.Close();
         }
-
-
-
         public static DialogResult InputBox(string title, string promptText, ref string value)
         {
               Form form = new Form();
@@ -278,8 +259,6 @@ namespace sbtc
               value = textBox.Text;
               return dialogResult;
         }
-
-
         public static void CreateDirectory(string Path_Location)
         {
             if (Directory.Exists(Path_Location) == false)
@@ -287,10 +266,6 @@ namespace sbtc
                 Directory.CreateDirectory(Path_Location);
             }
         }
-
-
-
-
         public static void TransferAll(string Batch)
         {
             if (Directory.Exists(Application.StartupPath + "\\Archive\\" + Batch) == false)
@@ -324,9 +299,6 @@ namespace sbtc
                 File.Delete(file);
             }
         }
-
-
-
         public static void ProcessAll2(DateTime DeliveryDate)
         {
 repeatme:
@@ -343,15 +315,6 @@ repeatme:
 
             if (Batch == "") { goto repeatme; }
 
-
-
-
-
-
-
-
-
-
             //Check if Batch exists
             if (Directory.Exists(Application.StartupPath + "\\Archive\\" + Batch) || ReturnMe.CheckBatchExists(Batch) == true)
             {
@@ -359,12 +322,6 @@ repeatme:
                 goto repeatme;
             }
             //End Check if Batch exists
-
-
-
-
-
-
 
             //For Process By
             string ProcessBy = "";
@@ -377,9 +334,7 @@ repeatme:
                 ProcessBy = "";
             }
 
-            
-
-
+           
             string CheckedBy = "";
             if (ReturnMe.InputBox("", "Enter Checked By:", ref CheckedBy) == DialogResult.OK)
             {
@@ -399,11 +354,6 @@ repeatme:
 
             Directory.CreateDirectory("C:\\Windows\\Temp\\" + DateTimeToday + "\\" + Batch);
             //End For Zip
-
-
-
-
-
 
             //Clear Folder
             int LoopCount = 0;
@@ -457,13 +407,9 @@ repeatme:
             }
             //End Clear Folder
 
-
-
             ReturnMe.ProcessAll(Batch, ProcessBy, CheckedBy, DeliveryDate, DateTimeToday);
 
-
             TransferAll(Batch);
-
 
             DialogResult result1 = MessageBox.Show("Data has been processed. Send hash total?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result1 == DialogResult.No) 
@@ -472,12 +418,8 @@ repeatme:
                 return;
             }
 
-
-
             ReturnMe.SendHashTotal(DateTime.Now.ToString("yyyy-MM-dd"));
         }
-
-
         public static void DeletePackDBF(string strTableName, string strPath)
         {
 
@@ -500,8 +442,6 @@ repeatme:
                 } 
             } 
         }
-
-
         public static void SendHashTotal(string DeliveryDate)
         {
 
@@ -922,12 +862,6 @@ repeatme:
             }
             //end Check until send
         }
-
-
-
-
-
-
         public static void ProcessAll(string Batch, string ProcessBy, string CheckedBy, DateTime  DeliveryDate, string DateTimeToday)
         {
             
@@ -1239,12 +1173,6 @@ repeatme:
             File.Copy(Application.StartupPath + "\\AFT" + "_" + File_Batch + "_" + ChequeName_all + "_Process.by_" + ProcessBy + "__Checked.By_" + CheckedBy + ".zip", Temp_Zip + "\\AFT" + "_" + File_Batch + "_" + ChequeName_all + "_Process.by_" + ProcessBy + "__Checked.By_" + CheckedBy + ".zip");
             //End Copy the Zip File
         }
-
-
-
-
-
-
         public static void PackingList(string ChkType, string FolderName, string FormType, string RefChkType)
         {
             int PageNo = 0;
@@ -1384,8 +1312,6 @@ repeatme:
             conn1.Close();
 
         }
-
-
         public static void CopyBatchToFinalBatch(string FinalBatch)
         {
             string sql = "UPDATE SBTC SET Batch = '" + FinalBatch + "'";
@@ -1396,9 +1322,6 @@ repeatme:
             command1.Fill(dataSet);
             conn1.Close();
         }
-
-
-
         public static int ProcessMe(string ChkType, string FormType, string FolderName, Boolean DeleteDBF_Value, string FinalBatch, DateTime DeliveryDate, string ProcessBy, string DateTimeToday)
         {
             int PcsPerBook = 0;
@@ -1517,7 +1440,6 @@ repeatme:
                 }
             }
 
-
             if (ChkType == "BB" && FormType == "16")
             {
                 PcsPerBook = 100;
@@ -1548,7 +1470,6 @@ repeatme:
                     Temp_CTC = Resting_Folder + "\\CTC\\SBTC\\" + DateTime.Now.ToString("yyyy");
                 }
             }
-
 
             if (ChkType == "MC" && FormType == "20")
             {
@@ -1750,7 +1671,6 @@ repeatme:
                 }
             }
 
-
             if (ChkType == "E" && FormType == "23")
             {
                 PcsPerBook = 50;
@@ -1781,7 +1701,6 @@ repeatme:
                     Temp_CTC = Resting_Folder + "\\CTC\\SBTC\\CKPOWER\\" + DateTime.Now.ToString("yyyy");
                 }
             }
-
 
             if (ChkType == "E" && FormType == "22")
             {
@@ -1814,7 +1733,6 @@ repeatme:
                 }
             }
 
-
             if (ChkType == "GC" && FormType == "20")
             {
                 PcsPerBook = 50;
@@ -1845,7 +1763,6 @@ repeatme:
                     Temp_CTC = Resting_Folder + "\\CTC\\SBTC\\GC\\" + DateTime.Now.ToString("yyyy");
                 }
             }
-
 
             if (ChkType == "CS")
             {
@@ -1878,9 +1795,6 @@ repeatme:
                 }
             }
 
-
-
-
             int BlockCount = 0;
             int TotalData = 0;
             int DataNumber = 0;
@@ -1903,8 +1817,6 @@ repeatme:
 
 
             string sql = "SELECT BRSTN, AccountNo, OrderQty, Name1, Name2, Address1, Address2, Address3, Address4, Address5, Address6, Batch, BStock, StartSN, PcsPerBook , PKey FROM SBTC WHERE ChkType = '" + ChkType + "' AND FormType = '" + FormType + "' ORDER BY BRSTN, AccountNo, Name1";
-
-
 
             string DayOfWeekResult = "";
             string temp = "";
@@ -1956,8 +1868,6 @@ repeatme:
 
                 string PKey = dr[15].ToString();
 
-
-
                 if (LoopCount == 0)
                 {
                     //Copy Printer File MDB
@@ -1967,8 +1877,6 @@ repeatme:
                     }
                     //End Copy Printer File MDB
                 }
-
-
 
                 //For Total
                 if (TotalData == 0)
@@ -2004,7 +1912,6 @@ repeatme:
 
                     conn2.Close();
 
-
                     Sum_DoBlock = "    " + ChkType_31 + " = " + sum_orderQty + "                 " + FileName + ".txt";
 
                     if (ChkType_31 != ChkType_32)
@@ -2035,23 +1942,7 @@ repeatme:
                 }
                 //End For Total
 
-
-
-
-
-
-
-
-
-
                 if (FolderName == "MC" || FolderName == "GiftCheck") { Name1 = ""; }
-
-
-
-
-
-
-
 
                 //For Ref.dbf Starting SN
                 string BranchName = "";
@@ -2117,11 +2008,6 @@ repeatme:
                 }
                 //End For Ref.dbf Starting SN
 
-
-
-
-
-
                 //Update SBTC StartSN1
                 OleDbConnection conn4 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
                 OleDbCommand command4 = new OleDbCommand("UPDATE SBTC SET StartSN1 = " + StartingSerial + ",PcsPerBook = '" + PcsPerBook + "' WHERE PKey = " + PKey, conn4);
@@ -2130,8 +2016,6 @@ repeatme:
 
                 conn4.Close();
                 //End Update SBTC StartSN1
-
-
 
                 while (OrderQty > 0)
                 {
@@ -2285,24 +2169,6 @@ repeatme:
                     PrinterFile.WriteLine((StartingSerial + PcsPerBook - 1).ToString(FormatSerial));//32
                     //End For Printer File
 
-
-
-
-
-
-
-
-
-                        
-
-
-
-
-
-
-
-
-
                     //Save to Master_Database
                     string dbase = "";
                     if (CodesOnly == true) { dbase = "captive_database.Master_Database_SBTC_Temp"; }
@@ -2318,10 +2184,6 @@ repeatme:
                    // MyReader2 = MyCommand2.ExecuteReader();
                     //MyConn2.Close();
                     //End Save to Master_Database
-
-
-
-
 
 
                     //For MDB File
@@ -2349,9 +2211,6 @@ repeatme:
                     }
                     //End For MDB File
 
-
-
-
                     //For Packing
                     string temp_batch = "";
 
@@ -2371,7 +2230,6 @@ repeatme:
                         }
                     }
 
-
                     sql = "INSERT INTO Packing (BatchNo, RT_NO, Branch, Acct_No, Acct_No_P, Acct_Name1, Acct_Name2, No_Bks, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, Block, ChkType) VALUES ('" + temp_batch.ToUpper() + "','" + BRSTN + "','" + Address1.Replace("'", "''") + "','" + AccountNo + "','" + AccountNo.Substring(0, 3) + "-" + AccountNo.Substring(3, 6) + "-" + AccountNo.Substring(9, 3) + "','" + Name1.Replace("'", "''") + "','" + Name2.Replace("'", "''") + "','" + "1" + "','" + StartingSerial.ToString(FormatSerial) + "','" + StartingSerial.ToString(FormatSerial) + "','" + (StartingSerial + PcsPerBook - 1).ToString(FormatSerial) + "','" + (StartingSerial + PcsPerBook - 1).ToString(FormatSerial) + "','" + BlockCount + "','" + RefChkType + "')";
                     OleDbConnection conn5 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\" + FolderName + ";Extended Properties=dBASE III;");
                     OleDbDataAdapter command5 = new OleDbDataAdapter(sql, conn5);
@@ -2380,11 +2238,6 @@ repeatme:
                     command5.Fill(dataSet5);
                     conn5.Close();
                     //End for Packing
-
-
-
-
-
 
                     TotalData = TotalData + 1;
                     StartingSerial = StartingSerial + PcsPerBook;
@@ -2407,19 +2260,11 @@ repeatme:
                 DoBlock.WriteLine(Summary_DoBlock);
             }
 
-
             PrinterFile.Close();
             DoBlock.Close();
             conn1.Close();
 
-
-
-
-
-
             ReturnMe.PackingList(ChkType, FolderName, FormType, RefChkType);
-
-
 
             if (TotalData > 0)
             {
@@ -2474,14 +2319,7 @@ repeatme:
 
                     int Orig_DataNumber = DataNumber;
                     string All_Column = "BRSTN , AccountNumber , RT1to5 , RT6to9 , AccountNumberWithHyphen , Serial , Name1 , Name2 , Name3 , Address1 , Address2 , Address3 , Address4 , Address5 , Address6 , BankName , StartingSerial , EndingSerial , PcsPerBook , FileName, datanumber";
-
-
-
-                        
-
-
-
-
+                    
                     //4 Outs
                     OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb");
                     OleDbCommand cmd = con.CreateCommand();
@@ -2491,7 +2329,6 @@ repeatme:
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-
                     con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb");
                     cmd = con.CreateCommand();
                     con.Open();
@@ -2499,8 +2336,6 @@ repeatme:
                     cmd.Connection = con;
                     cmd.ExecuteNonQuery();
                     con.Close();
-
-
 
                     while (DataNumber % (PcsPerBook * 4) != 0)
                     {
@@ -2518,17 +2353,12 @@ repeatme:
                         mdb_status_bar = mdb_status_bar + 1;
                     }
 
-
-
-
                     int LineNumber1 = PcsPerBook * 0;
                     int LineNumber2 = PcsPerBook * 1;
                     int LineNumber3 = PcsPerBook * 2;
                     int LineNumber4 = PcsPerBook * 3;
 
-
                 RepeatMe_4Outs:
-
 
                     LoopCount = 0;
                     while (LoopCount < PcsPerBook)
@@ -2546,9 +2376,6 @@ repeatme:
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 1
 
-
-
-
                         //Line Number 2
                         LineNumber2 = LineNumber2 + 1;
 
@@ -2561,9 +2388,6 @@ repeatme:
                         con.Close();
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 2
-
-
-
 
                         //Line Number 3
                         LineNumber3 = LineNumber3 + 1;
@@ -2578,8 +2402,6 @@ repeatme:
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 3
 
-
-
                         //Line Number 4
                         LineNumber4 = LineNumber4 + 1;
 
@@ -2592,7 +2414,6 @@ repeatme:
                         con.Close();
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 4
-
 
                         LoopCount = LoopCount + 1;
                     }
@@ -2607,13 +2428,6 @@ repeatme:
                         goto RepeatMe_4Outs;
                     }
                     //End 4 Outs
-
-
-
-
-
-
-
                     //3 Outs
                     DataNumber = Orig_DataNumber;
 
@@ -2634,8 +2448,6 @@ repeatme:
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-
-
                     while (DataNumber % (PcsPerBook * 3) != 0)
                     {
                         con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb");
@@ -2655,9 +2467,7 @@ repeatme:
                     LineNumber2 = PcsPerBook * 1;
                     LineNumber3 = PcsPerBook * 2;
 
-
                 RepeatMe_3Outs:
-
 
                     LoopCount = 0;
                     while (LoopCount < PcsPerBook)
@@ -2675,9 +2485,6 @@ repeatme:
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 1
 
-
-
-
                         //Line Number 2
                         LineNumber2 = LineNumber2 + 1;
 
@@ -2691,9 +2498,6 @@ repeatme:
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 2
 
-
-
-
                         //Line Number 3
                         LineNumber3 = LineNumber3 + 1;
 
@@ -2705,9 +2509,7 @@ repeatme:
                         cmd.ExecuteNonQuery();
                         con.Close();
                         mdb_status_bar = mdb_status_bar + 1;
-                        //End Line Number 3
-
-                            
+                        //End Line Number 3                      
 
                         LoopCount = LoopCount + 1;
                     }
@@ -2723,12 +2525,6 @@ repeatme:
                     }
                     //End 3 Outs
 
-
-
-
-
-
-
                     //2 Outs
                     DataNumber = Orig_DataNumber;
 
@@ -2740,7 +2536,6 @@ repeatme:
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-
                     con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb");
                     cmd = con.CreateCommand();
                     con.Open();
@@ -2748,8 +2543,6 @@ repeatme:
                     cmd.Connection = con;
                     cmd.ExecuteNonQuery();
                     con.Close();
-
-
 
                     while (DataNumber % (PcsPerBook * 2) != 0)
                     {
@@ -2772,7 +2565,6 @@ repeatme:
 
                 RepeatMe_2Outs:
 
-
                     LoopCount = 0;
                     while (LoopCount < PcsPerBook)
                     {
@@ -2788,9 +2580,6 @@ repeatme:
                         con.Close();
                         mdb_status_bar = mdb_status_bar + 1;
                         //End Line Number 1
-
-
-
 
                         //Line Number 2
                         LineNumber2 = LineNumber2 + 1;
@@ -2820,19 +2609,7 @@ repeatme:
                     //End 2 Outs
 
 
-
-
-
-
-
                     File.Copy(Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb", "C:\\Windows\\Temp\\" + DateTimeToday + "\\" + FolderName + "\\" + FileName + ".mdb");
-
-
-
-
-
-
-
 
                     //Copy to Drive R
                     ReturnMe.CreateDirectory(Temp_DriveR);
@@ -2840,11 +2617,6 @@ repeatme:
                     if (File.Exists(Temp_DriveR + "\\" + FileName + ".mdb")) { File.Delete(Temp_DriveR + "\\" + FileName + ".mdb"); }
                     File.Copy(Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".mdb", Temp_DriveR + "\\" + FileName + ".mdb");
                     //End Copy to Drive R
-
-
-
-
-
 
 
                     //Copy to CTC
@@ -2855,22 +2627,12 @@ repeatme:
                     //End Copy to CTC
                 }
 
-
-
-
-
-
                 //Copy to Drive R
                 CreateDirectory(Temp_DriveR);
 
                 if (File.Exists(Temp_DriveR + "\\" + FileName + ".txt")) { File.Delete(Temp_DriveR + "\\" + FileName + ".txt"); }
                 File.Copy(Application.StartupPath + "\\" + FolderName + "\\" + FileName + ".txt", Temp_DriveR + "\\" + FileName + ".txt");
                 //Copy to Drive R
-
-
-
-
-
 
                 //Copy to CTC
                 CreateDirectory(Temp_CTC);
@@ -2881,7 +2643,6 @@ repeatme:
             }
             return TotalData;
         }
-
         public static void DeleteDBF(string FileName, string FolderName)
         {
             string sql = "DELETE FROM " + FileName;
@@ -2893,9 +2654,6 @@ repeatme:
             command1.Fill(dataSet);
             conn1.Close();
         }
-
-
-
         public static Boolean CheckBatchExists(string Batch)
         {
             string dbase = "";
@@ -2921,8 +2679,6 @@ repeatme:
                 return false;
             }                    
         }
-
-
         public static OrderSorted Sort(List<OrderModel> _orders)
         {
             OrderSorted sorted = new OrderSorted();
@@ -2966,7 +2722,7 @@ repeatme:
                     sorted.GiftCheck.Add(r);
 
                 else if (r.CheckType == "AA" && r.FormType == "05")
-                    sorted.RegularPersonal.Add(r);
+                    sorted.PersonalPreEncoded.Add(r);
 
                 else if (r.CheckType == "BB" && r.FormType == "16")
                     sorted.CommercialPreEncoded.Add(r);
@@ -2988,168 +2744,9 @@ repeatme:
 
                 else if (r.CheckType == "MC_1" && r.FormType == "00")
                     sorted.ManagersCheckCont.Add(r);
-            });
+            });//END FOREACH
 
             return sorted;
-        }
-
-
-
-
-
-        public static string SortRT(string FolderName)
-        {
-            int GrandTotal = 0;
-            int PageNo = 1;
-            int LineNumber = 0;
-            int LoopCount = 0;
-
-
-            StreamWriter sw = new StreamWriter(Application.StartupPath + "\\"+FolderName+"\\SortRT.txt");
-
-
-
-            string sql = "";
-            if (FolderName == "Regular") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE (ChkType = 'A' AND FormType = '05') or (ChkType = 'B' AND FormType = '16') GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "Regular\\PreEncoded") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE (ChkType = 'AA' AND FormType = '05') or (ChkType = 'BB' AND FormType = '16') GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "MC") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'MC' AND FormType = '20' GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "CheckOne") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'F' AND (FormType = '25' or FormType = '26') GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "CheckPower") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'E' AND (FormType = '23' or FormType = '22') GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "GiftCheck") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'GC' AND FormType = '20' GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "MC\\Continues") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'MC_1' AND FormType = '00' GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "Customized") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'CUSTOM' AND FormType = '00' GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-            if (FolderName == "Charge_Slip") sql = "SELECT ChkType, BRSTN, Address1, SUM(OrderQty), FormType FROM SBTC WHERE ChkType = 'CS' GROUP BY ChkType, BRSTN, Address1,FormType  ORDER BY ChkType, BRSTN";
-
-
-            OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
-            OleDbDataAdapter command1 = new OleDbDataAdapter(sql, conn1);
-            conn1.Open();
-            DataSet dataSet = new DataSet();
-            command1.Fill(dataSet);
-
-            
-
-            DataTable dt = dataSet.Tables[0];
-            foreach (DataRow dr in dt.Rows)
-            {
-                string Chktype = dr[0].ToString();
-                string BRSTN = dr[1].ToString();
-                string Address1 = dr[2].ToString();
-                string SubTotal = dr[3].ToString();
-                string FormType = dr[4].ToString();
-
-                if (LoopCount == 0 || LineNumber >= 50)
-                {
-                    sw.WriteLine("");
-                    if (PageNo != 1) { sw.WriteLine(""); }
-                    sw.WriteLine("    Page No. " + PageNo.ToString());
-                    sw.WriteLine("    " + System.DateTime.Now.ToShortDateString());
-                    sw.WriteLine("                             Summary of RT nos / # of Books");
-                    
-                    if (FolderName == "Regular") sw.WriteLine("                               SBTC - Regular Checks");
-                    if (FolderName == "Regular\\PreEncoded") sw.WriteLine("                               SBTC - PreEncoded Checks");
-                    if (FolderName == "MC") sw.WriteLine("                               SBTC - Manager's Checks");
-                    if (FolderName == "CheckOne") sw.WriteLine("                               SBTC - Check One");
-                    if (FolderName == "CheckPower") sw.WriteLine("                               SBTC - Check Power");
-                    if (FolderName == "GiftCheck") sw.WriteLine("                               SBTC - Gift Check");
-                    if (FolderName == "MC\\Continues") sw.WriteLine("                               SBTC - Manager's Check Continues");
-                    if (FolderName == "Customized") sw.WriteLine("                               SBTC - Customized Checks");
-                    if (FolderName == "Charge_Slip") sw.WriteLine("                               SBTC - Charge Slip");
-
-                    sw.WriteLine("");
-                    sw.WriteLine("    ACCTNO       QTY BRANCH                 ACCOUNT NAME");
-                    sw.WriteLine("");
-
-                    PageNo = PageNo + 1;
-                    LineNumber = 0;
-                }
-
-                sw.WriteLine("");
-                sw.WriteLine("   ** CHECK TYPE/BRSTN/BATCH # ---->  " + Chktype.Replace("AA", "A").Replace("BB", "B").Replace("MC_1", "MC Continues") + "/" + BRSTN);
-                sw.WriteLine("   ** Branch: " + Address1);
-                LineNumber = LineNumber + 3;
-
-
-                sql = "SELECT AccountNo, Name1, Name2, OrderQty FROM SBTC WHERE ChkType = '" + Chktype + "' AND BRSTN = '" + BRSTN + "' AND Address1 = '" + Address1.Replace("'", "''") + "' AND FormType = '" + FormType + "' ORDER BY AccountNo, Name1, Name2";
-                OleDbDataAdapter command2 = new OleDbDataAdapter(sql, conn1);
-                DataSet dataSet2 = new DataSet();
-                command2.Fill(dataSet2);
-
-                DataTable dt2 = dataSet2.Tables[0];
-                foreach (DataRow dr2 in dt2.Rows)
-                {
-                    string AccountNo = dr2[0].ToString();
-                    string Name1 = dr2[1].ToString();
-                    string Name2 = dr2[2].ToString();
-                    string OrderQty = dr2[3].ToString();
-
-
-                    if (FolderName == "MC") { Name1 = ""; }
-
-                    int result = OrderQty.Length;
-                    while (result <= 4)
-                    {
-                        OrderQty = " " + OrderQty;
-                        result = result + 1;
-                    }
-
-                    sw.WriteLine("    " + AccountNo + OrderQty + " " + Name1);
-                    LineNumber = LineNumber + 1;
-
-                    if (Name2 != "")
-                    {
-                        sw.WriteLine("                     " + Name2);
-                        LineNumber = LineNumber + 1;
-                    }
-
-                    if (LineNumber >= 50)
-                    {
-                        sw.WriteLine("");
-                        if (PageNo != 1) { sw.WriteLine("");}
-
-                        sw.WriteLine("    Page No. " + PageNo);
-                        sw.WriteLine("    " +System.DateTime.Now.ToShortDateString());
-                        sw.WriteLine("                             Summary of RT nos / # of Books");
-
-                        if (FolderName == "Regular") sw.WriteLine("                               SBTC - Regular Checks");
-                        if (FolderName == "Regular\\PreEncoded") sw.WriteLine("                               SBTC - PreEncoded Checks");
-                        if (FolderName == "MC") sw.WriteLine("                               SBTC - Manager's Checks");
-                        if (FolderName == "CheckOne") sw.WriteLine("                               SBTC - Check One");
-                        if (FolderName == "CheckPower") sw.WriteLine("                               SBTC - Check Power");
-                        if (FolderName == "GiftCheck") sw.WriteLine("                               SBTC - Gift Check");
-                        if (FolderName == "MC\\Continues") sw.WriteLine("                               SBTC - Manager's Check Continues");
-                        if (FolderName == "Customized") sw.WriteLine("                               SBTC - Customized Checks");
-                        if (FolderName == "Charge_Slip") sw.WriteLine("                               SBTC - Charge Slip");
-
-                        sw.WriteLine("");
-                        sw.WriteLine("    ACCTNO       QTY BRANCH                 ACCOUNT NAME");
-                        sw.WriteLine("");
-
-                        PageNo = PageNo + 1;
-                        LineNumber = 0;
-
-                    }
-                }
-
-                sw.WriteLine("");
-                sw.WriteLine("    Sub Total: " + SubTotal);
-                LineNumber = LineNumber + 2;
-
-                int SubTotal2;
-                if (Int32.TryParse(SubTotal, out SubTotal2))
-                {
-                    GrandTotal = GrandTotal + SubTotal2;
-                }
-                LoopCount = LoopCount + 1;
-            }
-
-
-            sw.WriteLine("");
-            sw.WriteLine("    Grand Total: " + GrandTotal);
-
-            sw.Close();
-            conn1.Close();
-            return "";
-        }
+        }//END OF FUNCTION      
     }
 }

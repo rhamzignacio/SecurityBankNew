@@ -308,7 +308,7 @@ namespace sbtc
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            ReturnMe.SortRT("Customized");
+            //ReturnMe.GenerateSortRT("Customized");
 
             ReturnMe.ProcessAll2(dteDeliveryDate.Value);
 

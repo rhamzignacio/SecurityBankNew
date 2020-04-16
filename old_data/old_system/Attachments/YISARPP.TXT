@@ -1,9 +1,0 @@
-REPORT ID :  YISARPP                                 SECURITY BANK CORPORATION                                    PAGE    :    1
-PROGRAM ID:  YADRPRLE                CHEQUE BOOK REQUISITION PROOFLIST FOR CHECKPOWER - NOVABUS                   RUN-DATE:  5/19/17
-UNIT      :  SBC                                    PRE-GENERATED ACCOUNT NUMBERS                                 PHASE   : DAY
-                                                     REPORT DATE  :   5/19/2017
-CARD CLEARING BANK TRANSIT ACCOUNT                                                               ACCOUNT  BOOK     ORDER ACCOUNT
-TYPE CODE     ID   NO.     NUMBER       A C C O U N T  N A M E                                   TYPE     CODE NO. QTY.  BOOK TYPE
----- -------- ---- ------- ------------ -----------------------------------                      -------  -------- ----- ---------
-                                                   *** E N D   O F   R E P O R T ***
-

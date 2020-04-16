@@ -12,7 +12,7 @@ namespace sbtc
 
         public void DBConnect()
         {
-            string DBConnection = "datasource=192.168.0.254;port=3306;username=root;password=CorpCaptive";
+            string DBConnection = DatabaseConnection.ConnectionString;
 
             myConnect = new MySqlConnection(DBConnection);
 
@@ -32,7 +32,7 @@ namespace sbtc
 
                 _branches.ForEach(b =>
                 {                  
-                    MySqlCommand cmd = new MySqlCommand("UPDATE captive_database.master_database_sbtc_branches SET LastNo_PA =" + b.LastNo_PA +
+                    MySqlCommand cmd = new MySqlCommand("UPDATE captive_database.sbtc_branches SET LastNo_PA =" + b.LastNo_PA +
                         " LastNo_CA =" + b.LastNo_CA + " LastNo_MC =" + b.LastNo_MC + " LastNo_Power_PA =" + b.LastNo_Power_PA + " LastNo_Power_CA =" + b.LastNo_Power_CA
                         + " LastNo_GC =" + b.LastNo_GC + " LastNo_CheckOne_PA =" + b.LastNo_CheckOne_PA + " LastNo_CheckOne_CA =" + b.LastNo_CheckOne_CA + " " +
                         "ModifiedDate ='" + DateTime.Now.ToString("yyyyMMddHHmmss") + "' WHERE BRSTN ='" + b.BRSTN + "'", myConnect);
@@ -56,7 +56,7 @@ namespace sbtc
 
                 List<BranchesModel> Branches = new List<BranchesModel>();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM captive_database.master_database_sbtc_branches", myConnect);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM captive_database.sbtc_branches", myConnect);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -94,8 +94,6 @@ namespace sbtc
 
                     branch.LastNo_CheckOne_PA = !reader.IsDBNull(14) ? reader.GetInt64(14) : 0;
 
-                    branch.ModifiedDate = reader.GetDateTime(15);
-
                     Branches.Add(branch);
                 }//END OF WHILE
 
@@ -103,7 +101,7 @@ namespace sbtc
 
                 return Branches;
             }//END OF TRY
-            catch
+            catch(Exception error)
             {
                 return null;
             }

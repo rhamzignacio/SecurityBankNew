@@ -1,8 +1,0 @@
-F0101405780212039655001CMC DIAGNOSTICS, INC.                                    2602CKR
-F0201400180181409254001SING, SUSANA YU                                         12505CKO
-F0201400180181409254001OR ARTURO SING                                          22500CKO
-F0101401670271667403002PRIVE PROPERTIES DEVELOPMENT                            12602CKR
-F0101401670271667403002INC.                                                    22600CKR
-F0101406880513436872001ELICANO, FRANCISCO CEBRERO                               2501CKO
-F1201400280671025773008*****                                                    2620CKO
-F0101406750000000090515PROSWEAL HEALTHCARE INC.                                 2605CKR

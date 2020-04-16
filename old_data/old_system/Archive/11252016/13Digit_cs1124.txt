@@ -1,8 +1,0 @@
-F0101400570000000165677ROSEMARIE S. AGUILA                                      2504CKO
-F0101402480331046192002***************                                          2603CKR
-F0101408790383043173001PASCO PHILIPPINES CORPORATION                            2610CKR
-F0301400820409048939001DIGOS CENTRAL ADVENTIST ACADEMY                         12601CKR
-F0301400820409048939001INC.                                                    22600CKR
-F0101406330472033928003NUTRISENSE INT'L., INC.                                  2604CKR
-F3301400120581552659002**********                                               2603CKR
-F0101409890649054788002ARRAYSTECH DIGITAL SYSTEMS INC.                          2610CK1
