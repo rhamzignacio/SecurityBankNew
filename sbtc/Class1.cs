@@ -454,10 +454,10 @@ repeatme:
             string dbase = "";
             if (ReturnMe.CodesOnly == true)
             {
-                dbase = "captive_database.master_database_sbtc_temp";
+                dbase = "captive_database.sbtc_history";
                 recipient_email = "orders@captiveprinting.com.ph";
             }
-            if (ReturnMe.CodesOnly == false) dbase = "captive_database.master_database_sbtc";
+            if (ReturnMe.CodesOnly == false) dbase = "captive_database.sbtc_history";
 
 
 

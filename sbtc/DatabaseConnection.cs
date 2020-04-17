@@ -7,10 +7,10 @@ namespace sbtc
 {
     public static class DatabaseConnection
     {
-        public static string ConnectionString = "datasource=localhost;port=3306;username=root;password=secret;";
+        public static string ConnectionString = "datasource=192.168.0.254;port=3306;username=root;password=CorpCaptive;";
 
-        public static string DumpString = "mysqldump.exe --user=root --password=secret --host=localhost captive_database ";
+        public static string DumpString = "mysqldump.exe --user=root --password=CorpCaptive --host=192.168.0.254 captive_database ";
 
-        public static string ArchiveOutPut = "D:\\";
+        public static string ArchiveOutPut = "\\\\192.168.0.254\\captive\\Zips\\sbtc";
     }
 }

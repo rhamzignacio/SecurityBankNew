@@ -27,11 +27,11 @@ namespace sbtc
         private void LoadMe()
         {
             string dbase = "";
-            if (ReturnMe.CodesOnly == true) dbase = "captive_database.master_database_sbtc_temp";
-            if (ReturnMe.CodesOnly == false) dbase = "captive_database.master_database_sbtc";
+            if (ReturnMe.CodesOnly == true) dbase = "captive_database.sbtc_history";
+            if (ReturnMe.CodesOnly == false) dbase = "captive_database.sbtc_history";
 
             
-            string sql = "SELECT DISTINCT(DeliveryDate) FROM " + dbase + " WHERE HashSentDate is NULL AND HashSentTime IS NULL AND DeliveryDate <= '" + DateTime.Now.ToString("yyyy-MM-dd") + "'";
+            string sql = "SELECT DISTINCT(DeliveryDate) FROM " + dbase + " WHERE HashSentDate is NULL AND HashSentTime IS NULL";
             string MyConnection2 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
             MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
             MySqlCommand MyCommand2 = new MySqlCommand(sql, MyConn2);
