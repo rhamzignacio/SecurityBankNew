@@ -62,8 +62,6 @@ namespace sbtc
             sw.WriteLine("");
         }
 
-
-
         public static string GenerateSortRT(string _folderName, List<OrderModel> _orders)
         {
             int page = 1, lineCounter = 0;
@@ -283,7 +281,7 @@ namespace sbtc
         }//END OF FUNCTION
 
         public static void GeneratePackingList(OrderSorted _orders, string _batch, DateTime _deliveryDate, 
-            List<BranchesModel> _branches)
+            List<BranchesModel> _branches, string _autoBatch)
         {
             #region Regular Personal
             if (_orders.RegularPersonal.Count > 0)
@@ -327,7 +325,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -418,7 +416,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -514,7 +512,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -607,7 +605,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -703,7 +701,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #:" + _autoBatch);
 
                         lineCount = 11;
 
@@ -796,7 +794,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -892,7 +890,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -983,7 +981,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -1079,7 +1077,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -1175,7 +1173,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: CPTIVE" + _batch.Substring(0, 4));
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
 
                         lineCount = 11;
 
@@ -1231,7 +1229,7 @@ namespace sbtc
         }//END FUNCTION
 
         public static void GenerateDoBlock(OrderSorted _orders, string _batch, string _ext, DateTime _deliveryDate,
-            string _preparedBy)
+            string _preparedBy, string _autoBatch)
         {
             if (_batch == "0000")
                 _preparedBy = "TEST ONLY";
@@ -1265,7 +1263,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1314,10 +1312,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1341,7 +1343,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -1393,7 +1395,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1442,10 +1444,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1469,7 +1475,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -1521,7 +1527,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1570,10 +1576,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1597,7 +1607,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -1649,7 +1659,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1698,10 +1708,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1725,7 +1739,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" +_autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -1777,7 +1791,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1826,10 +1840,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1853,7 +1871,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -1905,7 +1923,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -1954,10 +1972,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -1981,7 +2003,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2033,7 +2055,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2082,10 +2104,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -2109,7 +2135,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2161,7 +2187,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2210,10 +2236,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -2237,7 +2267,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2289,7 +2319,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2336,10 +2366,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -2363,7 +2397,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2413,7 +2447,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2460,10 +2494,14 @@ namespace sbtc
 
                                 blockCounter = 0;
 
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
                             else if (block == 1 && blockCounter == 0)
                             {
+                                sw.WriteLine("");
+
                                 sw.WriteLine("\t\t** BLOCK " + block.ToString());
                             }
 
@@ -2487,7 +2525,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tcaptive" + _batch.Substring(0, 4) + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2509,11 +2547,12 @@ namespace sbtc
             }//END IF
         }//END FUNCTION
 
-        public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext)
+        public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext, 
+            string _autoBatch)
         {
             string path, connectionString, query;
 
-            _batch = "CPTIVE" + _batch.Substring(0, 4);
+            _batch = _autoBatch;
 
             int blockNo, blockCounter;
 

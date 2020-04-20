@@ -191,6 +191,8 @@ namespace sbtc
             else
             {
                 btnCheckFiles.Enabled = true;
+
+                autoBatch = "CPTIVE" + lstFiles.Items[0].ToString().Substring(6, 4);
             }
         }
 
@@ -327,17 +329,17 @@ namespace sbtc
                 //GENERATE PACKING DBF
                 lblStatus.Text = "Generating Packing DBF Files";
                 Application.DoEvents();
-                GenerateService.GeneratePackingDBF(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text);
+                GenerateService.GeneratePackingDBF(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, autoBatch);
 
                 //GENERATE DO BLOCK
                 lblStatus.Text = "Generating DoBlock Files";
                 Application.DoEvents();
-                GenerateService.GenerateDoBlock(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value, txtBoxProcessBy.Text);
+                GenerateService.GenerateDoBlock(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value, txtBoxProcessBy.Text, autoBatch);
 
                 //GENERATE PACKINGLIST
                 lblStatus.Text = "Generating PackingList Files";
                 Application.DoEvents();
-                GenerateService.GeneratePackingList(sortedList, txtBoxBatchNo.Text, dteDeliveryDate.Value, branchList);
+                GenerateService.GeneratePackingList(sortedList, txtBoxBatchNo.Text, dteDeliveryDate.Value, branchList, autoBatch);
 
                 if (txtBoxBatchNo.Text != "0000")
                 {
