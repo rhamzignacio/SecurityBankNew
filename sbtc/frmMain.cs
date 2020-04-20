@@ -25,6 +25,8 @@ namespace sbtc
 
         OrderSorted sortedList = new OrderSorted();
 
+        string autoBatch = "";
+
         public frmMain()
         {
             InitializeComponent();

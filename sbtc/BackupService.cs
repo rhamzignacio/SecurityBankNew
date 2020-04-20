@@ -484,8 +484,8 @@ namespace sbtc
 
             proc.StartInfo.FileName = "\"" + GetWinZipLoc().Replace("\\", "\\\\") + "\"";
 
-            proc.StartInfo.Arguments = "-u -r -p " + "\"" + Application.StartupPath + "\\AFT" + _batchNumber + "_" + _processBy + fileName + ".zip\"" +
-                DatabaseConnection.ArchiveOutPut + "\\" + DateTime.Now.Year.ToString() + "\\*.*";
+            proc.StartInfo.Arguments = "-u -r -p " + "\"" + Application.StartupPath + "\\AFT" + _batchNumber + "_" + _processBy + fileName + ".zip\"" + " " +
+                DatabaseConnection.ArchiveOutPut  + "\\*.*";
 
             proc.Start();
 
