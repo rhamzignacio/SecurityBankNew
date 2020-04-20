@@ -271,7 +271,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Security Bank 2.0";
+            this.Text = "Security Bank 2.1";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);

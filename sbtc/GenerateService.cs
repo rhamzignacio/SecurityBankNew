@@ -368,6 +368,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -462,6 +464,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -553,6 +557,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -647,6 +653,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -738,6 +746,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -832,6 +842,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -921,6 +933,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -1015,6 +1029,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -1109,13 +1125,15 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
             }//END IF
             #endregion
 
-            #region Manager's Check
+            #region Manager's Contl Check
             if (_orders.ManagersCheckCont.Count > 0)
             {
                 int pageNo = 1, lineCount = 0;
@@ -1203,6 +1221,8 @@ namespace sbtc
                             sw.WriteLine("");
 
                             sw.WriteLine("");
+
+                            pageNo++;
                         }
                     }//END FOR
                 }//END USING
@@ -2492,6 +2512,8 @@ namespace sbtc
         public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext)
         {
             string path, connectionString, query;
+
+            _batch = "CPTIVE" + _batch.Substring(0, 4);
 
             int blockNo, blockCounter;
 
