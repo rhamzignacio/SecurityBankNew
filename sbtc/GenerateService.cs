@@ -342,10 +342,18 @@ namespace sbtc
 
                             string tempStart = check.StartingSerial.ToString();
 
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
                             while (tempStart.Length < 11)
                                 tempStart += " ";
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + check.EndingSerial.ToString());
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
 
                             lineCount++;
 
@@ -363,6 +371,89 @@ namespace sbtc
 
                         if (x + 1 < brstnList.Count)
                         {                           
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FOR FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Personal Checks Summary");
+
+                        sw.WriteLine("                                  (F R O N T  C O V E R)");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.RegularPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
                             sw.WriteLine("");
 
                             sw.WriteLine("");
@@ -466,6 +557,85 @@ namespace sbtc
                             pageNo++;
                         }
                     }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
                 }//END USING
             }//END IF
             #endregion
@@ -529,12 +699,99 @@ namespace sbtc
 
                             string start = check.StartingSerial.ToString();
 
-                            while (start.Length < 10)
+                            while (start.Length < 7)
+                                start = "0" + start;
+
+                            while (start.Length < 11)
                                 start += " ";
 
                             string end = check.EndingSerial.ToString();
 
+                            while (end.Length < 7)
+                                end = "0" + end;
+
                             sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.PersonalPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 7)
+                                start = "0" + start;
+
+                            while (start.Length < 11)
+                                start += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
 
                             lineCount++;
 
@@ -655,6 +912,84 @@ namespace sbtc
                             pageNo++;
                         }
                     }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
                 }//END USING
             }//END IF
             #endregion
@@ -718,12 +1053,99 @@ namespace sbtc
 
                             string start = check.StartingSerial.ToString();
 
+                            while (start.Length < 7)
+                                start = "0" + start;
+
                             while (start.Length < 10)
                                 start += " ";
 
                             string end = check.EndingSerial.ToString();
 
+                            while (end.Length < 7)
+                                end = "0" + end;
+
                             sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #:" + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CheckOnePersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 7)
+                                start = "0" + start;
+
+                            while (start.Length < 10)
+                                start += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
 
                             lineCount++;
 
@@ -844,6 +1266,84 @@ namespace sbtc
                             pageNo++;
                         }
                     }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
                 }//END USING
             }//END IF
             #endregion
@@ -907,10 +1407,99 @@ namespace sbtc
 
                             string tempStart = check.StartingSerial.ToString();
 
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
                             while (tempStart.Length < 11)
                                 tempStart += " ";
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + check.EndingSerial.ToString());
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + tempStart + end);
 
                             lineCount++;
 
@@ -1031,6 +1620,84 @@ namespace sbtc
                             pageNo++;
                         }
                     }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
                 }//END USING
             }//END IF
             #endregion
@@ -1103,6 +1770,84 @@ namespace sbtc
                                 end = "0" + end;
 
                             sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Manager's Check Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
 
                             lineCount++;
 
@@ -1223,6 +1968,85 @@ namespace sbtc
                             pageNo++;
                         }
                     }//END FOR
+
+                    //FRONT COVER
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Manager's Contl Check Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _autoBatch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.ManagersCheckCont.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                                sw.WriteLine("");
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
                 }//END USING
             }//END IF
             #endregion
@@ -4551,7 +5375,11 @@ namespace sbtc
 
                 GC.Collect();
 
-                File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
+                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year))
+                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year);
+
+                if(_batch != "0000")
+                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
             }//END IF
         }
 
