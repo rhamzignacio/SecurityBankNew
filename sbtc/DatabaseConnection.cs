@@ -12,5 +12,7 @@ namespace sbtc
         public static string DumpString = "mysqldump.exe --user=root --password=CorpCaptive --host=192.168.0.254 captive_database ";
 
         public static string ArchiveOutPut = "\\\\192.168.0.254\\captive\\Zips\\sbtc\\" + DateTime.Now.Year.ToString();
+
+        public static string LiveStartPath = "\\\\192.168.0.254\\Auto\\SBTC\\SBTC 2.0";
     }
 }
