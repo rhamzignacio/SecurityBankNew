@@ -393,14 +393,14 @@ namespace sbtc
 
             StreamWriter myStreamWriter = proc.StandardInput;
 
-            string temp = DatabaseConnection.DumpString + dbName + " > " + Application.StartupPath + "\\" +
+            string temp = DatabaseConnection.DumpString + dbName + " > " + DatabaseConnection.LiveStartPath + "\\" +
                 DateTime.Today.ToShortDateString().Replace("/", ".") + "-" + dbName + ".SQL";
 
             myStreamWriter.WriteLine(temp);
 
             dbName = "sbtc_history";
 
-            temp = DatabaseConnection.DumpString + dbName + " > " + Application.StartupPath + "\\" +
+            temp = DatabaseConnection.DumpString + dbName + " > " + DatabaseConnection.LiveStartPath + "\\" +
                 DateTime.Today.ToShortDateString().Replace("/", ".") + "-" + dbName + ".SQL";
 
             myStreamWriter.WriteLine(temp);
