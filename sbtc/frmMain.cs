@@ -25,8 +25,6 @@ namespace sbtc
 
         OrderSorted sortedList = new OrderSorted();
 
-        string autoBatch = "";
-
         public frmMain()
         {
             InitializeComponent();
@@ -191,8 +189,6 @@ namespace sbtc
             else
             {
                 btnCheckFiles.Enabled = true;
-
-                autoBatch = "CPTIVE" + lstFiles.Items[0].ToString().Substring(6, 4);
             }
         }
 
@@ -329,17 +325,17 @@ namespace sbtc
                 //GENERATE PACKING DBF
                 lblStatus.Text = "Generating Packing DBF Files";
                 Application.DoEvents();
-                GenerateService.GeneratePackingDBF(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, autoBatch);
+                GenerateService.GeneratePackingDBF(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text);
 
                 //GENERATE DO BLOCK
                 lblStatus.Text = "Generating DoBlock Files";
                 Application.DoEvents();
-                GenerateService.GenerateDoBlock(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value, txtBoxProcessBy.Text, autoBatch);
+                GenerateService.GenerateDoBlock(sortedList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value, txtBoxProcessBy.Text);
 
                 //GENERATE PACKINGLIST
                 lblStatus.Text = "Generating PackingList Files";
                 Application.DoEvents();
-                GenerateService.GeneratePackingList(sortedList, txtBoxBatchNo.Text, dteDeliveryDate.Value, branchList, autoBatch);
+                GenerateService.GeneratePackingList(sortedList, txtBoxBatchNo.Text, dteDeliveryDate.Value, branchList);
 
                 if (txtBoxBatchNo.Text != "0000")
                 {
@@ -663,7 +659,7 @@ namespace sbtc
 
         private List<OrderModel> CheckFiles(string filename)
         {
-            string Batch = filename.Substring(0, filename.Length - 4);
+            string Batch = filename.Substring(0, filename.Length - 4).ToUpper();
 
             List<OrderModel> returnList = new List<OrderModel>();
 
@@ -711,6 +707,7 @@ namespace sbtc
 
                         order.FileName = filename;
 
+                        order.Batch = Batch;
 
                         if ((order.CheckType == "A" && order.FormType == "05") || (order.CheckType == "B" && order.FormType == "16") ||
                         (order.CheckType == "F" && order.FormType == "25") || (order.CheckType == "F" && order.FormType == "26") ||

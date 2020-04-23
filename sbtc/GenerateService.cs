@@ -281,7 +281,7 @@ namespace sbtc
         }//END OF FUNCTION
 
         public static void GeneratePackingList(OrderSorted _orders, string _batch, DateTime _deliveryDate, 
-            List<BranchesModel> _branches, string _autoBatch)
+            List<BranchesModel> _branches)
         {
             #region Regular Personal
             if (_orders.RegularPersonal.Count > 0)
@@ -325,7 +325,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -345,7 +345,7 @@ namespace sbtc
                             while (tempStart.Length < 7)
                                 tempStart = "0" + tempStart;
 
-                            while (tempStart.Length < 11)
+                            while (tempStart.Length < 10)
                                 tempStart += " ";
 
                             string end = check.EndingSerial.ToString();
@@ -408,7 +408,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -507,7 +507,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
 
                         lineCount = 11;
 
@@ -585,7 +585,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
 
                         lineCount = 11;
 
@@ -682,7 +682,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
 
                         lineCount = 11;
 
@@ -763,7 +763,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
 
                         lineCount = 11;
 
@@ -862,7 +862,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
 
                         lineCount = 11;
 
@@ -940,7 +940,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
 
                         lineCount = 11;
 
@@ -1036,7 +1036,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #:" + _autoBatch);
+                        sw.WriteLine(" * Batch #:" + _orders.CheckOnePersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -1117,7 +1117,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #:" + _autoBatch);
+                        sw.WriteLine(" * Batch #:" + _orders.CheckOnePersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -1216,7 +1216,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
 
                         lineCount = 11;
 
@@ -1294,7 +1294,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
 
                         lineCount = 11;
 
@@ -1390,7 +1390,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -1471,7 +1471,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
 
                         lineCount = 11;
 
@@ -1570,7 +1570,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
 
                         lineCount = 11;
 
@@ -1648,7 +1648,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
 
                         lineCount = 11;
 
@@ -1744,7 +1744,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
 
                         lineCount = 11;
 
@@ -1822,7 +1822,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
 
                         lineCount = 11;
 
@@ -1918,7 +1918,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheckCont[0].Batch);
 
                         lineCount = 11;
 
@@ -1996,7 +1996,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _autoBatch);
+                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheckCont[0].Batch);
 
                         lineCount = 11;
 
@@ -2053,7 +2053,7 @@ namespace sbtc
         }//END FUNCTION
 
         public static void GenerateDoBlock(OrderSorted _orders, string _batch, string _ext, DateTime _deliveryDate,
-            string _preparedBy, string _autoBatch)
+            string _preparedBy)
         {
             if (_batch == "0000")
                 _preparedBy = "TEST ONLY";
@@ -2087,7 +2087,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2167,7 +2167,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.RegularPersonal[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2219,7 +2219,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2299,7 +2299,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.RegularCommercial[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2351,7 +2351,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2431,7 +2431,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.PersonalPreEncoded[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2483,7 +2483,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2563,7 +2563,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" +_autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.CommercialPreEncoded[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2615,7 +2615,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2695,7 +2695,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.CheckOnePersonal[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2747,7 +2747,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2827,7 +2827,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.CheckOneCommerical[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -2879,7 +2879,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -2959,7 +2959,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.CheckPowerPersonal[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -3011,7 +3011,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -3091,7 +3091,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.CheckPowerCommercial[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -3143,7 +3143,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -3221,7 +3221,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.ManagersCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -3271,7 +3271,7 @@ namespace sbtc
                                 {
                                     sw.WriteLine("");
 
-                                    sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                                     sw.WriteLine("");
 
@@ -3349,7 +3349,7 @@ namespace sbtc
                     {
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\t" + _autoBatch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                        sw.WriteLine("\t\t" + _orders.ManagersCheckCont[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                         sw.WriteLine("");
 
@@ -3371,12 +3371,9 @@ namespace sbtc
             }//END IF
         }//END FUNCTION
 
-        public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext, 
-            string _autoBatch)
+        public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext)
         {
             string path, connectionString, query;
-
-            _batch = _autoBatch;
 
             int blockNo, blockCounter;
 
@@ -3420,7 +3417,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," + 
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," + 
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" + 
                         check.AccountNo + "','" + check.CheckType + "','" + 
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3455,7 +3452,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3518,7 +3515,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3553,7 +3550,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3616,7 +3613,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3651,7 +3648,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3714,7 +3711,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3749,7 +3746,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3812,7 +3809,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -3875,7 +3872,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + _batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + check.CheckType + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
