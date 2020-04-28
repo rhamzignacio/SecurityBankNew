@@ -12,23 +12,23 @@ namespace sbtc
 {
     public static class GenerateService
     {
-        static string regPath = Application.StartupPath + "\\Regular";
+        static string regPath = Application.StartupPath + "\\Output\\Regular";
 
-        static string regPrePath = Application.StartupPath + "\\Regular\\PreEncoded";
+        static string regPrePath = Application.StartupPath + "\\Output\\Regular\\PreEncoded";
 
-        static string chargeSlipPath = Application.StartupPath + "\\Charge_Slip";
+        static string chargeSlipPath = Application.StartupPath + "\\Output\\Charge_Slip";
 
-        static string checkOnePath = Application.StartupPath + "\\CheckOne";
+        static string checkOnePath = Application.StartupPath + "\\Output\\CheckOne";
 
-        static string checkPowerPath = Application.StartupPath + "\\CheckPower";
+        static string checkPowerPath = Application.StartupPath + "\\Output\\CheckPower";
 
-        static string customPath = Application.StartupPath + "\\Customized";
+        static string customPath = Application.StartupPath + "\\Output\\Customized";
 
-        static string gcPath = Application.StartupPath + "\\GiftCheck";
+        static string gcPath = Application.StartupPath + "\\Output\\GiftCheck";
 
-        static string mcPath = Application.StartupPath + "\\MC";
+        static string mcPath = Application.StartupPath + "\\Output\\MC";
 
-        static string mcContPath = Application.StartupPath + "\\MC\\Continues";
+        static string mcContPath = Application.StartupPath + "\\Output\\MC\\Continues";
 
         private static void SortHeader(StreamWriter sw, string _folderName, int _page)
         {

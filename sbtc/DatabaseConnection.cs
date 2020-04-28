@@ -13,6 +13,6 @@ namespace sbtc
 
         public static string ArchiveOutPut = "\\\\192.168.0.254\\captive\\Zips\\sbtc\\" + DateTime.Now.Year.ToString();
 
-        public static string LiveStartPath = "\\\\192.168.0.254\\Auto\\SBTC\\SBTC_2.0";
+        public static string LiveStartPath = "\\\\192.168.0.254\\Auto\\SBTC\\SBTC_2.0\\Output";
     }
 }
