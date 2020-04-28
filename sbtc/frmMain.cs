@@ -25,6 +25,8 @@ namespace sbtc
 
         OrderSorted sortedList = new OrderSorted();
 
+        string AutoBatch = "";
+
         public frmMain()
         {
             InitializeComponent();
@@ -180,6 +182,8 @@ namespace sbtc
 
                 lstFiles.Items.Add(filename);
             }
+
+            AutoBatch = files[0].Substring(6, 4);
 
 
             if (lstFiles.Items.Count == 0)
@@ -357,7 +361,7 @@ namespace sbtc
                     //WinZIP Process
                     lblStatus.Text = "Archiving Output Files . . .";
                     Application.DoEvents();
-                    BackupService.ProcessArchiving(txtBoxBatchNo.Text, txtBoxProcessBy.Text, sortedList);
+                    BackupService.ProcessArchiving(AutoBatch, txtBoxProcessBy.Text, sortedList);
 
                     DeleteHeadFiles();//DELETE FILES IN HEAD FOLDER
                 }
