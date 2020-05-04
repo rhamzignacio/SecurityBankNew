@@ -5515,13 +5515,6 @@ namespace sbtc
         #region private class
         public static void CheckPaths()
         {
-            if (Directory.Exists(regPath))
-            {
-                DeleteFilesInDirectory(regPath);
-
-                Directory.Delete(regPath);
-            }
-
             if (Directory.Exists(regPrePath))
             {
                 DeleteFilesInDirectory(regPrePath);
@@ -5529,6 +5522,12 @@ namespace sbtc
                 Directory.Delete(regPrePath);
             }
 
+            if (Directory.Exists(regPath))
+            {
+                DeleteFilesInDirectory(regPath);
+
+                Directory.Delete(regPath);
+            }
 
             if (Directory.Exists(chargeSlipPath))
             {
