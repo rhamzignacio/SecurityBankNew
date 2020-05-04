@@ -5564,18 +5564,19 @@ namespace sbtc
                 Directory.Delete(gcPath);
             }
 
-            if (Directory.Exists(mcPath))
-            {
-                DeleteFilesInDirectory(mcPath);
-
-                Directory.Delete(mcPath);
-            }
 
             if (Directory.Exists(mcContPath))
             {
                 DeleteFilesInDirectory(mcContPath);
 
                 Directory.Delete(mcContPath);
+            }
+
+            if (Directory.Exists(mcPath))
+            {
+                DeleteFilesInDirectory(mcPath);
+
+                Directory.Delete(mcPath);
             }
         }//END OF FUNCTION
         private static void DeleteFilesInDirectory(string _directory)
