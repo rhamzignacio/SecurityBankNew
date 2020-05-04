@@ -358,7 +358,12 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                            
                         });
 
                         sw.WriteLine("");
@@ -381,6 +386,8 @@ namespace sbtc
 
                     //FOR FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -441,7 +448,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -537,7 +548,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -560,6 +575,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -615,7 +632,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -715,7 +736,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -738,6 +763,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -796,7 +823,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -829,7 +860,7 @@ namespace sbtc
 
                 StreamWriter sw;
 
-                string fileName = regPath + "\\PackingB.txt";
+                string fileName = regPrePath + "\\PackingB.txt";
 
                 sw = File.CreateText(fileName);
                 sw.Close();
@@ -892,7 +923,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -915,6 +950,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -970,7 +1007,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1069,7 +1110,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1092,6 +1137,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -1150,7 +1197,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1246,7 +1297,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1269,6 +1324,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -1324,7 +1381,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1423,7 +1484,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1446,6 +1511,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -1504,7 +1571,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1600,7 +1671,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1623,6 +1698,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -1678,7 +1755,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1774,7 +1855,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1797,6 +1882,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -1852,7 +1939,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1948,7 +2039,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -1971,6 +2066,8 @@ namespace sbtc
 
                     //FRONT COVER
                     sw.WriteLine("");
+
+                    lineCount = 0;
 
                     for (int x = 0; x < brstnList.Count; x++)
                     {
@@ -2026,7 +2123,11 @@ namespace sbtc
                             lineCount++;
 
                             if (lineCount >= 60)
+                            {
                                 sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
                         });
 
                         sw.WriteLine("");
@@ -3901,6 +4002,10 @@ namespace sbtc
             #region Regular Personal
             if (_orders.RegularPersonal.Count > 0)
             {
+
+                if (!Directory.Exists(regPath))
+                    Directory.CreateDirectory(regPath);
+
                 StreamWriter sw;
 
                 string fileName = regPath + "\\" + _batch.Substring(0, 4) + "_P12" + _ext + ".txt";
@@ -3973,6 +4078,9 @@ namespace sbtc
             #region Regular Commerical
             if (_orders.RegularCommercial.Count > 0)
             {
+                if (!Directory.Exists(regPath))
+                    Directory.CreateDirectory(regPath);
+
                 StreamWriter sw;
 
                 string fileName = regPath + "\\" + _batch.Substring(0, 4) + "_C12" + _ext + ".txt";
@@ -4043,6 +4151,9 @@ namespace sbtc
             #region Personal PreEncoded
             if (_orders.PersonalPreEncoded.Count > 0)
             {
+                if (!Directory.Exists(regPrePath))
+                    Directory.CreateDirectory(regPrePath);
+
                 StreamWriter sw;
 
                 string fileName = regPrePath + "\\" + _batch.Substring(0, 4) + "P" + _ext + ".txt";
@@ -4115,6 +4226,9 @@ namespace sbtc
             #region Commercial PreEncoded
             if (_orders.CommercialPreEncoded.Count > 0)
             {
+                if (!Directory.Exists(regPrePath))
+                    Directory.CreateDirectory(regPrePath);
+
                 StreamWriter sw;
 
                 string fileName = regPrePath + "\\" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
@@ -4186,6 +4300,9 @@ namespace sbtc
             #region CheckOne Personal
             if (_orders.CheckOnePersonal.Count > 0)
             {
+                if (!Directory.Exists(checkOnePath))
+                    Directory.CreateDirectory(checkOnePath);
+
                 StreamWriter sw;
 
                 string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + "P" + _ext + ".txt";
@@ -4258,6 +4375,9 @@ namespace sbtc
             #region CheckOne Commercial
             if (_orders.CheckOneCommerical.Count > 0)
             {
+                if (!Directory.Exists(checkOnePath))
+                    Directory.CreateDirectory(checkOnePath);
+
                 StreamWriter sw;
 
                 string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
@@ -4330,6 +4450,9 @@ namespace sbtc
             #region CheckPower Personal
             if (_orders.CheckPowerPersonal.Count > 0)
             {
+                if (!Directory.Exists(checkPowerPath))
+                    Directory.CreateDirectory(checkPowerPath);
+
                 StreamWriter sw;
 
                 string fileName = checkPowerPath + "\\CKP" + _batch.Substring(0, 4) + "P" + _ext + ".txt";
@@ -4402,6 +4525,9 @@ namespace sbtc
             #region CheckPower Commercial
             if (_orders.CheckPowerCommercial.Count > 0)
             {
+                if (!Directory.Exists(checkOnePath))
+                    Directory.CreateDirectory(checkOnePath);
+
                 StreamWriter sw;
 
                 string fileName = checkOnePath + "\\CKP" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
@@ -4474,6 +4600,9 @@ namespace sbtc
             #region Manager's Check
             if (_orders.ManagersCheck.Count > 0)
             {
+                if (!Directory.Exists(mcPath))
+                    Directory.CreateDirectory(mcPath);
+
                 StreamWriter sw;
 
                 string fileName = mcPath + "\\MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt";
@@ -4546,6 +4675,9 @@ namespace sbtc
             #region Manager's Check Cont
             if (_orders.ManagersCheckCont.Count > 0)
             {
+                if (!Directory.Exists(mcContPath))
+                    Directory.CreateDirectory(mcContPath);
+
                 StreamWriter sw;
 
                 string fileName = mcContPath + "\\MCC" + _batch.Substring(0, 4) + "B" + _ext + ".txt";
@@ -5383,48 +5515,69 @@ namespace sbtc
         #region private class
         public static void CheckPaths()
         {
-            if (!Directory.Exists(regPath))
-                Directory.CreateDirectory(regPath);
+            if (Directory.Exists(regPath))
+            {
+                DeleteFilesInDirectory(regPath);
 
-            DeleteFilesInDirectory(regPath);
+                Directory.Delete(regPath);
+            }
 
-            if (!Directory.Exists(regPrePath))
-                Directory.CreateDirectory(regPrePath);
+            if (Directory.Exists(regPrePath))
+            {
+                DeleteFilesInDirectory(regPrePath);
 
-            DeleteFilesInDirectory(regPrePath);
+                Directory.Delete(regPrePath);
+            }
 
-            if (!Directory.Exists(chargeSlipPath))
-                Directory.CreateDirectory(chargeSlipPath);
 
-            DeleteFilesInDirectory(chargeSlipPath);
+            if (Directory.Exists(chargeSlipPath))
+            {
+                DeleteFilesInDirectory(chargeSlipPath);
 
-            if (!Directory.Exists(checkOnePath))
-                Directory.CreateDirectory(checkOnePath);
+                Directory.Delete(chargeSlipPath);
+            }
 
-            DeleteFilesInDirectory(checkOnePath);
+            if (Directory.Exists(checkOnePath))
+            {
+                DeleteFilesInDirectory(checkOnePath);
 
-            if (!Directory.Exists(checkPowerPath))
-                Directory.CreateDirectory(checkPowerPath);
+                Directory.Delete(checkOnePath);
+            }
 
-            if (!Directory.Exists(customPath))
-                Directory.CreateDirectory(customPath);
+            if (Directory.Exists(checkPowerPath))
+            {
+                DeleteFilesInDirectory(checkPowerPath);
 
-            DeleteFilesInDirectory(customPath);
+                Directory.Delete(checkOnePath);
+            }
 
-            if (!Directory.Exists(gcPath))
-                Directory.CreateDirectory(gcPath);
+            if (Directory.Exists(customPath))
+            {
+                DeleteFilesInDirectory(customPath);
 
-            DeleteFilesInDirectory(gcPath);
+                Directory.Delete(customPath);
+            }
 
-            if (!Directory.Exists(mcPath))
-                Directory.CreateDirectory(mcPath);
+            if (Directory.Exists(gcPath))
+            {
+                DeleteFilesInDirectory(gcPath);
 
-            DeleteFilesInDirectory(mcPath);
+                Directory.Delete(gcPath);
+            }
 
-            if (!Directory.Exists(mcContPath))
-                Directory.CreateDirectory(mcContPath);
+            if (Directory.Exists(mcPath))
+            {
+                DeleteFilesInDirectory(mcPath);
 
-            DeleteFilesInDirectory(mcContPath);
+                Directory.Delete(mcPath);
+            }
+
+            if (Directory.Exists(mcContPath))
+            {
+                DeleteFilesInDirectory(mcContPath);
+
+                Directory.Delete(mcContPath);
+            }
         }//END OF FUNCTION
         private static void DeleteFilesInDirectory(string _directory)
         {
