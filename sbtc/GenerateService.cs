@@ -5547,7 +5547,7 @@ namespace sbtc
             {
                 DeleteFilesInDirectory(checkPowerPath);
 
-                Directory.Delete(checkOnePath);
+                Directory.Delete(checkPowerPath);
             }
 
             if (Directory.Exists(customPath))
