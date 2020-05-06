@@ -353,11 +353,6 @@ namespace sbtc
                     Application.DoEvents();
                     BackupService.SaveNewSeries(branchList);
 
-                    //SQL DUMP
-                    lblStatus.Text = "Extracting SQL Dump . . .";
-                    Application.DoEvents();
-                    BackupService.ProcessSQLDump();
-
                     //WinZIP Process
                     lblStatus.Text = "Archiving Output Files . . .";
                     Application.DoEvents();

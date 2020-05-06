@@ -389,6 +389,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -425,7 +427,7 @@ namespace sbtc
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
-                            string tempName = check.Name;
+                            string tempName = "";
 
                             while (tempName.Length < 35)
                                 tempName += " ";
@@ -578,6 +580,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -587,6 +591,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - Commercial Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -766,6 +772,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -775,6 +783,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -953,6 +963,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -962,6 +974,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - Commercial Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1140,6 +1154,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -1149,6 +1165,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1327,6 +1345,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -1336,6 +1356,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1514,6 +1536,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -1523,6 +1547,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1701,6 +1727,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -1710,6 +1738,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1885,6 +1915,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -1894,6 +1926,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - Manager's Check Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)"); 
 
                         sw.WriteLine("");
 
@@ -2069,6 +2103,8 @@ namespace sbtc
 
                     lineCount = 0;
 
+                    pageNo++;
+
                     for (int x = 0; x < brstnList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
@@ -2078,6 +2114,8 @@ namespace sbtc
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
                         sw.WriteLine("                               SBTC - Manager's Contl Check Summary");
+
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -5578,6 +5616,9 @@ namespace sbtc
 
                 Directory.Delete(mcPath);
             }
+
+            //DELETE SQL DUMPS
+            DeleteFilesInDirectory(DatabaseConnection.LiveStartPath);
         }//END OF FUNCTION
         private static void DeleteFilesInDirectory(string _directory)
         {

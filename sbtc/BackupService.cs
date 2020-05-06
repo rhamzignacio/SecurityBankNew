@@ -446,6 +446,8 @@ namespace sbtc
 
         public static void ProcessArchiving(string _batchNumber, string _processBy, OrderSorted _orders)
         {
+            ProcessSQLDump();
+
             string fileName = "";
 
             if (_orders.RegularPersonal.Count > 0)
