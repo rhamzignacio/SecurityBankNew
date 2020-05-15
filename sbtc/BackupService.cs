@@ -487,7 +487,7 @@ namespace sbtc
             proc.StartInfo.FileName = "\"" + GetWinZipLoc().Replace("\\", "\\\\") + "\"";
                
             proc.StartInfo.Arguments = "-u -r -p " + "\"" + DatabaseConnection.ArchiveOutPut + "\\AFT" + _batchNumber + "_" + _processBy + fileName + ".zip\"" + " " +
-                DatabaseConnection.LiveStartPath  + "\\*.*";
+                "\\\\192.168.0.254\\captive\\Auto\\SBTC\\SBTC_2.0\\Output\\*.*";
 
             proc.Start();
 

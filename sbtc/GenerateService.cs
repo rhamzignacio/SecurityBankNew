@@ -3558,7 +3558,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," + 
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" + 
-                        check.AccountNo + "','" + check.CheckType + "','" + 
+                        check.AccountNo + "','" + "A" + "','" + 
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3593,7 +3593,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3656,7 +3656,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3691,7 +3691,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3754,7 +3754,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3789,7 +3789,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3852,7 +3852,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3887,7 +3887,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -3950,7 +3950,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -4013,7 +4013,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + check.CheckType + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -4544,14 +4544,14 @@ namespace sbtc
                         while (start.Length < 7)
                             start = "0" + start;
 
-                        sw.WriteLine(c.StartingSerial.ToString().Trim(' ')); // 31 - StartingSeries
+                        sw.WriteLine(start.Trim(' ')); // 31 - StartingSeries
 
                         string end = c.EndingSerial.ToString();
 
                         while (end.Length < 7)
                             end = "0" + end;
 
-                        sw.WriteLine(c.EndingSerial.ToString().Trim(' ')); // 32 - EndingSeries
+                        sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
                     });//END FOREACH
                 }//END USING
 
