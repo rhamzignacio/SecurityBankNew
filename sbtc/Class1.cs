@@ -445,10 +445,9 @@ repeatme:
         public static void SendHashTotal(string DeliveryDate)
         {
 
-            string recipient_email = "gsdpurchasing7@securitybank.com.ph,gsdpurchasing5@securitybank.com.ph,gsdpurchasing2@securitybank.com.ph,ctimusan@securitybank.com.ph,rmenguito@securitybank.com.ph,virtualsupport@securitybank.com.ph,GSDPurchasing4@securitybank.com.ph,orders@captiveprinting.com.ph,cpc_services@captiveprinting.com.ph,eguzman@securitybank.com.ph,cbgcoc@securitybank.com.ph";
+            //string recipient_email = "gsdpurchasing7@securitybank.com.ph,gsdpurchasing5@securitybank.com.ph,gsdpurchasing2@securitybank.com.ph,ctimusan@securitybank.com.ph,rmenguito@securitybank.com.ph,virtualsupport@securitybank.com.ph,GSDPurchasing4@securitybank.com.ph,orders@captiveprinting.com.ph,cpc_services@captiveprinting.com.ph,eguzman@securitybank.com.ph,cbgcoc@securitybank.com.ph";
 
-            
-
+            string recipient_email = "orders@captiveprinting.com.ph,cpc_services@captiveprinting.com.ph";
 
             //get the max
             string dbase = "";
