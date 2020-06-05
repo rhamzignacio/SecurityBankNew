@@ -90,7 +90,7 @@ namespace sbtc
             fileStream.Close();
 
             LoopCount = 0;
-            fileStream = new FileStream("C:\\Auto\\WinZip.txt", FileMode.Open, FileAccess.Read);
+            fileStream = new FileStream("\\\\192.168.0.254\\captive\\Auto\\WinZip.txt", FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
                 string line;

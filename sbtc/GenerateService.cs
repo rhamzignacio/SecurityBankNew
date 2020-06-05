@@ -3948,9 +3948,9 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + " (MC)'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 
@@ -4013,7 +4013,7 @@ namespace sbtc
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
                         "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
                         start + ",'" + start + "'," + end + ",'" + end + "','', '')";
 

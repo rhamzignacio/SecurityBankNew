@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -447,6 +448,8 @@ namespace sbtc
         public static void ProcessArchiving(string _batchNumber, string _processBy, OrderSorted _orders)
         {
             ProcessSQLDump();
+
+            Thread.Sleep(30000);
 
             string fileName = "";
 
