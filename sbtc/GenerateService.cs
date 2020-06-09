@@ -5548,6 +5548,1552 @@ namespace sbtc
                 if(_batch != "0000")
                     File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
             }//END IF
+
+            if (_orders.CheckOnePersonal.Count > 0)
+            {
+                string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + _ext + "P.mdb";
+
+                FileInfo fileInfo = new FileInfo(fileName);
+
+                if (fileInfo.Exists)
+                    fileInfo.Delete();
+
+                string mdbConn = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
+
+                Catalog tClass = new Catalog();
+
+                tClass.Create(mdbConn);
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(tClass);
+
+                GC.Collect();
+
+                tClass = new Catalog();
+
+                tClass.let_ActiveConnection(mdbConn);
+
+                for (int x = 1; x <= 4; x++)
+                {
+
+                    Table tTable = new Table();
+
+                    string tableTemp = "";
+
+                    if (x == 1)
+                        tableTemp = "Out";
+                    else
+                        tableTemp = "Outs";
+
+                    tTable.Name = "InputFile_" + x.ToString() + tableTemp;
+
+                    //COLUMN NAMES
+                    tTable.Columns.Append("BRSTN", DataTypeEnum.adVarWChar, 10);
+
+                    tTable.Columns.Append("AccountNumber", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("RT1to5", DataTypeEnum.adVarWChar, 5);
+
+                    tTable.Columns.Append("RT6to9", DataTypeEnum.adVarWChar, 5);
+
+                    tTable.Columns.Append("AccountNumberWithHypen", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("Serial", DataTypeEnum.adVarWChar, 10);
+
+                    tTable.Columns.Append("Name1", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Name2", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Name3", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Address1", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address2", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address3", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address4", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address5", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address6", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("BankName", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("StartingSerial", DataTypeEnum.adVarWChar, 20);
+
+                    tTable.Columns.Append("EndingSerial", DataTypeEnum.adVarWChar, 20);
+
+                    tTable.Columns.Append("PcsPerBook", DataTypeEnum.adVarWChar, 3);
+
+                    tTable.Columns.Append("FileName", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("PrimaryKey", DataTypeEnum.adVarWChar);
+
+                    tTable.Columns["PrimaryKey"].Attributes = ColumnAttributesEnum.adColNullable;
+
+                    tTable.Columns.Append("PageNumber", DataTypeEnum.adVarWChar);
+
+                    tTable.Columns.Append("DataNumber", DataTypeEnum.adVarWChar, 20);
+
+                    tClass.Tables.Append((object)tTable);
+                }//END FOR
+
+                GC.Collect(); //IF NOT INCLUDED FILE REMAIN IN OPENED STATUS
+
+                OleDbConnection connection = new OleDbConnection(mdbConn);
+
+                OleDbCommand cmd = new OleDbCommand();
+
+                cmd.Connection = connection;
+
+                cmd.Connection.Open();
+
+                int primaryKey = 1;
+
+                string txtName = "13D" + _batch.Substring(0, 4) + _ext + "P.txt";
+
+                int dataNumber1 = 0, dataNumber2 = 0, dataNumber3 = 0, dataNumber4 = 0;//SERVE AS DATANUMBER
+
+                #region 1Out Format
+                //1OUTS FORMAT
+                foreach (var check in _orders.CheckOnePersonal)
+                {
+                    string RTFirst = check.BRSTN.Substring(0, 5);
+
+                    string RTLast = check.BRSTN.Substring(check.BRSTN.Length - 4, 4);
+
+                    string startSeries = check.StartingSerial.ToString();
+
+                    string endSeries = check.EndingSerial.ToString();
+
+                    string acctNoHypen = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                    while (startSeries.Length < 10)
+                        startSeries = "0" + startSeries;
+
+                    while (endSeries.Length < 10)
+                        endSeries = "0" + endSeries;
+
+                    Int64 start = check.StartingSerial;
+
+                    while (start <= check.EndingSerial)
+                    {
+                        string temp = start.ToString();
+
+                        while (temp.Length < 10)
+                            temp = "0" + temp;
+
+                        cmd.CommandText = "INSERT INTO InputFile_1Out (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + check.BRSTN + "','" + check.AccountNo + "','" + RTFirst + "','" + RTLast + "','" + acctNoHypen + "','" +
+                            temp + "','" + check.Name + "','" + check.Name2 + "','','" + check.Address1.Replace("'", "''") + "','" + check.Address2.Replace("'", "''") + "','" + check.Address3.Replace("'", "''") +
+                            "','" + check.Address4.Replace("'", "''") + "','" + check.Address5.Replace("'", "''") + "','" + check.Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries + "','" + endSeries +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + primaryKey + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start++;
+
+                        primaryKey++;
+                    }//END WHILE
+                }//END FOR
+                #endregion
+
+                #region 2Outs Format
+                //2Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOnePersonal; //SERVE AS DATANUMBER
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOnePersonal.Count; x1++)
+                {
+                    Int64 start1 = _orders.ManagersCheck[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.ManagersCheck[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.ManagersCheck[x1].BRSTN.Substring(_orders.ManagersCheck[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.ManagersCheck[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.ManagersCheck[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.ManagersCheck[x1].AccountNo.Substring(0, 3) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(3, 6) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(_orders.CheckOnePersonal[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOnePersonal[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOnePersonal[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOnePersonal[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x2].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOnePersonal[x2].StartingSerial;
+
+                        x1++;
+                    }
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOnePersonal; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" 
+                            + _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                    }//END WHILE
+                }//END FOR
+                #endregion
+
+                #region 3Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOnePersonal; //SERVE AS DATANUMBER
+                dataNumber3 = QuantityPerBooklet.CheckOnePersonal * 2;
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOnePersonal.Count; x1++)
+                {
+                    Int64 start1 = _orders.CheckOnePersonal[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(_orders.CheckOnePersonal[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.CheckOnePersonal[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.CheckOnePersonal[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.CheckOnePersonal[x1].AccountNo.Substring(0, 3) + "-" + 
+                        _orders.CheckOnePersonal[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    bool Out2 = false, Out3 = false;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(_orders.CheckOnePersonal[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOnePersonal[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOnePersonal[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOnePersonal[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x2].AccountNo.Substring(3, 6) + "-" 
+                            + _orders.CheckOnePersonal[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOnePersonal[x2].StartingSerial;
+
+                        x1++;
+
+                        Out2 = true;
+                    }
+                    else
+                        Out2 = false;
+
+                    int x3 = 0;
+
+                    Int64 start3 = 0;
+
+                    string RTFirst3 = "", RTLast3 = "", startSeries3 = "", endSeries3 = "", acctNoHypen3 = "";
+
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x3 = x1 + 1;
+
+                        RTFirst3 = _orders.CheckOnePersonal[x3].BRSTN.Substring(0, 5);
+
+                        RTLast3 = _orders.CheckOnePersonal[x3].BRSTN.Substring(_orders.CheckOnePersonal[x3].BRSTN.Length - 4, 4);
+
+                        startSeries3 = _orders.CheckOnePersonal[x3].StartingSerial.ToString();
+
+                        endSeries3 = _orders.CheckOnePersonal[x3].EndingSerial.ToString();
+
+                        acctNoHypen3 = _orders.CheckOnePersonal[x3].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x3].AccountNo.Substring(3, 6) 
+                            + "-" + _orders.CheckOnePersonal[x3].AccountNo.Substring(9, 3);
+
+                        while (startSeries3.Length < 10)
+                            startSeries3 = "0" + startSeries3;
+
+                        while (endSeries3.Length < 10)
+                            endSeries3 = "0" + endSeries3;
+
+                        start3 = _orders.CheckOnePersonal[x3].StartingSerial;
+
+                        x1++;
+
+                        Out3 = true;
+                    }
+                    else
+                        Out3 = false;
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOnePersonal; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" +
+                            _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (Out2)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOnePersonal[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out3)
+                        {
+                            dataNumber3++;
+
+                            string temp3 = start3.ToString();
+
+                            while (temp3.Length < 10)
+                                temp3 = "0" + temp3;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            temp3 + "','" + _orders.CheckOnePersonal[x3].Name + "','" + _orders.CheckOnePersonal[x3].Name2 + "','','" + _orders.CheckOnePersonal[x3].Address1.Replace("'", "''") + 
+                            "','" + _orders.CheckOnePersonal[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address5.Replace("'", "''") + "','" + 
+                            _orders.CheckOnePersonal[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start3++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+
+                    }//END WHILE
+                }//END FOR
+
+                #endregion
+
+                #region 4Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOnePersonal; //SERVE AS DATANUMBER
+                dataNumber3 = QuantityPerBooklet.CheckOnePersonal * 2;
+                dataNumber4 = QuantityPerBooklet.CheckOnePersonal * 3;
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOnePersonal.Count; x1++)
+                {
+                    Int64 start1 = _orders.CheckOnePersonal[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(_orders.CheckOnePersonal[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.CheckOnePersonal[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.CheckOnePersonal[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.CheckOnePersonal[x1].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    bool Out2 = false, Out3 = false, Out4 = false;
+
+                    //For 2ndLine
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOnePersonal[x2].BRSTN.Substring(_orders.CheckOnePersonal[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOnePersonal[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOnePersonal[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOnePersonal[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x2].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOnePersonal[x2].StartingSerial;
+
+                        x1++;
+
+                        Out2 = true;
+                    }
+                    else
+                        Out2 = false;
+
+                    int x3 = 0;
+
+                    Int64 start3 = 0;
+
+                    string RTFirst3 = "", RTLast3 = "", startSeries3 = "", endSeries3 = "", acctNoHypen3 = "";
+
+                    //FOR 3rdLine
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x3 = x1 + 1;
+
+                        RTFirst3 = _orders.CheckOnePersonal[x3].BRSTN.Substring(0, 5);
+
+                        RTLast3 = _orders.CheckOnePersonal[x3].BRSTN.Substring(_orders.CheckOnePersonal[x3].BRSTN.Length - 4, 4);
+
+                        startSeries3 = _orders.CheckOnePersonal[x3].StartingSerial.ToString();
+
+                        endSeries3 = _orders.CheckOnePersonal[x3].EndingSerial.ToString();
+
+                        acctNoHypen3 = _orders.CheckOnePersonal[x3].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x3].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x3].AccountNo.Substring(9, 3);
+
+                        while (startSeries3.Length < 10)
+                            startSeries3 = "0" + startSeries3;
+
+                        while (endSeries3.Length < 10)
+                            endSeries3 = "0" + endSeries3;
+
+                        start3 = _orders.CheckOnePersonal[x3].StartingSerial;
+
+                        x1++;
+
+                        Out3 = true;
+                    }
+                    else
+                        Out3 = false;
+
+                    int x4 = 0;
+
+                    Int64 start4 = 0;
+
+                    string RTFirst4 = "", RTLast4 = "", startSeries4 = "", endSeries4 = "", acctNoHypen4 = "";
+
+                    //For 4thLine
+                    if (x1 + 1 < _orders.CheckOnePersonal.Count)
+                    {
+                        x4 = x1 + 1;
+
+                        RTFirst4 = _orders.CheckOnePersonal[x4].BRSTN.Substring(0, 5);
+
+                        RTLast4 = _orders.CheckOnePersonal[x4].BRSTN.Substring(_orders.CheckOnePersonal[x4].BRSTN.Length - 4, 4);
+
+                        startSeries4 = _orders.CheckOnePersonal[x4].StartingSerial.ToString();
+
+                        endSeries4 = _orders.CheckOnePersonal[x4].EndingSerial.ToString();
+
+                        acctNoHypen4 = _orders.CheckOnePersonal[x4].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x4].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x4].AccountNo.Substring(9, 3);
+
+                        while (startSeries4.Length < 10)
+                            startSeries4 = "0" + startSeries4;
+
+                        while (endSeries4.Length < 10)
+                            endSeries4 = "0" + endSeries4;
+
+                        start4 = _orders.CheckOnePersonal[x4].StartingSerial;
+
+                        x1++;
+
+                        Out4 = true;
+                    }
+                    else
+                        Out4 = false;
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOnePersonal; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (Out2)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out3)
+                        {
+                            dataNumber3++;
+
+                            string temp3 = start3.ToString();
+
+                            while (temp3.Length < 10)
+                                temp3 = "0" + temp3;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            temp3 + "','" + _orders.CheckOnePersonal[x3].Name + "','" + _orders.CheckOnePersonal[x3].Name2 + "','','" + _orders.CheckOnePersonal[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start3++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out4)
+                        {
+                            dataNumber4++;
+
+                            string temp4 = start4.ToString();
+
+                            while (temp4.Length < 10)
+                                temp4 = "0" + temp4;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOnePersonal[x4].BRSTN + "','" + _orders.CheckOnePersonal[x4].AccountNo + "','" + RTFirst4 + "','" + RTFirst4 + "','" + acctNoHypen4 + "','" +
+                            temp4 + "','" + _orders.CheckOnePersonal[x4].Name + "','" + _orders.CheckOnePersonal[x4].Name2 + "','','" + _orders.CheckOnePersonal[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOnePersonal[x4].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start4++;
+
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber4++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber4 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                    }//END WHILE
+                }//END FOR
+
+                #endregion
+
+                connection.Close();
+
+                connection.Dispose();
+
+                GC.Collect();
+
+                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year))
+                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year);
+
+                if (_batch != "0000")
+                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
+            }//END IF
+
+            if (_orders.CheckOneCommerical.Count > 0)
+            {
+                string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + _ext + "P.mdb";
+
+                FileInfo fileInfo = new FileInfo(fileName);
+
+                if (fileInfo.Exists)
+                    fileInfo.Delete();
+
+                string mdbConn = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
+
+                Catalog tClass = new Catalog();
+
+                tClass.Create(mdbConn);
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(tClass);
+
+                GC.Collect();
+
+                tClass = new Catalog();
+
+                tClass.let_ActiveConnection(mdbConn);
+
+                for (int x = 1; x <= 4; x++)
+                {
+
+                    Table tTable = new Table();
+
+                    string tableTemp = "";
+
+                    if (x == 1)
+                        tableTemp = "Out";
+                    else
+                        tableTemp = "Outs";
+
+                    tTable.Name = "InputFile_" + x.ToString() + tableTemp;
+
+                    //COLUMN NAMES
+                    tTable.Columns.Append("BRSTN", DataTypeEnum.adVarWChar, 10);
+
+                    tTable.Columns.Append("AccountNumber", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("RT1to5", DataTypeEnum.adVarWChar, 5);
+
+                    tTable.Columns.Append("RT6to9", DataTypeEnum.adVarWChar, 5);
+
+                    tTable.Columns.Append("AccountNumberWithHypen", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("Serial", DataTypeEnum.adVarWChar, 10);
+
+                    tTable.Columns.Append("Name1", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Name2", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Name3", DataTypeEnum.adVarWChar, 50);
+
+                    tTable.Columns.Append("Address1", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address2", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address3", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address4", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address5", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("Address6", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("BankName", DataTypeEnum.adVarWChar, 100);
+
+                    tTable.Columns.Append("StartingSerial", DataTypeEnum.adVarWChar, 20);
+
+                    tTable.Columns.Append("EndingSerial", DataTypeEnum.adVarWChar, 20);
+
+                    tTable.Columns.Append("PcsPerBook", DataTypeEnum.adVarWChar, 3);
+
+                    tTable.Columns.Append("FileName", DataTypeEnum.adVarWChar, 30);
+
+                    tTable.Columns.Append("PrimaryKey", DataTypeEnum.adVarWChar);
+
+                    tTable.Columns["PrimaryKey"].Attributes = ColumnAttributesEnum.adColNullable;
+
+                    tTable.Columns.Append("PageNumber", DataTypeEnum.adVarWChar);
+
+                    tTable.Columns.Append("DataNumber", DataTypeEnum.adVarWChar, 20);
+
+                    tClass.Tables.Append((object)tTable);
+                }//END FOR
+
+                GC.Collect(); //IF NOT INCLUDED FILE REMAIN IN OPENED STATUS
+
+                OleDbConnection connection = new OleDbConnection(mdbConn);
+
+                OleDbCommand cmd = new OleDbCommand();
+
+                cmd.Connection = connection;
+
+                cmd.Connection.Open();
+
+                int primaryKey = 1;
+
+                string txtName = "13D" + _batch.Substring(0, 4) + _ext + "P.txt";
+
+                int dataNumber1 = 0, dataNumber2 = 0, dataNumber3 = 0, dataNumber4 = 0;//SERVE AS DATANUMBER
+
+                #region 1Out Format
+                //1OUTS FORMAT
+                foreach (var check in _orders.CheckOneCommerical)
+                {
+                    string RTFirst = check.BRSTN.Substring(0, 5);
+
+                    string RTLast = check.BRSTN.Substring(check.BRSTN.Length - 4, 4);
+
+                    string startSeries = check.StartingSerial.ToString();
+
+                    string endSeries = check.EndingSerial.ToString();
+
+                    string acctNoHypen = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                    while (startSeries.Length < 10)
+                        startSeries = "0" + startSeries;
+
+                    while (endSeries.Length < 10)
+                        endSeries = "0" + endSeries;
+
+                    Int64 start = check.StartingSerial;
+
+                    while (start <= check.EndingSerial)
+                    {
+                        string temp = start.ToString();
+
+                        while (temp.Length < 10)
+                            temp = "0" + temp;
+
+                        cmd.CommandText = "INSERT INTO InputFile_1Out (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + check.BRSTN + "','" + check.AccountNo + "','" + RTFirst + "','" + RTLast + "','" + acctNoHypen + "','" +
+                            temp + "','" + check.Name + "','" + check.Name2 + "','','" + check.Address1.Replace("'", "''") + "','" + check.Address2.Replace("'", "''") + "','" + check.Address3.Replace("'", "''") +
+                            "','" + check.Address4.Replace("'", "''") + "','" + check.Address5.Replace("'", "''") + "','" + check.Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries + "','" + endSeries +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + primaryKey + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start++;
+
+                        primaryKey++;
+                    }//END WHILE
+                }//END FOR
+                #endregion
+
+                #region 2Outs Format
+                //2Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOneCommercial; //SERVE AS DATANUMBER
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOneCommerical.Count; x1++)
+                {
+                    Int64 start1 = _orders.ManagersCheck[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.ManagersCheck[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.ManagersCheck[x1].BRSTN.Substring(_orders.ManagersCheck[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.ManagersCheck[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.ManagersCheck[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.ManagersCheck[x1].AccountNo.Substring(0, 3) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(3, 6) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(_orders.CheckOneCommerical[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOneCommerical[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOneCommerical[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOneCommerical[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x2].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOneCommerical[x2].StartingSerial;
+
+                        x1++;
+                    }
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOneCommercial; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','"
+                            + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                    }//END WHILE
+                }//END FOR
+                #endregion
+
+                #region 3Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOneCommercial; //SERVE AS DATANUMBER
+                dataNumber3 = QuantityPerBooklet.CheckOneCommercial * 2;
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOneCommerical.Count; x1++)
+                {
+                    Int64 start1 = _orders.CheckOneCommerical[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(_orders.CheckOneCommerical[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.CheckOneCommerical[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.CheckOneCommerical[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.CheckOneCommerical[x1].AccountNo.Substring(0, 3) + "-" +
+                        _orders.CheckOneCommerical[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    bool Out2 = false, Out3 = false;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(_orders.CheckOneCommerical[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOneCommerical[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOneCommerical[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOneCommerical[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x2].AccountNo.Substring(3, 6) + "-"
+                            + _orders.CheckOneCommerical[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOneCommerical[x2].StartingSerial;
+
+                        x1++;
+
+                        Out2 = true;
+                    }
+                    else
+                        Out2 = false;
+
+                    int x3 = 0;
+
+                    Int64 start3 = 0;
+
+                    string RTFirst3 = "", RTLast3 = "", startSeries3 = "", endSeries3 = "", acctNoHypen3 = "";
+
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x3 = x1 + 1;
+
+                        RTFirst3 = _orders.CheckOneCommerical[x3].BRSTN.Substring(0, 5);
+
+                        RTLast3 = _orders.CheckOneCommerical[x3].BRSTN.Substring(_orders.CheckOneCommerical[x3].BRSTN.Length - 4, 4);
+
+                        startSeries3 = _orders.CheckOneCommerical[x3].StartingSerial.ToString();
+
+                        endSeries3 = _orders.CheckOneCommerical[x3].EndingSerial.ToString();
+
+                        acctNoHypen3 = _orders.CheckOneCommerical[x3].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x3].AccountNo.Substring(3, 6)
+                            + "-" + _orders.CheckOneCommerical[x3].AccountNo.Substring(9, 3);
+
+                        while (startSeries3.Length < 10)
+                            startSeries3 = "0" + startSeries3;
+
+                        while (endSeries3.Length < 10)
+                            endSeries3 = "0" + endSeries3;
+
+                        start3 = _orders.CheckOneCommerical[x3].StartingSerial;
+
+                        x1++;
+
+                        Out3 = true;
+                    }
+                    else
+                        Out3 = false;
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOneCommercial; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (Out2)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out3)
+                        {
+                            dataNumber3++;
+
+                            string temp3 = start3.ToString();
+
+                            while (temp3.Length < 10)
+                                temp3 = "0" + temp3;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name + "','" + _orders.CheckOneCommerical[x3].Name2 + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address5.Replace("'", "''") + "','" +
+                            _orders.CheckOneCommerical[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start3++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+
+                    }//END WHILE
+                }//END FOR
+
+                #endregion
+
+                #region 4Outs Format
+                dataNumber1 = 0;
+                dataNumber2 = QuantityPerBooklet.CheckOneCommercial; //SERVE AS DATANUMBER
+                dataNumber3 = QuantityPerBooklet.CheckOneCommercial * 2;
+                dataNumber4 = QuantityPerBooklet.CheckOneCommercial * 3;
+
+                primaryKey = 0;
+
+                for (int x1 = 0; x1 < _orders.CheckOneCommerical.Count; x1++)
+                {
+                    Int64 start1 = _orders.CheckOneCommerical[x1].StartingSerial;
+
+                    string RTFirst1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(0, 5);
+
+                    string RTLast1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(_orders.CheckOneCommerical[x1].BRSTN.Length - 4, 4);
+
+                    string startSeries1 = _orders.CheckOneCommerical[x1].StartingSerial.ToString();
+
+                    string endSeries1 = _orders.CheckOneCommerical[x1].EndingSerial.ToString();
+
+                    string acctNoHypen1 = _orders.CheckOneCommerical[x1].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x1].AccountNo.Substring(9, 3);
+
+                    while (startSeries1.Length < 10)
+                        startSeries1 = "0" + startSeries1;
+
+                    while (endSeries1.Length < 10)
+                        endSeries1 = "0" + endSeries1;
+
+                    int x2 = 0;
+
+                    Int64 start2 = 0;
+
+                    string RTFirst2 = "", RTLast2 = "", startSeries2 = "", endSeries2 = "", acctNoHypen2 = "";
+
+                    bool Out2 = false, Out3 = false, Out4 = false;
+
+                    //For 2ndLine
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x2 = x1 + 1;
+
+                        RTFirst2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(0, 5);
+
+                        RTLast2 = _orders.CheckOneCommerical[x2].BRSTN.Substring(_orders.CheckOneCommerical[x2].BRSTN.Length - 4, 4);
+
+                        startSeries2 = _orders.CheckOneCommerical[x2].StartingSerial.ToString();
+
+                        endSeries2 = _orders.CheckOneCommerical[x2].EndingSerial.ToString();
+
+                        acctNoHypen2 = _orders.CheckOneCommerical[x2].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x2].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x2].AccountNo.Substring(9, 3);
+
+                        while (startSeries2.Length < 10)
+                            startSeries2 = "0" + startSeries2;
+
+                        while (endSeries2.Length < 10)
+                            endSeries2 = "0" + endSeries2;
+
+                        start2 = _orders.CheckOneCommerical[x2].StartingSerial;
+
+                        x1++;
+
+                        Out2 = true;
+                    }
+                    else
+                        Out2 = false;
+
+                    int x3 = 0;
+
+                    Int64 start3 = 0;
+
+                    string RTFirst3 = "", RTLast3 = "", startSeries3 = "", endSeries3 = "", acctNoHypen3 = "";
+
+                    //FOR 3rdLine
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x3 = x1 + 1;
+
+                        RTFirst3 = _orders.CheckOneCommerical[x3].BRSTN.Substring(0, 5);
+
+                        RTLast3 = _orders.CheckOneCommerical[x3].BRSTN.Substring(_orders.CheckOneCommerical[x3].BRSTN.Length - 4, 4);
+
+                        startSeries3 = _orders.CheckOneCommerical[x3].StartingSerial.ToString();
+
+                        endSeries3 = _orders.CheckOneCommerical[x3].EndingSerial.ToString();
+
+                        acctNoHypen3 = _orders.CheckOneCommerical[x3].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x3].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x3].AccountNo.Substring(9, 3);
+
+                        while (startSeries3.Length < 10)
+                            startSeries3 = "0" + startSeries3;
+
+                        while (endSeries3.Length < 10)
+                            endSeries3 = "0" + endSeries3;
+
+                        start3 = _orders.CheckOneCommerical[x3].StartingSerial;
+
+                        x1++;
+
+                        Out3 = true;
+                    }
+                    else
+                        Out3 = false;
+
+                    int x4 = 0;
+
+                    Int64 start4 = 0;
+
+                    string RTFirst4 = "", RTLast4 = "", startSeries4 = "", endSeries4 = "", acctNoHypen4 = "";
+
+                    //For 4thLine
+                    if (x1 + 1 < _orders.CheckOneCommerical.Count)
+                    {
+                        x4 = x1 + 1;
+
+                        RTFirst4 = _orders.CheckOneCommerical[x4].BRSTN.Substring(0, 5);
+
+                        RTLast4 = _orders.CheckOneCommerical[x4].BRSTN.Substring(_orders.CheckOneCommerical[x4].BRSTN.Length - 4, 4);
+
+                        startSeries4 = _orders.CheckOneCommerical[x4].StartingSerial.ToString();
+
+                        endSeries4 = _orders.CheckOneCommerical[x4].EndingSerial.ToString();
+
+                        acctNoHypen4 = _orders.CheckOneCommerical[x4].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x4].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x4].AccountNo.Substring(9, 3);
+
+                        while (startSeries4.Length < 10)
+                            startSeries4 = "0" + startSeries4;
+
+                        while (endSeries4.Length < 10)
+                            endSeries4 = "0" + endSeries4;
+
+                        start4 = _orders.CheckOneCommerical[x4].StartingSerial;
+
+                        x1++;
+
+                        Out4 = true;
+                    }
+                    else
+                        Out4 = false;
+
+                    for (int x = 0; x < QuantityPerBooklet.CheckOneCommercial; x++)
+                    {
+                        dataNumber1++;
+
+                        string temp1 = start1.ToString(); //Serial with 0 format
+
+                        while (temp1.Length < 10)
+                            temp1 = "0" + temp1;
+
+                        cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
+
+                        cmd.ExecuteNonQuery();
+
+                        start1++;
+
+                        primaryKey++;
+
+                        if (Out2)
+                        {
+                            dataNumber2++;
+
+                            string temp2 = start2.ToString();
+
+                            while (temp2.Length < 10)
+                                temp2 = "0" + temp2;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start2++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out3)
+                        {
+                            dataNumber3++;
+
+                            string temp3 = start3.ToString();
+
+                            while (temp3.Length < 10)
+                                temp3 = "0" + temp3;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name + "','" + _orders.CheckOneCommerical[x3].Name2 + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start3++;
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber2++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber2 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                        if (Out4)
+                        {
+                            dataNumber4++;
+
+                            string temp4 = start4.ToString();
+
+                            while (temp4.Length < 10)
+                                temp4 = "0" + temp4;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('" + _orders.CheckOneCommerical[x4].BRSTN + "','" + _orders.CheckOneCommerical[x4].AccountNo + "','" + RTFirst4 + "','" + RTFirst4 + "','" + acctNoHypen4 + "','" +
+                            temp4 + "','" + _orders.CheckOneCommerical[x4].Name + "','" + _orders.CheckOneCommerical[x4].Name2 + "','','" + _orders.CheckOneCommerical[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address3.Replace("'", "''") +
+                            "','" + _orders.CheckOneCommerical[x4].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
+                            "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            start4++;
+
+                            primaryKey++;
+                        }
+                        else // INSERT BLANK FIELD
+                        {
+                            dataNumber4++;
+
+                            cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
+                            "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
+                            "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
+                            "VALUES ('','','','','','','','','','','','','','','','','','','','','" + primaryKey + "','0','" + dataNumber4 + "');";
+
+                            cmd.ExecuteNonQuery();
+
+                            primaryKey++;
+                        }
+
+                    }//END WHILE
+                }//END FOR
+
+                #endregion
+
+                connection.Close();
+
+                connection.Dispose();
+
+                GC.Collect();
+
+                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year))
+                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year);
+
+                if (_batch != "0000")
+                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
+            }//END IF
         }
 
         #region private class
