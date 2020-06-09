@@ -16,9 +16,13 @@ namespace sbtc
     {
         int tmrValue = 0;
 
-        public frmCustomized()
+        List<BranchesModel> branchList;
+
+        public frmCustomized(List<BranchesModel> _branches)
         {
             InitializeComponent();
+
+            branchList = _branches;
         }
 
         private void frmCustomized_Load(object sender, EventArgs e)
@@ -371,10 +375,6 @@ namespace sbtc
                 lblBooks.Text = "Books: (100 pcs per Bkt):";
             }
 
-
-
-
-
             if (cboChequeName.Text == "Manager's Check Continues")
             {
                 lblBRSTN.Visible = false;
@@ -383,30 +383,18 @@ namespace sbtc
                 lblBranchName.Visible = true;
                 cboBranchName.Visible = true;
 
-
-
-
                 //For Branch Name
                 cboBranchName.Items.Clear();
 
-                OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\MC\\Continues;Extended Properties=dBASE III;");
-                OleDbDataAdapter command1 = new OleDbDataAdapter("SELECT Address1 FROM Branches ORDER BY Address1", conn1);
-                conn1.Open();
-                DataSet dataSet = new DataSet();
-                command1.Fill(dataSet);
+                branchList = branchList.OrderBy(r => r.Address1).ToList();
 
-                DataTable dt = dataSet.Tables[0];
-                foreach (DataRow dr in dt.Rows)
-                {
-                    string Address1 = dr[0].ToString();
-
-                    cboBranchName.Items.Add(Address1);
-                }
+                branchList.ForEach(r =>
+                {;
+                    cboBranchName.Items.Add(r.Address1);
+                });
                 //End For Branch Name
             }
-
             else
-
             {
                 lblBRSTN.Visible = true;
                 txtBRSTN.Visible = true;
@@ -414,25 +402,15 @@ namespace sbtc
                 lblBranchName.Visible = false;
                 cboBranchName.Visible = false;
             }
-
-
-
         }
 
         private void cboBranchName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\MC\\Continues;Extended Properties=dBASE III;");
-            OleDbDataAdapter command1 = new OleDbDataAdapter("SELECT BRSTN FROM Branches WHERE Address1 = '" + cboBranchName.Text.Replace("'","''") + "'", conn1);
-            conn1.Open();
-            DataSet dataSet = new DataSet();
-            command1.Fill(dataSet);
+            var branch = branchList.FirstOrDefault(r => r.Address1 == cboBranchName.Text);
 
-            DataTable dt = dataSet.Tables[0];
-            foreach (DataRow dr in dt.Rows)
+            if(branch != null)
             {
-                string BRSTN = dr[0].ToString();
-
-                txtBRSTN.Text = BRSTN;
+                txtBRSTN.Text = branch.BRSTN;
             }
         }
     }

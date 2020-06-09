@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboBranchName = new System.Windows.Forms.ComboBox();
+            this.lblBranchName = new System.Windows.Forms.Label();
             this.txtBRSTN = new System.Windows.Forms.TextBox();
             this.lblBRSTN = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,14 +49,6 @@
             this.cboChequeName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnProcess = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblBranchName = new System.Windows.Forms.Label();
-            this.cboBranchName = new System.Windows.Forms.ComboBox();
             this.ChequeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BRSTN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +56,12 @@
             this.AccountName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Books = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartingSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnProcess = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,28 @@
             this.groupBox1.Size = new System.Drawing.Size(720, 358);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // cboBranchName
+            // 
+            this.cboBranchName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBranchName.FormattingEnabled = true;
+            this.cboBranchName.Location = new System.Drawing.Point(211, 112);
+            this.cboBranchName.Name = "cboBranchName";
+            this.cboBranchName.Size = new System.Drawing.Size(504, 31);
+            this.cboBranchName.TabIndex = 4;
+            this.cboBranchName.Visible = false;
+            this.cboBranchName.SelectedIndexChanged += new System.EventHandler(this.cboBranchName_SelectedIndexChanged);
+            // 
+            // lblBranchName
+            // 
+            this.lblBranchName.AutoSize = true;
+            this.lblBranchName.ForeColor = System.Drawing.Color.White;
+            this.lblBranchName.Location = new System.Drawing.Point(6, 111);
+            this.lblBranchName.Name = "lblBranchName";
+            this.lblBranchName.Size = new System.Drawing.Size(110, 23);
+            this.lblBranchName.TabIndex = 15;
+            this.lblBranchName.Text = "Branch Name:";
+            this.lblBranchName.Visible = false;
             // 
             // txtBRSTN
             // 
@@ -257,6 +279,62 @@
             this.dataGridView1.Size = new System.Drawing.Size(719, 161);
             this.dataGridView1.TabIndex = 1;
             // 
+            // ChequeName
+            // 
+            this.ChequeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ChequeName.HeaderText = "Cheque Name";
+            this.ChequeName.Name = "ChequeName";
+            this.ChequeName.ReadOnly = true;
+            this.ChequeName.Width = 130;
+            // 
+            // BRSTN
+            // 
+            this.BRSTN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BRSTN.HeaderText = "BRSTN";
+            this.BRSTN.Name = "BRSTN";
+            this.BRSTN.ReadOnly = true;
+            this.BRSTN.Width = 91;
+            // 
+            // AccountNo
+            // 
+            this.AccountNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AccountNo.HeaderText = "Account Number";
+            this.AccountNo.Name = "AccountNo";
+            this.AccountNo.ReadOnly = true;
+            this.AccountNo.Width = 157;
+            // 
+            // AccountName1
+            // 
+            this.AccountName1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AccountName1.HeaderText = "Account Name 1";
+            this.AccountName1.Name = "AccountName1";
+            this.AccountName1.ReadOnly = true;
+            this.AccountName1.Width = 151;
+            // 
+            // AccountName2
+            // 
+            this.AccountName2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AccountName2.HeaderText = "Account Name 2";
+            this.AccountName2.Name = "AccountName2";
+            this.AccountName2.ReadOnly = true;
+            this.AccountName2.Width = 154;
+            // 
+            // Books
+            // 
+            this.Books.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Books.HeaderText = "Books";
+            this.Books.Name = "Books";
+            this.Books.ReadOnly = true;
+            this.Books.Width = 77;
+            // 
+            // StartingSerial
+            // 
+            this.StartingSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StartingSerial.HeaderText = "Starting Serial";
+            this.StartingSerial.Name = "StartingSerial";
+            this.StartingSerial.ReadOnly = true;
+            this.StartingSerial.Width = 147;
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -309,90 +387,12 @@
             this.progressBar1.TabIndex = 12;
             this.progressBar1.Visible = false;
             // 
-            // lblBranchName
-            // 
-            this.lblBranchName.AutoSize = true;
-            this.lblBranchName.ForeColor = System.Drawing.Color.White;
-            this.lblBranchName.Location = new System.Drawing.Point(6, 111);
-            this.lblBranchName.Name = "lblBranchName";
-            this.lblBranchName.Size = new System.Drawing.Size(110, 23);
-            this.lblBranchName.TabIndex = 15;
-            this.lblBranchName.Text = "Branch Name:";
-            this.lblBranchName.Visible = false;
-            // 
-            // cboBranchName
-            // 
-            this.cboBranchName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBranchName.FormattingEnabled = true;
-            this.cboBranchName.Location = new System.Drawing.Point(211, 112);
-            this.cboBranchName.Name = "cboBranchName";
-            this.cboBranchName.Size = new System.Drawing.Size(504, 31);
-            this.cboBranchName.TabIndex = 4;
-            this.cboBranchName.Visible = false;
-            this.cboBranchName.SelectedIndexChanged += new System.EventHandler(this.cboBranchName_SelectedIndexChanged);
-            // 
-            // ChequeName
-            // 
-            this.ChequeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ChequeName.HeaderText = "Cheque Name";
-            this.ChequeName.Name = "ChequeName";
-            this.ChequeName.ReadOnly = true;
-            this.ChequeName.Width = 128;
-            // 
-            // BRSTN
-            // 
-            this.BRSTN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BRSTN.HeaderText = "BRSTN";
-            this.BRSTN.Name = "BRSTN";
-            this.BRSTN.ReadOnly = true;
-            this.BRSTN.Width = 89;
-            // 
-            // AccountNo
-            // 
-            this.AccountNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AccountNo.HeaderText = "Account Number";
-            this.AccountNo.Name = "AccountNo";
-            this.AccountNo.ReadOnly = true;
-            this.AccountNo.Width = 155;
-            // 
-            // AccountName1
-            // 
-            this.AccountName1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AccountName1.HeaderText = "Account Name 1";
-            this.AccountName1.Name = "AccountName1";
-            this.AccountName1.ReadOnly = true;
-            this.AccountName1.Width = 149;
-            // 
-            // AccountName2
-            // 
-            this.AccountName2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AccountName2.HeaderText = "Account Name 2";
-            this.AccountName2.Name = "AccountName2";
-            this.AccountName2.ReadOnly = true;
-            this.AccountName2.Width = 152;
-            // 
-            // Books
-            // 
-            this.Books.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Books.HeaderText = "Books";
-            this.Books.Name = "Books";
-            this.Books.ReadOnly = true;
-            this.Books.Width = 75;
-            // 
-            // StartingSerial
-            // 
-            this.StartingSerial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StartingSerial.HeaderText = "Starting Serial";
-            this.StartingSerial.Name = "StartingSerial";
-            this.StartingSerial.ReadOnly = true;
-            this.StartingSerial.Width = 145;
-            // 
             // frmCustomized
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(744, 589);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblStatus);

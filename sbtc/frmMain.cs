@@ -161,38 +161,41 @@ namespace sbtc
 
             string[] files = Directory.GetFiles(Application.StartupPath+"\\Head\\","*.txt");
 
-            foreach (string file in files)
+            if (files.Length > 0)
             {
-
-                string filename = "";
-
-                int LoopCount = file.Length-1;
-                while (LoopCount > 4)
+                foreach (string file in files)
                 {
-                    if (file.Substring(LoopCount, 1) == "\\")
+
+                    string filename = "";
+
+                    int LoopCount = file.Length - 1;
+                    while (LoopCount > 4)
                     {
-                        if (filename == "")
+                        if (file.Substring(LoopCount, 1) == "\\")
                         {
-                            filename = file.Substring(LoopCount + 1, file.Length - LoopCount - 1);
+                            if (filename == "")
+                            {
+                                filename = file.Substring(LoopCount + 1, file.Length - LoopCount - 1);
+                            }
                         }
+
+                        LoopCount = LoopCount - 1;
                     }
 
-                    LoopCount = LoopCount - 1;
+                    lstFiles.Items.Add(filename);
                 }
 
-                lstFiles.Items.Add(filename);
-            }
-
-            AutoBatch = files[0].Substring(6, 4);
+                AutoBatch = files[0].Substring(6, 4);
 
 
-            if (lstFiles.Items.Count == 0)
-            {
-                btnCheckFiles.Enabled = false;
-            }
-            else
-            {
-                btnCheckFiles.Enabled = true;
+                if (lstFiles.Items.Count == 0)
+                {
+                    btnCheckFiles.Enabled = false;
+                }
+                else
+                {
+                    btnCheckFiles.Enabled = true;
+                }
             }
         }
 
@@ -210,7 +213,7 @@ namespace sbtc
 
                     dteDeliveryDate.Focus();
 
-                    return;
+                    //return;
                 }
                 else if(txtBoxBatchNo.Text == "")
                 {
@@ -800,7 +803,7 @@ namespace sbtc
         {   
             this.Hide();
             
-            frmCustomized frmCustomized = new frmCustomized();
+            frmCustomized frmCustomized = new frmCustomized(branchList);
             frmCustomized.ShowDialog();
         }
 

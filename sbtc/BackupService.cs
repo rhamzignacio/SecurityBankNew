@@ -437,6 +437,8 @@ namespace sbtc
                 locators.Add(loc);
             }
 
+            conn.Close();
+
             foreach(var loc in locators)
             {
                 if (File.Exists(loc.Location))
@@ -448,48 +450,14 @@ namespace sbtc
         public static void ProcessArchiving(string _batchNumber, string _processBy, OrderSorted _orders)
         {
             ProcessSQLDump();
-
-            Thread.Sleep(30000);
-
-            string fileName = "";
-
-            if (_orders.RegularPersonal.Count > 0)
-                fileName += "_RegPersonal(" + _orders.RegularPersonal.Count.ToString() + ")";
-
-            if (_orders.RegularCommercial.Count > 0)
-                fileName += "_RegCommercial(" + _orders.RegularCommercial.Count.ToString() + ")";
-
-            if (_orders.PersonalPreEncoded.Count > 0)
-                fileName += "_PersonalPre(" + _orders.PersonalPreEncoded.Count.ToString() + ")";
-
-            if (_orders.CommercialPreEncoded.Count > 0)
-                fileName += "_CommericalPre(" + _orders.CommercialPreEncoded.Count.ToString() + ")";
-
-            if (_orders.CheckOnePersonal.Count > 0)
-                fileName += "_CheckOnePersonal(" + _orders.CheckOnePersonal.Count.ToString() + ")";
-
-            if (_orders.CheckOneCommerical.Count > 0)
-                fileName += "_CheckOneCommercial(" + _orders.CheckOneCommerical.Count.ToString() + ")";
-
-            if (_orders.CheckPowerPersonal.Count > 0)
-                fileName += "_CheckPowerPersonal(" + _orders.CheckPowerPersonal.Count.ToString() + ")";
-
-            if (_orders.CheckPowerCommercial.Count > 0)
-                fileName += "_CheckPowerCommercial(" + _orders.CheckPowerCommercial.Count.ToString() + ")";
-
-            if (_orders.ManagersCheck.Count > 0)
-                fileName += "_MC(" + _orders.ManagersCheck.Count.ToString() + ")";
-
-            if (_orders.ManagersCheckCont.Count > 0)
-                fileName += "_MCCont(" + _orders.ManagersCheckCont.ToString() + ")";
-
+            
             Process proc = new Process();
 
             proc.EnableRaisingEvents = false;
 
             proc.StartInfo.FileName = "\"" + GetWinZipLoc().Replace("\\", "\\\\") + "\"";
                
-            proc.StartInfo.Arguments = "-u -r -p " + "\"" + DatabaseConnection.ArchiveOutPut + "\\AFT" + _batchNumber + "_" + _processBy + fileName + ".zip\"" + " " +
+            proc.StartInfo.Arguments = "-u -r -p " + "\"" + DatabaseConnection.ArchiveOutPut + "\\AFT" + _batchNumber + "_" + _processBy + ".zip\"" + " " +
                 "\\\\192.168.0.254\\captive\\Auto\\SBTC\\SBTC_2.0\\Output\\*.*";
 
             proc.Start();
