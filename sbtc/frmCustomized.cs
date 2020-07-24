@@ -18,6 +18,7 @@ namespace sbtc
 
         List<BranchesModel> branchList;
 
+        string MyConnection2 = "datasource=192.168.0.254;port=3306;username=root;password=CorpCaptive";
         public frmCustomized(List<BranchesModel> _branches)
         {
             InitializeComponent();
@@ -40,10 +41,8 @@ namespace sbtc
             cboChequeName.Items.Add("Customized Sheeted Checks");
             cboChequeName.Items.Add("Customized Continues Checks");
             cboChequeName.Items.Add("Customized Personal Checks");
-            cboChequeName.Items.Add("Manager's Check Continues");
             cboChequeName.Items.Add("Dividend Checks");
-
-
+            cboChequeName.Items.Add("Digibanker");
 
             txtAccountNo.Text = "";
             txtBRSTN.Text = "";
@@ -52,19 +51,10 @@ namespace sbtc
             txtBooks.Text = "";
             txtStartingSeries.Text = "";
 
-
-
-
             cboChequeName.Focus();
-
-
-
 
             lblBRSTN.Visible = true;
             txtBRSTN.Visible = true;
-
-
-
 
             lblBranchName.Visible = false;
             cboBranchName.Visible = false;
@@ -76,16 +66,13 @@ namespace sbtc
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
-            
+        {      
             if (cboChequeName.Text == "")
             {
                 MessageBox.Show("Please select Cheque Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cboChequeName.Focus();
                 return;
             }
-
-
 
             if (txtAccountNo.Text.Length != 12)
             {
@@ -95,8 +82,6 @@ namespace sbtc
                 return;
             }
 
-
-
             if (txtBRSTN.Text.Length != 9 && txtBRSTN.Visible == true)
             {
                 MessageBox.Show("BRSTN is invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -105,20 +90,12 @@ namespace sbtc
                 return;
             }
 
-
-
             if (cboChequeName.Text == "" && cboBranchName.Visible == true)
             {
                 MessageBox.Show("Branch Name is Invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cboBranchName.Focus();
                 return;
             }
-
-
-
-
-
-
 
             //Books
             int books = 0;
@@ -140,9 +117,6 @@ namespace sbtc
                 }
             }
             //End Books
-
-
-
 
             //Starting Serial
             Int64 startingserial = 0;
@@ -166,7 +140,6 @@ namespace sbtc
             //End Starting Serial
 
 
-
             if (dteDeliveryDate.Value.ToShortDateString() == DateTime.Today.ToShortDateString())
             {
                 DialogResult result3 = MessageBox.Show("Please select Delivery Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -174,12 +147,8 @@ namespace sbtc
                 return;
             }
 
-
-
             txtName1.Text = txtName1.Text.ToUpper();
             txtName2.Text = txtName2.Text.ToUpper();
-
-
 
             string ChkType = "";
             if (cboChequeName.Text == "Customized Personal Checks")
@@ -200,12 +169,10 @@ namespace sbtc
                 }
                 
             }
-
-            
+       
             dataGridView1.Rows.Add(ChkType, txtBRSTN.Text, txtAccountNo.Text, txtName1.Text, txtName2.Text, txtBooks.Text, txtStartingSeries.Text);
             MessageBox.Show("Data has been added", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnProcess.Enabled = true;
-
 
             LoadMe();
         }
@@ -240,13 +207,7 @@ namespace sbtc
         {
             if (txtAccountNo.Text.Length == 12 && cboChequeName.Text != "Manager's Check Continues")
             {
-
-                string dbase = "";
-                if (ReturnMe.CodesOnly == true) { dbase = "captive_database.Master_Database_SBTC_Temp"; }
-                if (ReturnMe.CodesOnly == false) { dbase = "captive_database.Master_Database_SBTC"; }
-
-                string sql = "SELECT BRSTN, Name1, Name2 FROM " + dbase + " WHERE AccountNo = '" + txtAccountNo.Text + "' ORDER BY PrimaryKey DESC LIMIT 1";
-                string MyConnection2 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
+                string sql = "SELECT BRSTN, Name1, Name2 FROM captive_database.sbtc_history WHERE AccountNo = '" + txtAccountNo.Text + "' ORDER BY PrimaryKey DESC LIMIT 1";
                 MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
                 MySqlCommand MyCommand2 = new MySqlCommand(sql, MyConn2);
                 MySqlDataReader MyReader2;
@@ -271,14 +232,10 @@ namespace sbtc
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            int LoopCount = 0;
+            List<SBTCModel> sbtcList = new List<SBTCModel>();
 
-            ReturnMe.CreateTable();
-
-            while (LoopCount < dataGridView1.Rows.Count)
+            for (int LoopCount = 0; LoopCount < dataGridView1.Rows.Count; LoopCount++)
             {
-
-
                 string chequename = dataGridView1.Rows[LoopCount].Cells[0].Value.ToString();
                 string brstn = dataGridView1.Rows[LoopCount].Cells[1].Value.ToString();
                 string AccountNo = dataGridView1.Rows[LoopCount].Cells[2].Value.ToString();
@@ -287,27 +244,37 @@ namespace sbtc
                 string Books = dataGridView1.Rows[LoopCount].Cells[5].Value.ToString();
                 string StartingSerial = dataGridView1.Rows[LoopCount].Cells[6].Value.ToString();
 
+                SBTCModel sbtc = new SBTCModel();
+                sbtc.CheckType = chequename ;
+                sbtc.BRSTN = brstn;
+                sbtc.AccountNo = AccountNo;
+                sbtc.Name1 = Name1;
+                sbtc.Name2 = Name2;
+                sbtc.FormType = "00";
+                sbtc.OrderQty = Books;
+                sbtc.StartingSerial = int.Parse(StartingSerial);
 
-                string sql = "INSERT INTO SBTC (BRSTN, ChkType, AccountNo , Name1 , Name2 , FormType,OrderQty,Pkey, StartSN , Address1 , Address2 , Address3 , Address4 , Address5 , Address6) VALUES ('" + brstn + "','" + chequename + "','" + AccountNo + "','" + Name1.Replace("'", "''") + "','" + Name2.Replace("'", "''") + "','00','" + Books + "'," + (LoopCount + 1).ToString() + ",'" + StartingSerial + "','" + ReturnMe.getAddress1(brstn, 1, chequename).Replace("'", "''") + "','" + ReturnMe.getAddress1(brstn, 2, chequename).Replace("'", "''") + "','" + ReturnMe.getAddress1(brstn, 3, chequename).Replace("'", "''") + "','" + ReturnMe.getAddress1(brstn, 4, chequename).Replace("'", "''") + "','" + ReturnMe.getAddress1(brstn, 5, chequename).Replace("'", "''") + "','" + ReturnMe.getAddress1(brstn, 6, chequename).Replace("'", "''") + "')";
-                OleDbConnection conn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
-                OleDbCommand command = new OleDbCommand(sql, conn);
-                conn.Open();
-                command.ExecuteReader();
-                conn.Close();
-                
-                LoopCount = LoopCount + 1;
-
+                sbtcList.Add(sbtc);
             }
 
+            AssignOtherValue(sbtcList); //Assign Branch Info Data
+
             btnAdd.Enabled = false;
-            btnProcess.Enabled = false;
+            btnProcess.Enabled = false;        
+        }
 
-            ReturnMe.ActivateMaxProgressBarCarbon();
+        private void AssignOtherValue(List<SBTCModel> _orders)
+        {
+            _orders.ForEach(c =>
+            {
+                var branch = branchList.FirstOrDefault(r => r.BRSTN == c.BRSTN);
 
-            backgroundWorker1.RunWorkerAsync();
-            timer1.Start();
-
-            
+                c.Address1 = branch.Address1;
+                c.Address2 = branch.Address2;
+                c.Address3 = branch.Address3;
+                c.Address4 = branch.Address4;
+                c.Address5 = branch.Address5;
+            });
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -315,7 +282,6 @@ namespace sbtc
             //ReturnMe.GenerateSortRT("Customized");
 
             ReturnMe.ProcessAll2(dteDeliveryDate.Value);
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -329,24 +295,7 @@ namespace sbtc
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            progressBar1.Maximum = ReturnMe.mdb_status_bar_max;
-            progressBar1.Minimum = 0;
-            progressBar1.Value = ReturnMe.mdb_status_bar;
-
-            if (progressBar1.Value != 0 && progressBar1.Value != progressBar1.Maximum)
-            {
-                progressBar1.Visible = true;
-                lblStatus.Visible = true;
-            }
-            else
-            {
-                progressBar1.Visible = false;
-                lblStatus.Visible = false;
-            }
-
-
-            
+        {         
             tmrValue = tmrValue + 1;
             if (tmrValue == 1)
             {
@@ -360,8 +309,7 @@ namespace sbtc
             if (tmrValue > 20)
             {
                 tmrValue = 0;
-            }
-             
+            }       
         }
 
         private void cboChequeName_SelectedIndexChanged(object sender, EventArgs e)
@@ -379,7 +327,6 @@ namespace sbtc
             {
                 lblBRSTN.Visible = false;
                 txtBRSTN.Visible = false;
-
                 lblBranchName.Visible = true;
                 cboBranchName.Visible = true;
 

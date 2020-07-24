@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblLastSeries = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.cboBranchName = new System.Windows.Forms.ComboBox();
             this.lblBranchName = new System.Windows.Forms.Label();
             this.txtBRSTN = new System.Windows.Forms.TextBox();
@@ -61,13 +63,15 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.checkBoxTestOnly = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblLastSeries);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cboBranchName);
             this.groupBox1.Controls.Add(this.lblBranchName);
             this.groupBox1.Controls.Add(this.txtBRSTN);
@@ -91,6 +95,26 @@
             this.groupBox1.Size = new System.Drawing.Size(720, 358);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lblLastSeries
+            // 
+            this.lblLastSeries.AutoSize = true;
+            this.lblLastSeries.ForeColor = System.Drawing.Color.White;
+            this.lblLastSeries.Location = new System.Drawing.Point(602, 279);
+            this.lblLastSeries.Name = "lblLastSeries";
+            this.lblLastSeries.Size = new System.Drawing.Size(90, 23);
+            this.lblLastSeries.TabIndex = 17;
+            this.lblLastSeries.Text = "00000000";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(501, 279);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 23);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Last Series:";
             // 
             // cboBranchName
             // 
@@ -155,7 +179,7 @@
             this.txtStartingSeries.Location = new System.Drawing.Point(211, 276);
             this.txtStartingSeries.MaxLength = 10;
             this.txtStartingSeries.Name = "txtStartingSeries";
-            this.txtStartingSeries.Size = new System.Drawing.Size(503, 30);
+            this.txtStartingSeries.Size = new System.Drawing.Size(284, 30);
             this.txtStartingSeries.TabIndex = 7;
             // 
             // label6
@@ -379,13 +403,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBar1
+            // checkBoxTestOnly
             // 
-            this.progressBar1.Location = new System.Drawing.Point(14, 574);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(721, 10);
-            this.progressBar1.TabIndex = 12;
-            this.progressBar1.Visible = false;
+            this.checkBoxTestOnly.AutoSize = true;
+            this.checkBoxTestOnly.Location = new System.Drawing.Point(474, 537);
+            this.checkBoxTestOnly.Name = "checkBoxTestOnly";
+            this.checkBoxTestOnly.Size = new System.Drawing.Size(102, 27);
+            this.checkBoxTestOnly.TabIndex = 13;
+            this.checkBoxTestOnly.Text = "Test Only";
+            this.checkBoxTestOnly.UseVisualStyleBackColor = true;
             // 
             // frmCustomized
             // 
@@ -393,8 +419,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(744, 589);
-            this.Controls.Add(this.progressBar1);
+            this.ClientSize = new System.Drawing.Size(744, 576);
+            this.Controls.Add(this.checkBoxTestOnly);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.btnAdd);
@@ -443,7 +469,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ComboBox cboBranchName;
         private System.Windows.Forms.Label lblBranchName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChequeName;
@@ -453,5 +478,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AccountName2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Books;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartingSerial;
+        private System.Windows.Forms.Label lblLastSeries;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBoxTestOnly;
     }
 }

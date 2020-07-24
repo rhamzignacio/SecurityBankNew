@@ -26,5 +26,7 @@ namespace sbtc
         public static int ManagersCheck = 50;
 
         public static int ManagersCheckCont = 100;
+
+        public static int CustomizedCheck = 100;
     }
 }

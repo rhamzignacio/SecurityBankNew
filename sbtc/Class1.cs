@@ -892,23 +892,7 @@ repeatme:
 
 
             int Charge_Slip = ProcessMe("CS", "00", "Charge_Slip", true, Batch, DeliveryDate,ProcessBy,DateTimeToday);
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
+        
             //For Zip
             string Temp_Zip = "";
             string ChequeName_all = "";
@@ -1105,10 +1089,6 @@ repeatme:
                 conn5.Close();
             }
 
-
-
-
-
             sql = "SELECT DISTINCT(Batch) FROM Batch";
             OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
             OleDbDataAdapter command1 = new OleDbDataAdapter(sql, conn1);
@@ -1138,13 +1118,6 @@ repeatme:
             if (File_Batch == "") { File_Batch = Batch; }
             //End For Batch
 
-
-
-
-
-
-
-
             //Zip File
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.EnableRaisingEvents = false;
@@ -1152,13 +1125,7 @@ repeatme:
             proc.StartInfo.Arguments = " -u -r -p " + "\"" + Application.StartupPath + "\\AFT" + "_" + File_Batch + "_" + ChequeName_all + "_Process.by_" + ProcessBy + "__Checked.By_" + CheckedBy + ".zip" + "\"" + " C:\\Windows\\Temp\\" + DateTimeToday + "\\*.*";
             proc.Start();
             proc.WaitForExit();
-            //End Zip File
-
-
-
-
-
-
+            //End Zip 
 
             //Copy the Zip File
             

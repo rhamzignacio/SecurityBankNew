@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -154,6 +155,26 @@ namespace sbtc
         public List<OrderModel> CheckPowerCommercial { get; set; }
         public List<OrderModel> CustomizedCheck { get; set; }
         public List<OrderModel> ManagersCheckCont { get; set; }
+        public List<OrderModel> DigiBanker { get; set; }
+    }
+
+    public class SBTCModel
+    {
+        public string CheckType { get; set; }
+        public string BRSTN { get; set; }
+        public string AccountNo { get; set; }
+        public string Name1 { get; set; }
+        public string Name2 { get; set; }
+        public string FormType { get; set; }
+        public string OrderQty { get; set; }
+        public string Batch { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Address3 { get; set; }
+        public string Address4 { get; set; }
+        public string Address5 { get; set; }
+        public string FileName { get; set; }
+        public int StartingSerial { get; set; }
     }
 
     public class Locator

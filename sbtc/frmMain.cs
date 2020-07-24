@@ -176,6 +176,8 @@ namespace sbtc
                             if (filename == "")
                             {
                                 filename = file.Substring(LoopCount + 1, file.Length - LoopCount - 1);
+
+                                AutoBatch = filename.Substring(6, 4);
                             }
                         }
 
@@ -184,8 +186,6 @@ namespace sbtc
 
                     lstFiles.Items.Add(filename);
                 }
-
-                AutoBatch = files[0].Substring(6, 4);
 
 
                 if (lstFiles.Items.Count == 0)
@@ -242,7 +242,7 @@ namespace sbtc
                     return;
                 }
 
-                ReturnMe.CreateTable();
+                //ReturnMe.CreateTable();
 
                 List<OrderModel> OrderList = new List<OrderModel>();
 
@@ -416,7 +416,7 @@ namespace sbtc
                 display += "CheckPower Personal - " + sortedList.CheckPowerPersonal.Count.ToString() + "\n";
 
             if (sortedList.CheckPowerCommercial.Count > 0)
-                display += "CheckPower Commercial - " + sortedList.CheckOneCommerical.Count.ToString() + "\n";
+                display += "CheckPower Commercial - " + sortedList.CheckPowerCommercial.Count.ToString() + "\n";
 
             if(sortedList.CustomizedCheck.Count> 0)
                 display += "Customized Check - " + sortedList.CustomizedCheck.Count.ToString() + "\n";
@@ -794,9 +794,7 @@ namespace sbtc
 
             frmHashTotal frmHashTotal = new frmHashTotal();
             frmHashTotal.ShowDialog();
-            
-            
-            
+                                   
         }
 
         private void btnEncode_Click(object sender, EventArgs e)
@@ -831,6 +829,12 @@ namespace sbtc
         private void dteDeliveryDate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lblStatus.Text = "Archiving Output Files . . .";
+            BackupService.ProcessArchiving(AutoBatch, txtBoxProcessBy.Text);
         }
     }
 }

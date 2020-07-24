@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace sbtc
 {
@@ -29,6 +30,8 @@ namespace sbtc
         static string mcPath = Application.StartupPath + "\\Output\\MC";
 
         static string mcContPath = Application.StartupPath + "\\Output\\MC\\Continues";
+
+        static string digiBankerPath = Application.StartupPath + "\\Output\\DigiBanker";
 
         private static void SortHeader(StreamWriter sw, string _folderName, int _page)
         {
@@ -3366,7 +3369,7 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 CKP" + _batch.Substring(0, 4) + "C" + _ext + ".txt");
+                        sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
 
                         sw.WriteLine("");
 
@@ -4563,12 +4566,12 @@ namespace sbtc
             #region CheckPower Commercial
             if (_orders.CheckPowerCommercial.Count > 0)
             {
-                if (!Directory.Exists(checkOnePath))
-                    Directory.CreateDirectory(checkOnePath);
+                if (!Directory.Exists(checkPowerPath))
+                    Directory.CreateDirectory(checkPowerPath);
 
                 StreamWriter sw;
 
-                string fileName = checkOnePath + "\\CKP" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
+                string fileName = checkPowerPath + "\\CKP" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
 
                 sw = File.CreateText(fileName);
                 sw.Close();
@@ -4628,8 +4631,13 @@ namespace sbtc
 
                         sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
                     });
-                }//END USING
 
+                    sw.Close();
+                    sw.Dispose();
+                }//END USING 
+
+
+  
                 if (_batch != "0000")
                     File.Copy(fileName, fileName.Replace(checkPowerPath, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKPOWER\\" + DateTime.Now.Year.ToString() + "\\"), true);
             }//END IF
@@ -4784,6 +4792,168 @@ namespace sbtc
                 if (_batch != "0000")
                     File.Copy(fileName, fileName.Replace(regPath, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\CONTINUOUS\\" + DateTime.Now.Year.ToString() + "\\"), true);
             }//END IF
+            #endregion
+
+            #region Customized Check
+            if(_orders.CustomizedCheck.Count > 0)
+            {
+                if (!Directory.Exists(customPath))
+                    Directory.CreateDirectory(customPath);
+
+                StreamWriter sw;
+
+                string fileName = customPath + "\\CUS" + _batch.Substring(0, 4) + "CC" + _ext + ".txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    _orders.CustomizedCheck.ForEach(c =>
+                    {
+                        sw.WriteLine("3"); //1 - FIXED;
+                        sw.WriteLine(c.BRSTN.Trim(' ')); //2 - BRSTN or RT No
+                        sw.WriteLine(c.AccountNo.Trim(' ')); //3 - AccountNo
+
+                        string startQty = (c.StartingSerial + QuantityPerBooklet.CustomizedCheck).ToString();
+
+                        while (startQty.Length < 10)
+                            startQty = "0" + startQty;
+
+                        sw.WriteLine(startQty.Trim(' ')); //4 - Starting Serial + 100pcs per boobklet
+                        sw.WriteLine("A"); //5 - FIXED
+                        sw.WriteLine(""); //6 - BLANK
+                        sw.WriteLine(c.BRSTN.Substring(0, 5).Trim(' ')); //7 - First 5 Digits BRSTN
+                        sw.WriteLine(" " + c.BRSTN.Substring(5, 4).Trim(' ')); // 8 - Last 4 Digits of BRSTN
+                        sw.WriteLine((c.AccountNo.Substring(0, 3) + "-" + c.AccountNo.Substring(3, 6) + "-" + c.AccountNo.Substring(9, 3)).Trim(' ')); // 9 - ACCTNO
+                        sw.WriteLine(c.Name.Trim(' ')); // 10 - NAME 1
+                        sw.WriteLine("SN"); // 11 - FIXED
+                        sw.WriteLine(""); // 12 - BLANK
+                        sw.WriteLine(c.Name2.Trim(' ')); // 13 - NAME 2
+                        sw.WriteLine("C"); // 14 - FIXED
+                        sw.WriteLine("XXXX"); // 15 - FIXED
+                        sw.WriteLine(""); // 16 - BLANK
+                        sw.WriteLine(c.Address1.Trim(' ')); // 17 - Address 1 or BranchName
+                        sw.WriteLine(c.Address2.Trim(' ')); // 18 - Address 2
+                        sw.WriteLine(c.Address3.Trim(' ')); // 19 - Address 3
+                        sw.WriteLine(c.Address4.Trim(' ')); // 20 - Address 4
+                        sw.WriteLine(c.Address5.Trim(' ')); // 21 - Address 5
+                        sw.WriteLine(c.Address6.Trim(' ')); // 22 - Address 6
+                        sw.WriteLine("SECURITY BANK"); // 23 - FIXED
+                        sw.WriteLine(""); // 24 - BLANK
+                        sw.WriteLine(""); // 25 - BLANK
+                        sw.WriteLine(""); // 26 - BLANK
+                        sw.WriteLine(""); // 27 - BLANK
+                        sw.WriteLine(""); // 28 - BLANK
+                        sw.WriteLine(""); // 29 - BLANK
+                        sw.WriteLine(""); // 30 - BLANK
+
+                        string start = c.StartingSerial.ToString();
+
+                        while (start.Length < 10)
+                            start = "0" + start;
+
+                        sw.WriteLine(start.Trim(' ')); // 31 - StartingSeries
+
+                        string end = c.EndingSerial.ToString();
+
+                        while (end.Length < 10)
+                            end = "0" + end;
+
+                        sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
+                    });//END OF FOREACH
+                }//END USING
+
+                if (_batch != "0000")
+                {
+                    if(!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CUSTOM\\"+ DateTime.Now.Year.ToString()))
+                        Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CUSTOM\\" + DateTime.Now.Year.ToString());
+                    
+                    File.Copy(fileName, fileName.Replace(customPath, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\CUSTOM\\"
+                        + DateTime.Now.Year.ToString() + "\\"), true);
+                }
+            }
+            #endregion
+
+            #region DigiBanker
+            if (_orders.DigiBanker.Count > 0)
+            {
+                if (!Directory.Exists(customPath))
+                    Directory.CreateDirectory(customPath);
+
+                StreamWriter sw;
+
+                string fileName = digiBankerPath + "\\DB" + _batch.Substring(0, 4) + "C" + _ext + ".txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    _orders.DigiBanker.ForEach(c =>
+                    {
+                        sw.WriteLine("3"); //1 - FIXED;
+                        sw.WriteLine(c.BRSTN.Trim(' ')); //2 - BRSTN or RT No
+                        sw.WriteLine(c.AccountNo.Trim(' ')); //3 - AccountNo
+
+                        string startQty = (c.StartingSerial + QuantityPerBooklet.CustomizedCheck).ToString();
+
+                        while (startQty.Length < 10)
+                            startQty = "0" + startQty;
+
+                        sw.WriteLine(startQty.Trim(' ')); //4 - Starting Serial + 100pcs per boobklet
+                        sw.WriteLine("A"); //5 - FIXED
+                        sw.WriteLine(""); //6 - BLANK
+                        sw.WriteLine(c.BRSTN.Substring(0, 5).Trim(' ')); //7 - First 5 Digits BRSTN
+                        sw.WriteLine(" " + c.BRSTN.Substring(5, 4).Trim(' ')); // 8 - Last 4 Digits of BRSTN
+                        sw.WriteLine((c.AccountNo.Substring(0, 3) + "-" + c.AccountNo.Substring(3, 6) + "-" + c.AccountNo.Substring(9, 3)).Trim(' ')); // 9 - ACCTNO
+                        sw.WriteLine(c.Name.Trim(' ')); // 10 - NAME 1
+                        sw.WriteLine("SN"); // 11 - FIXED
+                        sw.WriteLine(""); // 12 - BLANK
+                        sw.WriteLine(c.Name2.Trim(' ')); // 13 - NAME 2
+                        sw.WriteLine("C"); // 14 - FIXED
+                        sw.WriteLine("XXXX"); // 15 - FIXED
+                        sw.WriteLine(""); // 16 - BLANK
+                        sw.WriteLine(c.Address1.Trim(' ')); // 17 - Address 1 or BranchName
+                        sw.WriteLine(c.Address2.Trim(' ')); // 18 - Address 2
+                        sw.WriteLine(c.Address3.Trim(' ')); // 19 - Address 3
+                        sw.WriteLine(c.Address4.Trim(' ')); // 20 - Address 4
+                        sw.WriteLine(c.Address5.Trim(' ')); // 21 - Address 5
+                        sw.WriteLine(c.Address6.Trim(' ')); // 22 - Address 6
+                        sw.WriteLine("SECURITY BANK"); // 23 - FIXED
+                        sw.WriteLine(""); // 24 - BLANK
+                        sw.WriteLine(""); // 25 - BLANK
+                        sw.WriteLine(""); // 26 - BLANK
+                        sw.WriteLine(""); // 27 - BLANK
+                        sw.WriteLine(""); // 28 - BLANK
+                        sw.WriteLine(""); // 29 - BLANK
+                        sw.WriteLine(""); // 30 - BLANK
+
+                        string start = c.StartingSerial.ToString();
+
+                        while (start.Length < 10)
+                            start = "0" + start;
+
+                        sw.WriteLine(start.Trim(' ')); // 31 - StartingSeries
+
+                        string end = c.EndingSerial.ToString();
+
+                        while (end.Length < 10)
+                            end = "0" + end;
+
+                        sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
+                    });//END OF FOREACH
+                }//END USING
+
+                if (_batch != "0000")
+                {
+                    if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\DigiBanker\\" + DateTime.Now.Year.ToString()))
+                        Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\DigiBanker\\" + DateTime.Now.Year.ToString());
+
+                    File.Copy(fileName, fileName.Replace(digiBankerPath, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\DigiBanker\\"
+                        + DateTime.Now.Year.ToString() + "\\"), true);
+                }
+            }
             #endregion
         }//END OF FUNCTION
 
@@ -5010,7 +5180,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.ManagersCheck[x1].Name + "','" + _orders.ManagersCheck[x1].Name2 + "','','" + _orders.ManagersCheck[x1].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x1].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
@@ -5033,7 +5203,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.ManagersCheck[x2].Name + "','" + _orders.ManagersCheck[x2].Name2 + "','','" + _orders.ManagersCheck[x2].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x2].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
@@ -5172,7 +5342,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.ManagersCheck[x1].Name + "','" + _orders.ManagersCheck[x1].Name2 + "','','" + _orders.ManagersCheck[x1].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x1].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
@@ -5195,7 +5365,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.ManagersCheck[x2].Name + "','" + _orders.ManagersCheck[x2].Name2 + "','','" + _orders.ManagersCheck[x2].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x2].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
@@ -5231,7 +5401,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x3].BRSTN + "','" + _orders.ManagersCheck[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x3].BRSTN + "','" + _orders.ManagersCheck[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
                             temp3 + "','" + _orders.ManagersCheck[x3].Name + "','" + _orders.ManagersCheck[x3].Name2 + "','','" + _orders.ManagersCheck[x3].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x3].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
@@ -5411,7 +5581,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x1].BRSTN + "','" + _orders.ManagersCheck[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.ManagersCheck[x1].Name + "','" + _orders.ManagersCheck[x1].Name2 + "','','" + _orders.ManagersCheck[x1].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x1].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
@@ -5434,7 +5604,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x2].BRSTN + "','" + _orders.ManagersCheck[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.ManagersCheck[x2].Name + "','" + _orders.ManagersCheck[x2].Name2 + "','','" + _orders.ManagersCheck[x2].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x2].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
@@ -5470,7 +5640,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x3].BRSTN + "','" + _orders.ManagersCheck[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x3].BRSTN + "','" + _orders.ManagersCheck[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
                             temp3 + "','" + _orders.ManagersCheck[x3].Name + "','" + _orders.ManagersCheck[x3].Name2 + "','','" + _orders.ManagersCheck[x3].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x3].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
@@ -5506,7 +5676,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.ManagersCheck[x4].BRSTN + "','" + _orders.ManagersCheck[x4].AccountNo + "','" + RTFirst4 + "','" + RTFirst4 + "','" + acctNoHypen4 + "','" +
+                            "VALUES ('" + _orders.ManagersCheck[x4].BRSTN + "','" + _orders.ManagersCheck[x4].AccountNo + "','" + RTFirst4 + "','" + RTLast4 + "','" + acctNoHypen4 + "','" +
                             temp4 + "','" + _orders.ManagersCheck[x4].Name + "','" + _orders.ManagersCheck[x4].Name2 + "','','" + _orders.ManagersCheck[x4].Address1.Replace("'", "''") + "','" + _orders.ManagersCheck[x4].Address2.Replace("'", "''") + "','" + _orders.ManagersCheck[x4].Address3.Replace("'", "''") +
                             "','" + _orders.ManagersCheck[x4].Address4.Replace("'", "''") + "','" + _orders.ManagersCheck[x4].Address5.Replace("'", "''") + "','" + _orders.ManagersCheck[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
@@ -5709,17 +5879,17 @@ namespace sbtc
 
                 for (int x1 = 0; x1 < _orders.CheckOnePersonal.Count; x1++)
                 {
-                    Int64 start1 = _orders.ManagersCheck[x1].StartingSerial;
+                    Int64 start1 = _orders.CheckOnePersonal[x1].StartingSerial;
 
-                    string RTFirst1 = _orders.ManagersCheck[x1].BRSTN.Substring(0, 5);
+                    string RTFirst1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(0, 5);
 
-                    string RTLast1 = _orders.ManagersCheck[x1].BRSTN.Substring(_orders.ManagersCheck[x1].BRSTN.Length - 4, 4);
+                    string RTLast1 = _orders.CheckOnePersonal[x1].BRSTN.Substring(_orders.CheckOnePersonal[x1].BRSTN.Length - 4, 4);
 
-                    string startSeries1 = _orders.ManagersCheck[x1].StartingSerial.ToString();
+                    string startSeries1 = _orders.CheckOnePersonal[x1].StartingSerial.ToString();
 
-                    string endSeries1 = _orders.ManagersCheck[x1].EndingSerial.ToString();
+                    string endSeries1 = _orders.CheckOnePersonal[x1].EndingSerial.ToString();
 
-                    string acctNoHypen1 = _orders.ManagersCheck[x1].AccountNo.Substring(0, 3) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(3, 6) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(9, 3);
+                    string acctNoHypen1 = _orders.CheckOnePersonal[x1].AccountNo.Substring(0, 3) + "-" + _orders.CheckOnePersonal[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOnePersonal[x1].AccountNo.Substring(9, 3);
 
                     while (startSeries1.Length < 10)
                         startSeries1 = "0" + startSeries1;
@@ -5770,7 +5940,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" 
                             + _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + 
@@ -5795,7 +5965,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + 
                             _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" + 
@@ -5939,7 +6109,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" +
                             _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + 
@@ -5964,7 +6134,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + 
                             _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" +
@@ -6002,7 +6172,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_3Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
                             temp3 + "','" + _orders.CheckOnePersonal[x3].Name + "','" + _orders.CheckOnePersonal[x3].Name2 + "','','" + _orders.CheckOnePersonal[x3].Address1.Replace("'", "''") + 
                             "','" + _orders.CheckOnePersonal[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address5.Replace("'", "''") + "','" + 
@@ -6184,7 +6354,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x1].BRSTN + "','" + _orders.CheckOnePersonal[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.CheckOnePersonal[x1].Name + "','" + _orders.CheckOnePersonal[x1].Name2 + "','','" + _orders.CheckOnePersonal[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
@@ -6207,7 +6377,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x2].BRSTN + "','" + _orders.CheckOnePersonal[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.CheckOnePersonal[x2].Name + "','" + _orders.CheckOnePersonal[x2].Name2 + "','','" + _orders.CheckOnePersonal[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
@@ -6243,7 +6413,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x3].BRSTN + "','" + _orders.CheckOnePersonal[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
                             temp3 + "','" + _orders.CheckOnePersonal[x3].Name + "','" + _orders.CheckOnePersonal[x3].Name2 + "','','" + _orders.CheckOnePersonal[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
@@ -6279,7 +6449,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOnePersonal[x4].BRSTN + "','" + _orders.CheckOnePersonal[x4].AccountNo + "','" + RTFirst4 + "','" + RTFirst4 + "','" + acctNoHypen4 + "','" +
+                            "VALUES ('" + _orders.CheckOnePersonal[x4].BRSTN + "','" + _orders.CheckOnePersonal[x4].AccountNo + "','" + RTFirst4 + "','" + RTLast4 + "','" + acctNoHypen4 + "','" +
                             temp4 + "','" + _orders.CheckOnePersonal[x4].Name + "','" + _orders.CheckOnePersonal[x4].Name2 + "','','" + _orders.CheckOnePersonal[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOnePersonal[x4].Address4.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address5.Replace("'", "''") + "','" + _orders.CheckOnePersonal[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
@@ -6315,16 +6485,16 @@ namespace sbtc
 
                 GC.Collect();
 
-                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year))
-                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year);
+                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year))
+                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year);
 
                 if (_batch != "0000")
-                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
+                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year + "\\" + fileName.Replace(checkOnePath, ""), true);
             }//END IF
 
             if (_orders.CheckOneCommerical.Count > 0)
             {
-                string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + _ext + "P.mdb";
+                string fileName = checkOnePath + "\\13D" + _batch.Substring(0, 4) + _ext + "C.mdb";
 
                 FileInfo fileInfo = new FileInfo(fileName);
 
@@ -6423,7 +6593,7 @@ namespace sbtc
 
                 int primaryKey = 1;
 
-                string txtName = "13D" + _batch.Substring(0, 4) + _ext + "P.txt";
+                string txtName = "13D" + _batch.Substring(0, 4) + _ext + "C.txt";
 
                 int dataNumber1 = 0, dataNumber2 = 0, dataNumber3 = 0, dataNumber4 = 0;//SERVE AS DATANUMBER
 
@@ -6482,17 +6652,17 @@ namespace sbtc
 
                 for (int x1 = 0; x1 < _orders.CheckOneCommerical.Count; x1++)
                 {
-                    Int64 start1 = _orders.ManagersCheck[x1].StartingSerial;
+                    Int64 start1 = _orders.CheckOneCommerical[x1].StartingSerial;
 
-                    string RTFirst1 = _orders.ManagersCheck[x1].BRSTN.Substring(0, 5);
+                    string RTFirst1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(0, 5);
 
-                    string RTLast1 = _orders.ManagersCheck[x1].BRSTN.Substring(_orders.ManagersCheck[x1].BRSTN.Length - 4, 4);
+                    string RTLast1 = _orders.CheckOneCommerical[x1].BRSTN.Substring(_orders.CheckOneCommerical[x1].BRSTN.Length - 4, 4);
 
-                    string startSeries1 = _orders.ManagersCheck[x1].StartingSerial.ToString();
+                    string startSeries1 = _orders.CheckOneCommerical[x1].StartingSerial.ToString();
 
-                    string endSeries1 = _orders.ManagersCheck[x1].EndingSerial.ToString();
+                    string endSeries1 = _orders.CheckOneCommerical[x1].EndingSerial.ToString();
 
-                    string acctNoHypen1 = _orders.ManagersCheck[x1].AccountNo.Substring(0, 3) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(3, 6) + "-" + _orders.ManagersCheck[x1].AccountNo.Substring(9, 3);
+                    string acctNoHypen1 = _orders.CheckOneCommerical[x1].AccountNo.Substring(0, 3) + "-" + _orders.CheckOneCommerical[x1].AccountNo.Substring(3, 6) + "-" + _orders.CheckOneCommerical[x1].AccountNo.Substring(9, 3);
 
                     while (startSeries1.Length < 10)
                         startSeries1 = "0" + startSeries1;
@@ -6543,7 +6713,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','"
                             + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" +
@@ -6568,7 +6738,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_2Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" +
@@ -6957,7 +7127,7 @@ namespace sbtc
                         cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
                             temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
@@ -6980,7 +7150,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
                             temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
@@ -7016,7 +7186,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
                             temp3 + "','" + _orders.CheckOneCommerical[x3].Name + "','" + _orders.CheckOneCommerical[x3].Name2 + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
@@ -7052,7 +7222,7 @@ namespace sbtc
                             cmd.CommandText = "INSERT INTO InputFile_4Outs (BRSTN, AccountNumber, RT1to5, RT6to9, AccountNumberWithHypen, Serial, Name1, " +
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
-                            "VALUES ('" + _orders.CheckOneCommerical[x4].BRSTN + "','" + _orders.CheckOneCommerical[x4].AccountNo + "','" + RTFirst4 + "','" + RTFirst4 + "','" + acctNoHypen4 + "','" +
+                            "VALUES ('" + _orders.CheckOneCommerical[x4].BRSTN + "','" + _orders.CheckOneCommerical[x4].AccountNo + "','" + RTFirst4 + "','" + RTLast4 + "','" + acctNoHypen4 + "','" +
                             temp4 + "','" + _orders.CheckOneCommerical[x4].Name + "','" + _orders.CheckOneCommerical[x4].Name2 + "','','" + _orders.CheckOneCommerical[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x4].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
@@ -7088,83 +7258,86 @@ namespace sbtc
 
                 GC.Collect();
 
-                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year))
-                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year);
+                if (!Directory.Exists("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year))
+                    Directory.CreateDirectory("\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year);
 
                 if (_batch != "0000")
-                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\MC\\" + DateTime.Now.Year + "\\" + fileName.Replace(mcPath, ""), true);
+                    File.Copy(fileName, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\CHECKONE\\" + DateTime.Now.Year + "\\" + fileName.Replace(checkOnePath, ""), true);
             }//END IF
         }
 
         #region private class
         public static void CheckPaths()
-        {
-            if (Directory.Exists(regPrePath))
+        {try
             {
-                DeleteFilesInDirectory(regPrePath);
+                if (Directory.Exists(regPrePath))
+                {
+                    DeleteFilesInDirectory(regPrePath);
 
-                Directory.Delete(regPrePath);
+                    Directory.Delete(regPrePath);
+                }
+
+                if (Directory.Exists(regPath))
+                {
+                    DeleteFilesInDirectory(regPath);
+
+                    Directory.Delete(regPath);
+                }
+
+                if (Directory.Exists(chargeSlipPath))
+                {
+                    DeleteFilesInDirectory(chargeSlipPath);
+
+                    Directory.Delete(chargeSlipPath);
+                }
+
+                if (Directory.Exists(checkOnePath))
+                {
+                    DeleteFilesInDirectory(checkOnePath);
+
+                    Directory.Delete(checkOnePath);
+                }
+
+                if (Directory.Exists(checkPowerPath))
+                {
+                    DeleteFilesInDirectory(checkPowerPath);
+
+                    Directory.Delete(checkPowerPath);
+                }
+
+                if (Directory.Exists(customPath))
+                {
+                    DeleteFilesInDirectory(customPath);
+
+                    Directory.Delete(customPath);
+                }
+
+                if (Directory.Exists(gcPath))
+                {
+                    DeleteFilesInDirectory(gcPath);
+
+                    Directory.Delete(gcPath);
+                }
+
+
+                if (Directory.Exists(mcContPath))
+                {
+                    DeleteFilesInDirectory(mcContPath);
+
+                    Directory.Delete(mcContPath);
+                }
+
+                if (Directory.Exists(mcPath))
+                {
+                    DeleteFilesInDirectory(mcPath);
+
+                    Directory.Delete(mcPath);
+                }
             }
-
-            if (Directory.Exists(regPath))
-            {
-                DeleteFilesInDirectory(regPath);
-
-                Directory.Delete(regPath);
-            }
-
-            if (Directory.Exists(chargeSlipPath))
-            {
-                DeleteFilesInDirectory(chargeSlipPath);
-
-                Directory.Delete(chargeSlipPath);
-            }
-
-            if (Directory.Exists(checkOnePath))
-            {
-                DeleteFilesInDirectory(checkOnePath);
-
-                Directory.Delete(checkOnePath);
-            }
-
-            if (Directory.Exists(checkPowerPath))
-            {
-                DeleteFilesInDirectory(checkPowerPath);
-
-                Directory.Delete(checkPowerPath);
-            }
-
-            if (Directory.Exists(customPath))
-            {
-                DeleteFilesInDirectory(customPath);
-
-                Directory.Delete(customPath);
-            }
-
-            if (Directory.Exists(gcPath))
-            {
-                DeleteFilesInDirectory(gcPath);
-
-                Directory.Delete(gcPath);
-            }
-
-
-            if (Directory.Exists(mcContPath))
-            {
-                DeleteFilesInDirectory(mcContPath);
-
-                Directory.Delete(mcContPath);
-            }
-
-            if (Directory.Exists(mcPath))
-            {
-                DeleteFilesInDirectory(mcPath);
-
-                Directory.Delete(mcPath);
-            }
-
+            catch { }
             //DELETE SQL DUMPS
             DeleteFilesInDirectory(DatabaseConnection.LiveStartPath);
+            
         }//END OF FUNCTION
         private static void DeleteFilesInDirectory(string _directory)
         {
