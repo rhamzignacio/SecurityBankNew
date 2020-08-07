@@ -41,7 +41,7 @@ namespace sbtc
                 if (_name == null)
                     return "";
                 else
-                    return _name;
+                    return _name.ToUpper();
             }
             set
             {
@@ -57,7 +57,7 @@ namespace sbtc
                 if (_name2 == null)
                     return "";
                 else
-                    return _name2;
+                    return _name2.ToUpper();
             }
             set
             {
@@ -67,8 +67,38 @@ namespace sbtc
         public string FormType { get; set; }
         public int OrderQuantity { get; set; }
         public string Batch { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
+
+        private string _address1;
+        public string Address1
+        {
+            get
+            {
+                if (_address1 == null)
+                    return "";
+                else
+                    return _address1.ToUpper();
+            }
+            set
+            {
+                _address1 = value;
+            }
+        }
+
+        private string _address2;
+        public string Address2
+        {
+            get
+            {
+                if (_address2 == null)
+                    return "";
+                else
+                    return _address2.ToUpper();
+            }
+            set
+            {
+                _address2 = value;
+            }
+        }
 
         private string _address3;
         public string Address3
@@ -138,6 +168,8 @@ namespace sbtc
         public Int64 StartingSerial { get; set; }
         public Int64 EndingSerial { get; set; }
 
+        public Int64 ManualStart { get; set; }
+
         public string FileName { get; set; }
     }
 
@@ -156,25 +188,7 @@ namespace sbtc
         public List<OrderModel> CustomizedCheck { get; set; }
         public List<OrderModel> ManagersCheckCont { get; set; }
         public List<OrderModel> DigiBanker { get; set; }
-    }
-
-    public class SBTCModel
-    {
-        public string CheckType { get; set; }
-        public string BRSTN { get; set; }
-        public string AccountNo { get; set; }
-        public string Name1 { get; set; }
-        public string Name2 { get; set; }
-        public string FormType { get; set; }
-        public string OrderQty { get; set; }
-        public string Batch { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
-        public string Address4 { get; set; }
-        public string Address5 { get; set; }
-        public string FileName { get; set; }
-        public int StartingSerial { get; set; }
+        public List<OrderModel> Dividend { get; set; }
     }
 
     public class Locator

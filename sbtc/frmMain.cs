@@ -681,6 +681,9 @@ namespace sbtc
                         errorMessage += "-Error Parsing Quantity of BRSTN=" + line.Substring(1, 9).Trim() + " AccountNo=" + line.Substring(11, 12).Trim() + " FileName=" + filename;
                     }
 
+                    if (test == 0)
+                        test = 1;
+
                     for (int x = 0; x < test; x++)
                     {
                         pkey = pkey + 1;

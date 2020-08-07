@@ -2673,6 +2673,8 @@ repeatme:
 
             sorted.ManagersCheckCont = new List<OrderModel>();
 
+            sorted.DigiBanker = new List<OrderModel>();
+
             _orders.ForEach(r =>{
 
                 if (r.CheckType == "A" && r.FormType == "05")

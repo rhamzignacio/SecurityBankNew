@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Xml;
+using ADODB;
 
 namespace sbtc
 {
@@ -161,6 +163,10 @@ namespace sbtc
                 {
                     ChkType = "MC_1";
                 }
+                else if (cboChequeName.Text == "Digibanker")
+                {
+                    ChkType = "DIGIBANKER";
+                }
                 else
                 {
                     {
@@ -232,7 +238,20 @@ namespace sbtc
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            List<SBTCModel> sbtcList = new List<SBTCModel>();
+            OrderSorted sbtcList = new OrderSorted();
+            sbtcList.RegularPersonal = new List<OrderModel>();
+            sbtcList.RegularCommercial = new List<OrderModel>();
+            sbtcList.ManagersCheck = new List<OrderModel>();
+            sbtcList.ManagersCheckCont = new List<OrderModel>();
+            sbtcList.GiftCheck = new List<OrderModel>();
+            sbtcList.PersonalPreEncoded = new List<OrderModel>();
+            sbtcList.CommercialPreEncoded = new List<OrderModel>();
+            sbtcList.CheckOnePersonal = new List<OrderModel>();
+            sbtcList.CheckOneCommerical = new List<OrderModel>();
+            sbtcList.CheckPowerPersonal = new List<OrderModel>();
+            sbtcList.CheckPowerCommercial = new List<OrderModel>();
+            sbtcList.DigiBanker = new List<OrderModel>();
+            sbtcList.CustomizedCheck = new List<OrderModel>();
 
             for (int LoopCount = 0; LoopCount < dataGridView1.Rows.Count; LoopCount++)
             {
@@ -244,26 +263,65 @@ namespace sbtc
                 string Books = dataGridView1.Rows[LoopCount].Cells[5].Value.ToString();
                 string StartingSerial = dataGridView1.Rows[LoopCount].Cells[6].Value.ToString();
 
-                SBTCModel sbtc = new SBTCModel();
+                OrderModel sbtc = new OrderModel();
                 sbtc.CheckType = chequename ;
                 sbtc.BRSTN = brstn;
                 sbtc.AccountNo = AccountNo;
-                sbtc.Name1 = Name1;
+                sbtc.Name = Name1;
                 sbtc.Name2 = Name2;
                 sbtc.FormType = "00";
-                sbtc.OrderQty = Books;
-                sbtc.StartingSerial = int.Parse(StartingSerial);
+                sbtc.OrderQuantity = int.Parse(Books);
+                sbtc.ManualStart = int.Parse(StartingSerial);
 
-                sbtcList.Add(sbtc);
+                if (chequename == "CUSTOM")
+                {
+                    sbtcList.CustomizedCheck.Add(sbtc);
+                }
+                else if (chequename == "DIGIBANKER")
+                {
+                    sbtcList.DigiBanker.Add(sbtc);
+                }
+
             }
 
-            AssignOtherValue(sbtcList); //Assign Branch Info Data
+            if (sbtcList.CustomizedCheck.Count > 0)
+            {
+                AssignOtherValue(sbtcList.CustomizedCheck);
+            }
+
+            if (sbtcList.DigiBanker.Count > 0)
+            {
+                AssignOtherValue(sbtcList.DigiBanker);
+            }
 
             btnAdd.Enabled = false;
-            btnProcess.Enabled = false;        
+            btnProcess.Enabled = false;
+
+            //PrinterFile
+            GenerateService.GeneratePrinterFiles(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text);
+
+            //DoBlock
+            GenerateService.GenerateDoBlock(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value,
+                "");
         }
 
-        private void AssignOtherValue(List<SBTCModel> _orders)
+        private void AssignSeriels(string _type, List<OrderModel> _orders)
+        {
+            if(_type == "DIGIBANKER")
+            {
+                Int64 serial = _orders[0].ManualStart;
+
+                _orders.ForEach(r =>
+                {
+                    r.StartingSerial = serial + 1;
+                    r.EndingSerial = serial + 100;
+
+                    serial = serial + 100;
+                });
+            }
+        }
+
+        private void AssignOtherValue(List<OrderModel> _orders)
         {
             _orders.ForEach(c =>
             {

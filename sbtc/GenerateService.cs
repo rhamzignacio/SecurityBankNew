@@ -2192,6 +2192,202 @@ namespace sbtc
                 }//END USING
             }//END IF
             #endregion
+
+            #region Customized Check
+            if (_orders.CustomizedCheck.Count > 0)
+            {
+                int pageNo = 1, lineCount = 0;
+
+                var brstnList = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
+
+                StreamWriter sw;
+
+                string fileName = regPath + "\\PackingA.txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Customized Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FOR FRONT COVER
+                    sw.WriteLine("");
+
+                    lineCount = 0;
+
+                    pageNo++;
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Customized Checks Summary");
+
+                        sw.WriteLine("                                  (F R O N T  C O V E R)");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = "";
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < brstnList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+                }//END USING
+            }//END IF
+            #endregion
+
         }//END FUNCTION
 
         public static void GenerateDoBlock(OrderSorted _orders, string _batch, string _ext, DateTime _deliveryDate,
@@ -3511,7 +3707,271 @@ namespace sbtc
                     }
                 }//END USING
             }//END IF
-        }//END FUNCTION
+
+            if(_orders.CustomizedCheck.Count > 0)
+            {
+                StreamWriter sw;
+
+                string fileName = customPath + "\\BlockCUS.txt";
+
+                bool footer = true;
+
+                sw = File.CreateText(fileName);
+
+                sw.Close();
+
+                using(sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                    {
+                        int page = 1, block = 1, blockCounter = 0;
+
+                        var brstn = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int x = 0; x < brstn.Count; x++)
+                        {
+                            var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == brstn[x]).ToList();
+
+                            checks.ForEach(c =>
+                            {
+                                if ((block % 8 == 0 && blockCounter == 4) || (block == 1 && blockCounter == 0))
+                                {
+                                    if (page == 2 && footer)
+                                    {
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\tCUS = " + _orders.CustomizedCheck.Count.ToString() + "                 CUS" + _batch.Substring(0, 4) + _ext + ".txt");
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                                        sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                                        sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                                        footer = false;
+                                    }
+
+                                    if (block % 8 == 0 && blockCounter == 4)
+                                        sw.WriteLine("");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tPage No." + page.ToString());
+
+                                    sw.WriteLine("\t\t" + DateTime.Today.ToShortDateString());
+
+                                    sw.WriteLine("\t\t\t SBTC - SUMMARY OF BLOCK - Customized Check");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tBLOCK RT_NO     M ACCT_NO         START_NO.  END_NO.");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("");
+
+                                    page++;
+                                }
+
+                                if (blockCounter == 4)
+                                {
+                                    block++;
+
+                                    blockCounter = 0;
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                                }
+                                else if (block == 1 && blockCounter == 0)
+                                {
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                                }
+
+                                string start = c.StartingSerial.ToString();
+
+                                while (start.Length < 10)
+                                    start = "0" + start;
+
+                                string end = c.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("\t\t\t" + block.ToString() + " " + c.BRSTN + "   " + c.AccountNo + "    " + start + "    " + end);
+
+                                blockCounter++;
+                            });//END FOREACH
+                        }//END FOR
+
+                        if (footer)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\t" + _orders.ManagersCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                            sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                            sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                            footer = false;
+                        }
+                    }//END USING
+                }
+            }//END IF
+
+            if (_orders.DigiBanker.Count > 0)
+            {
+                StreamWriter sw;
+
+                string fileName = digiBankerPath + "\\BlockDG.txt";
+
+                bool footer = true;
+
+                sw = File.CreateText(fileName);
+
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                    {
+                        int page = 1, block = 1, blockCounter = 0;
+
+                        var brstn = _orders.DigiBanker.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int x = 0; x < brstn.Count; x++)
+                        {
+                            var checks = _orders.DigiBanker.Where(r => r.BRSTN == brstn[x]).ToList();
+
+                            checks.ForEach(c =>
+                            {
+                                if ((block % 8 == 0 && blockCounter == 4) || (block == 1 && blockCounter == 0))
+                                {
+                                    if (page == 2 && footer)
+                                    {
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\tDG = " + _orders.DigiBanker.Count.ToString() + "                 DG" + _batch.Substring(0, 4) + _ext + ".txt");
+
+                                        sw.WriteLine("");
+
+                                        sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                                        sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                                        sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                                        footer = false;
+                                    }
+
+                                    if (block % 8 == 0 && blockCounter == 4)
+                                        sw.WriteLine("");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tPage No." + page.ToString());
+
+                                    sw.WriteLine("\t\t" + DateTime.Today.ToShortDateString());
+
+                                    sw.WriteLine("\t\t\t SBTC - SUMMARY OF BLOCK - DIGIBANKER");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tBLOCK RT_NO     M ACCT_NO         START_NO.  END_NO.");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("");
+
+                                    page++;
+                                }
+
+                                if (blockCounter == 4)
+                                {
+                                    block++;
+
+                                    blockCounter = 0;
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                                }
+                                else if (block == 1 && blockCounter == 0)
+                                {
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                                }
+
+                                string start = c.StartingSerial.ToString();
+
+                                while (start.Length < 10)
+                                    start = "0" + start;
+
+                                string end = c.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("\t\t\t" + block.ToString() + " " + c.BRSTN + "   " + c.AccountNo + "    " + start + "    " + end);
+
+                                blockCounter++;
+                            });//END FOREACH
+                        }//END FOR
+
+                        if (footer)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\t" + _orders.ManagersCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                            sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                            sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                            footer = false;
+                        }
+                    }//END USING
+                }
+            }//END IF;
+        }//END FUNCTIONk
 
         public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext)
         {
@@ -4036,14 +4496,16 @@ namespace sbtc
                 conn.Close();
             }
             #endregion
+
+
         }//END FUNCTION
 
         public static void GeneratePrinterFiles(OrderSorted _orders, string _batch, string _ext)
         {
             #region Regular Personal
+            if(_orders.RegularPersonal != null)
             if (_orders.RegularPersonal.Count > 0)
             {
-
                 if (!Directory.Exists(regPath))
                     Directory.CreateDirectory(regPath);
 
@@ -4394,14 +4856,14 @@ namespace sbtc
 
                         string start = c.StartingSerial.ToString();
 
-                        if (start.Length < 7)
+                        while (start.Length < 7)
                             start = "0" + start;
 
                         sw.WriteLine(start.Trim(' ')); // 31 - StartingSeries
 
                         string end = c.EndingSerial.ToString();
 
-                        if (end.Length < 7)
+                        while (end.Length < 7)
                             end = "0" + end;
 
                         sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
@@ -4878,8 +5340,8 @@ namespace sbtc
             #region DigiBanker
             if (_orders.DigiBanker.Count > 0)
             {
-                if (!Directory.Exists(customPath))
-                    Directory.CreateDirectory(customPath);
+                if (!Directory.Exists(digiBankerPath))
+                    Directory.CreateDirectory(digiBankerPath);
 
                 StreamWriter sw;
 
