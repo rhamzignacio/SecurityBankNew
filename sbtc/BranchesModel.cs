@@ -171,6 +171,8 @@ namespace sbtc
         public Int64 ManualStart { get; set; }
 
         public string FileName { get; set; }
+
+        public string DeliverTo { get; set; }
     }
 
     public class OrderSorted
@@ -186,6 +188,7 @@ namespace sbtc
         public List<OrderModel> CheckPowerPersonal { get; set; }
         public List<OrderModel> CheckPowerCommercial { get; set; }
         public List<OrderModel> CustomizedCheck { get; set; }
+        public List<OrderModel> CustomizedCheckPersonal { get; set; }
         public List<OrderModel> ManagersCheckCont { get; set; }
         public List<OrderModel> DigiBanker { get; set; }
         public List<OrderModel> Dividend { get; set; }

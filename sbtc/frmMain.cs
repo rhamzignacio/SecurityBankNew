@@ -504,7 +504,7 @@ namespace sbtc
 
                 sortedList.PersonalPreEncoded.ForEach(r =>
                 {
-                    var branch = branchList.FirstOrDefault(c => c.BRSTN == r.BRSTN);
+                   var branch = branchList.FirstOrDefault(c => c.BRSTN == r.BRSTN);
 
                     var series = branch.LastNo_PA;
 
@@ -657,6 +657,26 @@ namespace sbtc
                     branch.IfChanges = 1;
                 });
             }//END IF
+
+            if (sortedList.GiftCheck.Count > 0)
+            {
+                sortedList.RegularPersonal = sortedList.GiftCheck.OrderBy(r => r.BRSTN).ThenBy(r => r.AccountNo).ToList();
+
+                sortedList.GiftCheck.ForEach(r =>
+                {
+                    var branch = branchList.FirstOrDefault(c => c.BRSTN == r.BRSTN);
+
+                    var series = branch.LastNo_GC;
+
+                    r.StartingSerial = series + 1;
+
+                    r.EndingSerial = series + QuantityPerBooklet.GiftCheck;
+
+                    branch.LastNo_GC += QuantityPerBooklet.GiftCheck;
+
+                    branch.IfChanges = 1;
+                });
+            }//END IF
         }
 
         private List<OrderModel> CheckFiles(string filename)
@@ -709,6 +729,15 @@ namespace sbtc
                         order.FormType = line.Substring(80, 2).Trim();
 
                         order.OrderQuantity = int.Parse(line.Substring(82, 2).Trim());
+
+                        if(line.Length > 84)
+                        {
+                            order.DeliverTo = line.Substring(84, 9);
+                        }
+                        else
+                        {
+                            order.DeliverTo = order.BRSTN;
+                        }
 
                         order.FileName = filename;
 

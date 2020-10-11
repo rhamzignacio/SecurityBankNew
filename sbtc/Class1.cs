@@ -553,7 +553,7 @@ repeatme:
 
 
 
-            sql = "SELECT chequename , batch , brstn , accountno , name1 , name2 , min(startingserial) , max(endingserial) , address1, deliverydate , count(primarykey), Date FROM " + dbase + " WHERE DeliveryDate = '" + DeliveryDate + "' GROUP BY chequename , batch , brstn , accountno , name1 , name2 , address1, deliverydate, Date     ORDER BY ChequeName, Batch, BRSTN, AccountNo, Name1";
+            sql = "SELECT chequename , batch , brstn , accountno , name1 , name2 , min(startingserial) , max(endingserial) , address1, deliverydate , count(primarykey), Date, DeliverTo, BranchName FROM " + dbase + " WHERE DeliveryDate = '" + DeliveryDate + "' GROUP BY chequename , batch , brstn , accountno , name1 , name2 , address1, deliverydate, Date     ORDER BY ChequeName, Batch, BRSTN, AccountNo, Name1";
             string MyConnection2 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
             MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
             MySqlCommand MyCommand2 = new MySqlCommand(sql, MyConn2);
@@ -581,6 +581,8 @@ repeatme:
                 DateTime deliverydate = MyReader2.GetDateTime(9);
                 string OrderQty = MyReader2.GetString(10);
                 string DateProcess = MyReader2.GetDateTime(11).ToString("yyyy-MM-dd");
+                string DeliverTo = MyReader2.GetString(12);
+                string BranchName = MyReader2.GetString(13);
 
 
                 
@@ -625,7 +627,13 @@ repeatme:
 
                 range = worksheet.Cells[LoopCount + 2, 11] as Microsoft.Office.Interop.Excel.Range;
                 range.Value2 = OrderQty;
-                
+
+                range = worksheet.Cells[LoopCount + 2, 12] as Microsoft.Office.Interop.Excel.Range;
+                range.Value2 = DeliverTo;
+
+                range = worksheet.Cells[LoopCount + 2, 13] as Microsoft.Office.Interop.Excel.Range;
+                range.Value2 = BranchName;
+
 
                 LoopCount = LoopCount + 1;
             }
@@ -772,9 +780,6 @@ repeatme:
             MySqlDataReader MyReader4;
             MyConn4.Open();
             MyReader4 = MyCommand4.ExecuteReader();
-
-
-
 
 
 

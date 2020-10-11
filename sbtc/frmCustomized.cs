@@ -21,11 +21,18 @@ namespace sbtc
         List<BranchesModel> branchList;
 
         string MyConnection2 = "datasource=192.168.0.254;port=3306;username=root;password=CorpCaptive";
+
+        OrderSorted sbtcList = new OrderSorted();
         public frmCustomized(List<BranchesModel> _branches)
         {
             InitializeComponent();
 
             branchList = _branches;
+        }
+
+        private void DeleteOldFiles()
+        {
+
         }
 
         private void frmCustomized_Load(object sender, EventArgs e)
@@ -185,28 +192,28 @@ namespace sbtc
 
         private void txtBRSTN_TextChanged(object sender, EventArgs e)
         {
-            if (txtBRSTN.Text.Length == 9)
-            {
-                OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
-                OleDbDataAdapter command1 = new OleDbDataAdapter("SELECT * FROM Branches WHERE BRSTN = '" + txtBRSTN.Text + "'", conn1);
-                conn1.Open();
-                DataSet dataSet = new DataSet();
-                command1.Fill(dataSet);
+            //if (txtBRSTN.Text.Length == 9)
+            //{
+            //    OleDbConnection conn1 = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + ";Extended Properties=dBASE III;");
+            //    OleDbDataAdapter command1 = new OleDbDataAdapter("SELECT * FROM Branches WHERE BRSTN = '" + txtBRSTN.Text + "'", conn1);
+            //    conn1.Open();
+            //    DataSet dataSet = new DataSet();
+            //    command1.Fill(dataSet);
 
-                DataTable dt = dataSet.Tables[0];
-                //foreach (DataRow dr in dt.Rows)
-                //{
-                //    string BRSTN = dr[0].ToString();
-                //}
+            //    DataTable dt = dataSet.Tables[0];
+            //    //foreach (DataRow dr in dt.Rows)
+            //    //{
+            //    //    string BRSTN = dr[0].ToString();
+            //    //}
 
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("BRSTN "+txtBRSTN.Text+ " does not exists on Branches.dbf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtBRSTN.Text = "";
-                    txtBRSTN.Focus();
-                    return;
-                }
-            }
+            //    if (dt.Rows.Count == 0)
+            //    {
+            //        MessageBox.Show("BRSTN "+txtBRSTN.Text+ " does not exists on Branches.dbf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //        txtBRSTN.Text = "";
+            //        txtBRSTN.Focus();
+            //        return;
+            //    }
+            //}
         }
 
         private void txtAccountNo_TextChanged(object sender, EventArgs e)
@@ -237,8 +244,7 @@ namespace sbtc
         }
 
         private void btnProcess_Click(object sender, EventArgs e)
-        {
-            OrderSorted sbtcList = new OrderSorted();
+        {            
             sbtcList.RegularPersonal = new List<OrderModel>();
             sbtcList.RegularCommercial = new List<OrderModel>();
             sbtcList.ManagersCheck = new List<OrderModel>();
@@ -260,38 +266,50 @@ namespace sbtc
                 string AccountNo = dataGridView1.Rows[LoopCount].Cells[2].Value.ToString();
                 string Name1 = dataGridView1.Rows[LoopCount].Cells[3].Value.ToString();
                 string Name2 = dataGridView1.Rows[LoopCount].Cells[4].Value.ToString();
-                string Books = dataGridView1.Rows[LoopCount].Cells[5].Value.ToString();
+                int Books = int.Parse(dataGridView1.Rows[LoopCount].Cells[5].Value.ToString());
                 string StartingSerial = dataGridView1.Rows[LoopCount].Cells[6].Value.ToString();
 
                 OrderModel sbtc = new OrderModel();
-                sbtc.CheckType = chequename ;
-                sbtc.BRSTN = brstn;
-                sbtc.AccountNo = AccountNo;
-                sbtc.Name = Name1;
-                sbtc.Name2 = Name2;
-                sbtc.FormType = "00";
-                sbtc.OrderQuantity = int.Parse(Books);
-                sbtc.ManualStart = int.Parse(StartingSerial);
 
-                if (chequename == "CUSTOM")
+                for (int x = 0; x < Books; x++)
                 {
-                    sbtcList.CustomizedCheck.Add(sbtc);
-                }
-                else if (chequename == "DIGIBANKER")
-                {
-                    sbtcList.DigiBanker.Add(sbtc);
-                }
+                    sbtc = new OrderModel();
+                    sbtc.CheckType = chequename;
+                    sbtc.BRSTN = brstn;
+                    sbtc.AccountNo = AccountNo;
+                    sbtc.Name = Name1;
+                    sbtc.Name2 = Name2;
+                    sbtc.FormType = "00";
+                    sbtc.OrderQuantity = Books;
+                    sbtc.ManualStart = int.Parse(StartingSerial);
 
+                    if (chequename == "CUSTOM")
+                    {
+                        sbtcList.CustomizedCheck.Add(sbtc);
+                    }
+                    else if (chequename == "DIGIBANKER")
+                    {
+                        sbtcList.DigiBanker.Add(sbtc);
+                    }
+                    else if (chequename == "CUSTOM_PA")
+                    {
+                        sbtcList.CustomizedCheckPersonal.Add(sbtc);
+                    }
+                }
             }
 
             if (sbtcList.CustomizedCheck.Count > 0)
             {
                 AssignOtherValue(sbtcList.CustomizedCheck);
+
+                AssignSeriels("CUSTOM");
             }
 
             if (sbtcList.DigiBanker.Count > 0)
             {
                 AssignOtherValue(sbtcList.DigiBanker);
+
+                AssignSeriels("DIGIBANKER");
             }
 
             btnAdd.Enabled = false;
@@ -301,22 +319,47 @@ namespace sbtc
             GenerateService.GeneratePrinterFiles(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text);
 
             //DoBlock
-            GenerateService.GenerateDoBlock(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value,
-                "");
+            GenerateService.GenerateDoBlock(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text, dteDeliveryDate.Value,"");
+
+            //PackingList
+            GenerateService.GeneratePackingList(sbtcList, txtBoxBatchNo.Text, dteDeliveryDate.Value, branchList);
+
+            //PackingDBF
+            GenerateService.GeneratePackingDBF(sbtcList, txtBoxBatchNo.Text, txtBoxExt.Text);
         }
 
-        private void AssignSeriels(string _type, List<OrderModel> _orders)
+        private void AssignSeriels(string _type)
         {
             if(_type == "DIGIBANKER")
             {
-                Int64 serial = _orders[0].ManualStart;
+                Int64 serial = sbtcList.DigiBanker[0].ManualStart;
 
-                _orders.ForEach(r =>
+                sbtcList.DigiBanker.ForEach(r =>
                 {
                     r.StartingSerial = serial + 1;
                     r.EndingSerial = serial + 100;
 
                     serial = serial + 100;
+                });
+            }
+            else if(_type == "CUSTOM")
+            {
+                Int64 serial = sbtcList.CustomizedCheck[0].ManualStart;
+
+                sbtcList.CustomizedCheck.ForEach(r =>
+                {
+                    r.StartingSerial = serial + 1;
+                    r.EndingSerial = serial + 100;
+                });
+            }
+            else if (_type == "REGULAR")
+            {
+                Int64 serial = sbtcList.CustomizedCheckPersonal[0].ManualStart;
+
+                sbtcList.CustomizedCheckPersonal.ForEach(r =>
+                {
+                    r.StartingSerial = serial + 1;
+                    r.EndingSerial = serial + 100;
                 });
             }
         }

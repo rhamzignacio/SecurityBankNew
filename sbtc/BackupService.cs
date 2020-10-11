@@ -449,7 +449,7 @@ namespace sbtc
 
         public static void ProcessArchiving(string _batchNumber, string _processBy, OrderSorted _orders = null)
         {
-            //ProcessSQLDump();
+            ProcessSQLDump();
             
             Process proc = new Process();
 

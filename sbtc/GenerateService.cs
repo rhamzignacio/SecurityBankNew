@@ -8,6 +8,7 @@ using System.Data.OleDb;
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 
 namespace sbtc
 {
@@ -283,7 +284,7 @@ namespace sbtc
             return "";
         }//END OF FUNCTION
 
-        public static void GeneratePackingList(OrderSorted _orders, string _batch, DateTime _deliveryDate, 
+        public static void GeneratePackingList(OrderSorted _orders, string _batch, DateTime _deliveryDate,
             List<BranchesModel> _branches)
         {
             #region Regular Personal
@@ -291,7 +292,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.RegularPersonal.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.RegularPersonal.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -304,7 +305,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -322,9 +323,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -332,9 +333,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.RegularPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.RegularPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -366,8 +369,45 @@ namespace sbtc
 
                                 lineCount = 0;
                             }
-                            
                         });
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
 
                         sw.WriteLine("");
 
@@ -377,8 +417,8 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
-                        {                           
+                        if (x + 1 < deliverToList.Count)
+                        {
                             sw.WriteLine("");
 
                             sw.WriteLine("");
@@ -394,7 +434,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -414,9 +454,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -424,7 +464,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.RegularPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.RegularPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -468,7 +508,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -479,6 +519,7 @@ namespace sbtc
                     }//END FOR
                 }//END USING
             }//END IF
+
             #endregion
 
             #region Regular Commercial
@@ -486,7 +527,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.RegularCommercial.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.RegularCommercial.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -499,7 +540,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -517,9 +558,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -527,9 +568,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -548,7 +591,44 @@ namespace sbtc
                             while (end.Length < 10)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " "  + end);
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            sw.WriteLine(" BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
 
                             lineCount++;
 
@@ -568,7 +648,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -585,7 +665,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -605,9 +685,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -615,7 +695,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -656,7 +736,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -675,7 +755,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.PersonalPreEncoded.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.PersonalPreEncoded.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -688,7 +768,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -706,9 +786,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -716,9 +796,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.PersonalPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.PersonalPreEncoded.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -752,6 +834,46 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 7)
+                                start = "0" + start;
+
+                            while (start.Length < 11)
+                                start += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -760,7 +882,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -777,7 +899,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -797,9 +919,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -807,7 +929,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.PersonalPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.PersonalPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -851,7 +973,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -869,7 +991,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CommercialPreEncoded.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CommercialPreEncoded.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -882,7 +1004,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -900,9 +1022,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -910,7 +1032,9 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -951,7 +1075,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -968,7 +1092,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -988,9 +1112,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -998,7 +1122,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1039,7 +1163,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1057,7 +1181,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CheckOnePersonal.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckOnePersonal.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1070,7 +1194,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1088,9 +1212,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1098,9 +1222,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckOnePersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckOnePersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -1142,7 +1268,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1150,6 +1276,43 @@ namespace sbtc
 
                             pageNo++;
                         }
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
                     }//END FOR
 
                     //FRONT COVER
@@ -1159,7 +1322,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1179,9 +1342,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1189,7 +1352,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckOnePersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckOnePersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1233,7 +1396,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1251,7 +1414,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CheckOneCommerical.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckOneCommerical.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1264,7 +1427,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1282,9 +1445,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1292,9 +1455,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var mainBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        mainBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -1325,6 +1490,41 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string start = check.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -1333,7 +1533,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1350,7 +1550,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1370,9 +1570,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1380,7 +1580,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1421,7 +1621,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1439,7 +1639,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CheckPowerPersonal.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckPowerPersonal.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1452,7 +1652,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1470,9 +1670,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1480,9 +1680,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var mainBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        mainBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -1516,6 +1718,46 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -1524,7 +1766,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1541,7 +1783,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1561,9 +1803,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1571,7 +1813,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1615,7 +1857,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1633,7 +1875,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CheckPowerCommercial.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckPowerCommercial.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1646,7 +1888,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1664,9 +1906,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1674,9 +1916,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -1707,6 +1951,47 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -1715,7 +2000,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1732,7 +2017,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1752,9 +2037,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1762,7 +2047,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1803,7 +2088,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1821,7 +2106,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.ManagersCheck.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.ManagersCheck.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1834,7 +2119,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1852,9 +2137,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1862,9 +2147,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -1895,6 +2182,46 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -1903,7 +2230,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -1920,7 +2247,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -1930,7 +2257,7 @@ namespace sbtc
 
                         sw.WriteLine("                               SBTC - Manager's Check Summary");
 
-                        sw.WriteLine("                                   (F R O N T  C O V E R)"); 
+                        sw.WriteLine("                                   (F R O N T  C O V E R)");
 
                         sw.WriteLine("");
 
@@ -1940,9 +2267,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -1950,7 +2277,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -1991,7 +2318,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -2009,7 +2336,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.ManagersCheckCont.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.ManagersCheckCont.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -2022,7 +2349,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -2040,9 +2367,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -2050,9 +2377,11 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.ManagersCheckCont.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.ManagersCheckCont.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
-                        checks.ForEach(check =>
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
                         {
                             string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
 
@@ -2083,6 +2412,46 @@ namespace sbtc
                             }
                         });
 
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
                         sw.WriteLine("");
 
                         sw.WriteLine("");
@@ -2091,7 +2460,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -2101,6 +2470,7 @@ namespace sbtc
                         }
                     }//END FOR
 
+
                     //FRONT COVER
                     sw.WriteLine("");
 
@@ -2108,7 +2478,7 @@ namespace sbtc
 
                     pageNo++;
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -2128,9 +2498,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -2138,7 +2508,7 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.ManagersCheckCont.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.ManagersCheckCont.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -2179,7 +2549,7 @@ namespace sbtc
 
                         sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
-                        if (x + 1 < brstnList.Count)
+                        if (x + 1 < deliverToList.Count)
                         {
                             sw.WriteLine("");
 
@@ -2198,7 +2568,7 @@ namespace sbtc
             {
                 int pageNo = 1, lineCount = 0;
 
-                var brstnList = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -2211,7 +2581,7 @@ namespace sbtc
                 {
                     sw.WriteLine("");
 
-                    for (int x = 0; x < brstnList.Count; x++)
+                    for (int x = 0; x < deliverToList.Count; x++)
                     {
                         sw.WriteLine("  Page No. " + pageNo.ToString());
 
@@ -2229,9 +2599,9 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
                         sw.WriteLine("");
 
@@ -2239,7 +2609,482 @@ namespace sbtc
 
                         lineCount = 11;
 
-                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+
+                        });
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FOR FRONT COVER
+                    sw.WriteLine("");
+
+                    lineCount = 0;
+
+                    pageNo++;
+
+                    for (int x = 0; x < deliverToList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Customized Checks Summary");
+
+                        sw.WriteLine("                                  (F R O N T  C O V E R)");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = "";
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+                }//END USING
+            }//END IF
+            #endregion
+
+            #region Customized Check Personal
+            if (_orders.CustomizedCheckPersonal != null)
+            {
+                int pageNo = 1, lineCount = 0;
+
+                var deliverToList = _orders.CustomizedCheckPersonal.Select(r => r.BRSTN).Distinct().ToList();
+
+                StreamWriter sw;
+
+                string fileName = regPath + "\\PackingA.txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < deliverToList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Customized Personal Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheckPersonal[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CustomizedCheckPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+
+                        });
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FOR FRONT COVER
+                    sw.WriteLine("");
+
+                    lineCount = 0;
+
+                    pageNo++;
+
+                    for (int x = 0; x < deliverToList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Customized Personal Checks Summary");
+
+                        sw.WriteLine("                                  (F R O N T  C O V E R)");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheckPersonal[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.CustomizedCheckPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = "";
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+                }//END USING
+            }//END IF
+            #endregion
+
+            #region Digibanker  
+            if (_orders.DigiBanker.Count > 0)
+            {
+                int pageNo = 1, lineCount = 0;
+
+                var brstnList = _orders.DigiBanker.Select(r => r.BRSTN).Distinct().ToList();
+
+                StreamWriter sw;
+
+                string fileName = digiBankerPath + "\\PackingDG.txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < brstnList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Digibanker Checks Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == brstnList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + brstnList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.DigiBanker[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.DigiBanker.Where(r => r.BRSTN == brstnList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -2309,7 +3154,7 @@ namespace sbtc
 
                         sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine("                               SBTC - Customized Checks Summary");
+                        sw.WriteLine("                               SBTC - Digibanker Checks Summary");
 
                         sw.WriteLine("                                  (F R O N T  C O V E R)");
 
@@ -2327,11 +3172,11 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
+                        sw.WriteLine(" * Batch #: " + _orders.DigiBanker[0].Batch);
 
                         lineCount = 11;
 
-                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == brstnList[x]).ToList();
+                        var checks = _orders.DigiBanker.Where(r => r.BRSTN == brstnList[x]).ToList();
 
                         checks.ForEach(check =>
                         {
@@ -2386,6 +3231,244 @@ namespace sbtc
                     }//END FOR
                 }//END USING
             }//END IF
+            #endregion
+
+            #region GC
+            if(_orders.GiftCheck != null)
+            {
+                int pageNo = 1, lineCount = 0;
+
+                var deliverToList = _orders.GiftCheck.Select(r => r.BRSTN).Distinct().ToList();
+
+                StreamWriter sw;
+
+                string fileName = gcPath + "\\PackingA.txt";
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    sw.WriteLine("");
+
+                    for (int x = 0; x < deliverToList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Gift Check Summary");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.GiftCheck[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.GiftCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
+
+                        localBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+
+                        });
+
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+
+                        otherBranch.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = check.Name;
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 10)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+
+                    //FOR FRONT COVER
+                    sw.WriteLine("");
+
+                    lineCount = 0;
+
+                    pageNo++;
+
+                    for (int x = 0; x < deliverToList.Count; x++)
+                    {
+                        sw.WriteLine("  Page No. " + pageNo.ToString());
+
+                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
+
+                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
+
+                        sw.WriteLine("                               SBTC - Gift Checks Summary");
+
+                        sw.WriteLine("                                  (F R O N T  C O V E R)");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * Batch #: " + _orders.GiftCheck[0].Batch);
+
+                        lineCount = 11;
+
+                        var checks = _orders.GiftCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
+
+                        checks.ForEach(check =>
+                        {
+                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                            string tempName = "";
+
+                            while (tempName.Length < 35)
+                                tempName += " ";
+
+                            string tempStart = check.StartingSerial.ToString();
+
+                            while (tempStart.Length < 7)
+                                tempStart = "0" + tempStart;
+
+                            while (tempStart.Length < 11)
+                                tempStart += " ";
+
+                            string end = check.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+
+                            lineCount++;
+
+                            if (lineCount >= 60)
+                            {
+                                sw.WriteLine("");
+
+                                lineCount = 0;
+                            }
+                        });
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+
+                        if (x + 1 < deliverToList.Count)
+                        {
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            pageNo++;
+                        }
+                    }//END FOR
+                }//END USING
+            }
             #endregion
 
         }//END FUNCTION
@@ -3722,8 +4805,6 @@ namespace sbtc
 
                 using(sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
                 {
-                    using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
-                    {
                         int page = 1, block = 1, blockCounter = 0;
 
                         var brstn = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
@@ -3818,13 +4899,13 @@ namespace sbtc
                         {
                             sw.WriteLine("");
 
-                            sw.WriteLine("\t\t" + _orders.ManagersCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                            sw.WriteLine("\t\t" + _orders.CustomizedCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                             sw.WriteLine("");
 
                             sw.WriteLine("");
 
-                            sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+                            sw.WriteLine("\t\tCUS = " + _orders.CustomizedCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
 
                             sw.WriteLine("");
 
@@ -3835,7 +4916,7 @@ namespace sbtc
                             sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
 
                             footer = false;
-                        }
+                        
                     }//END USING
                 }
             }//END IF
@@ -3854,8 +4935,7 @@ namespace sbtc
 
                 using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
                 {
-                    using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
-                    {
+
                         int page = 1, block = 1, blockCounter = 0;
 
                         var brstn = _orders.DigiBanker.Select(r => r.BRSTN).Distinct().ToList();
@@ -3950,13 +5030,13 @@ namespace sbtc
                         {
                             sw.WriteLine("");
 
-                            sw.WriteLine("\t\t" + _orders.ManagersCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+                            sw.WriteLine("\t\t" + _orders.DigiBanker[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
 
                             sw.WriteLine("");
 
                             sw.WriteLine("");
 
-                            sw.WriteLine("\t\tMC = " + _orders.ManagersCheck.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+                            sw.WriteLine("\t\tDG = " + _orders.DigiBanker.Count.ToString() + "                 MC" + _batch.Substring(0, 4) + "P" + _ext + ".txt");
 
                             sw.WriteLine("");
 
@@ -3967,10 +5047,138 @@ namespace sbtc
                             sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
 
                             footer = false;
-                        }
+                        
                     }//END USING
                 }
             }//END IF;
+
+            if (_orders.GiftCheck.Count > 0)
+            {
+                StreamWriter sw;
+
+                string fileName = gcPath + "\\BlockP.txt";
+
+                bool footer = true;
+
+                sw = File.CreateText(fileName);
+                sw.Close();
+
+                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                {
+                    int page = 1, block = 1, blockCounter = 0;
+
+                    var brstn = _orders.GiftCheck.Select(r => r.BRSTN).Distinct().ToList();
+
+                    for (int x = 0; x < brstn.Count; x++)
+                    {
+                        var checks = _orders.GiftCheck.Where(r => r.BRSTN == brstn[x]).ToList();
+
+                        checks.ForEach(c =>
+                        {
+                            if ((block % 8 == 0 && blockCounter == 4) || (block == 1 && blockCounter == 0))
+                            {
+                                if (page == 2 && footer)
+                                {
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\t" + c.Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tPA = " + _orders.GiftCheck.Count.ToString() + "                 " + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+
+                                    sw.WriteLine("");
+
+                                    sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                                    sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                                    sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                                    footer = false;
+                                }
+
+                                if (block % 8 == 0 && blockCounter == 4)
+                                    sw.WriteLine("");
+
+                                sw.WriteLine("");
+
+                                sw.WriteLine("\t\tPage No." + page.ToString());
+
+                                sw.WriteLine("\t\t" + DateTime.Today.ToShortDateString());
+
+                                sw.WriteLine("\t\t\t SBTC - SUMMARY OF BLOCK - GC");
+
+                                sw.WriteLine("");
+
+                                sw.WriteLine("\t\tBLOCK RT_NO     M ACCT_NO         START_NO.  END_NO.");
+
+                                sw.WriteLine("");
+
+                                sw.WriteLine("");
+
+                                page++;
+                            }
+
+                            if (blockCounter == 4)
+                            {
+                                block++;
+
+                                blockCounter = 0;
+
+                                sw.WriteLine("");
+
+                                sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                            }
+                            else if (block == 1 && blockCounter == 0)
+                            {
+                                sw.WriteLine("");
+
+                                sw.WriteLine("\t\t** BLOCK " + block.ToString());
+                            }
+
+                            string start = c.StartingSerial.ToString();
+
+                            while (start.Length < 10)
+                                start = "0" + start;
+
+                            string end = c.EndingSerial.ToString();
+
+                            while (end.Length < 10)
+                                end = "0" + end;
+
+                            sw.WriteLine("\t\t\t" + block.ToString() + " " + c.BRSTN + "   " + c.AccountNo + "    " + start + "    " + end);
+
+                            blockCounter++;
+                        });//END FOREACH
+                    }//END FOR
+
+                    if (footer)
+                    {
+                        sw.WriteLine("");
+
+                        sw.WriteLine("\t\t" + _orders.GiftCheck[0].Batch + "                                 DLVR: " + String.Format("{0:MM-dd(ddd)}", _deliveryDate));
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("\t\tPA = " + _orders.GiftCheck.Count.ToString() + "                 " + _batch.Substring(0, 4) + "P" + _ext + ".txt");
+
+                        sw.WriteLine("");
+
+                        sw.WriteLine("\t\tPrepared By   : " + _preparedBy.ToUpper());
+
+                        sw.WriteLine("\t\tUpdated By    : " + _preparedBy.ToUpper());
+
+                        sw.WriteLine("\t\tTime Finished : " + DateTime.Now.ToShortTimeString());
+
+                        footer = false;
+                    }
+                }//END USING
+            }//END IF
         }//END FUNCTIONk
 
         public static void GeneratePackingDBF(OrderSorted _orders, string _batch, string _ext)
@@ -4019,11 +5227,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," + 
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," + 
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" + 
                         check.AccountNo + "','" + "A" + "','" + 
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4054,12 +5262,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
-
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
                     cmd = new OleDbCommand(query, conn);
 
                     cmd.ExecuteNonQuery();
@@ -4117,11 +5324,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4152,11 +5359,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4215,11 +5422,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4250,11 +5457,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4313,11 +5520,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4348,11 +5555,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "B" + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4411,11 +5618,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + " (MC)'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -4474,11 +5681,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','', '')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn) ;
 
@@ -4497,6 +5704,135 @@ namespace sbtc
             }
             #endregion
 
+            #region Digibanker
+            //REGULAR CHECKS
+            path = digiBankerPath + "\\Packing.dbf";
+
+            connectionString = "Provider=VFPOLEDB.1; Data Source=" + path + "; Mode=ReadWrite;";
+
+            query = "";
+
+            if (_orders.DigiBanker.Count > 0)
+            {
+                //CHECK IF FILE EXIST
+                if (!File.Exists(path))
+                    File.WriteAllBytes(path, Properties.Resources.Packing);
+
+                OleDbConnection conn = new OleDbConnection(connectionString);
+
+                OleDbCommand cmd;
+
+                conn.Open();
+
+                cmd = new OleDbCommand("DELETE FROM PACKING", conn);
+
+                cmd.ExecuteNonQuery();
+
+                blockNo = 1;
+
+                blockCounter = 0;
+
+                foreach (var check in _orders.DigiBanker)
+                {
+                    string start = check.StartingSerial.ToString(), end = check.EndingSerial.ToString();
+
+                    while (start.Length < 7)
+                        start = "0" + start;
+
+                    while (end.Length < 7)
+                        end = "0" + end;
+
+                    //initialize SQL command
+                    query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
+                        check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+
+                    cmd = new OleDbCommand(query, conn);
+
+                    cmd.ExecuteNonQuery();
+
+                    if (blockCounter < 4)
+                        blockCounter++;
+                    else
+                    {
+                        blockNo++;
+
+                        blockCounter = 0;
+                    }
+                }//END FOR EACH              
+                conn.Close();
+            }
+            #endregion
+
+            #region Gift Check
+            //REGULAR CHECKS
+            path = gcPath + "\\Packing.dbf";
+
+            connectionString = "Provider=VFPOLEDB.1; Data Source=" + path + "; Mode=ReadWrite;";
+
+            query = "";
+
+            if (_orders.GiftCheck.Count > 0)
+            {
+                //CHECK IF FILE EXIST
+                if (!File.Exists(path))
+                    File.WriteAllBytes(path, Properties.Resources.Packing);
+
+                OleDbConnection conn = new OleDbConnection(connectionString);
+
+                OleDbCommand cmd;
+
+                conn.Open();
+
+                cmd = new OleDbCommand("DELETE FROM PACKING", conn);
+
+                cmd.ExecuteNonQuery();
+
+                blockNo = 1;
+
+                blockCounter = 0;
+
+                foreach (var check in _orders.GiftCheck)
+                {
+                    string start = check.StartingSerial.ToString(), end = check.EndingSerial.ToString();
+
+                    while (start.Length < 7)
+                        start = "0" + start;
+
+                    while (end.Length < 7)
+                        end = "0" + end;
+
+                    //initialize SQL command
+                    query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
+                        check.AccountNo + "','" + "A" + "','" +
+                        check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
+                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+
+                    cmd = new OleDbCommand(query, conn);
+
+                    cmd.ExecuteNonQuery();
+
+                    if (blockCounter < 4)
+                        blockCounter++;
+                    else
+                    {
+                        blockNo++;
+
+                        blockCounter = 0;
+                    }
+                }//END FOR EACH
+
+                blockNo = 1;
+                blockCounter = 0;
+
+                conn.Close();
+            }
+            #endregion
 
         }//END FUNCTION
 
@@ -5416,6 +6752,82 @@ namespace sbtc
                         + DateTime.Now.Year.ToString() + "\\"), true);
                 }
             }
+            #endregion
+
+            #region Gift Check
+            if (_orders.RegularPersonal != null)
+                if (_orders.RegularPersonal.Count > 0)
+                {
+                    if (!Directory.Exists(gcPath))
+                        Directory.CreateDirectory(gcPath);
+
+                    StreamWriter sw;
+
+                    string fileName = gcPath + "\\" + _batch.Substring(0, 4) + "P" + _ext + ".txt";
+
+                    sw = File.CreateText(fileName);
+                    sw.Close();
+
+                    using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
+                    {
+                        _orders.GiftCheck.ForEach(regPersonal =>
+                        {
+                            sw.WriteLine("3"); //1 - FIXED;
+                            sw.WriteLine(regPersonal.BRSTN.Trim(' ')); //2 - BRSTN or RT No
+                            sw.WriteLine(regPersonal.AccountNo.Trim(' ')); //3 - AccountNo
+
+                            string startQty = (regPersonal.StartingSerial + QuantityPerBooklet.GiftCheck).ToString();
+
+                            while (startQty.Length < 7)
+                                startQty = "0" + startQty;
+
+                            sw.WriteLine(startQty.Trim(' ')); //4 - Starting Serial + 50pcs per booklet
+                            sw.WriteLine("A"); // 5 - FIXED
+                            sw.WriteLine(""); // 6 - BLANK
+                            sw.WriteLine(regPersonal.BRSTN.Substring(0, 5).Trim(' ')); // 7 - First 5 Digits BRSTN
+                            sw.WriteLine(" " + regPersonal.BRSTN.Substring(5, 4).Trim(' ')); // 8 - Last 4 Digits of BRSTN
+                            sw.WriteLine((regPersonal.AccountNo.Substring(0, 3) + "-" + regPersonal.AccountNo.Substring(3, 6) + "-" + regPersonal.AccountNo.Substring(9, 3)).Trim(' ')); // 9 - ACCTNO
+                            sw.WriteLine(regPersonal.Name.Trim(' ')); // 10 - NAME 1
+                            sw.WriteLine("SN"); // 11 - FIXED
+                            sw.WriteLine(""); // 12 - BLANK
+                            sw.WriteLine(regPersonal.Name2.Trim(' ')); // 13 - NAME 2
+                            sw.WriteLine("C"); // 14 - FIXED
+                            sw.WriteLine("XXXX"); // 15 - FIXED
+                            sw.WriteLine(""); // 16 - BLANK
+                            sw.WriteLine(regPersonal.Address1.Trim(' ')); // 17 - Address 1 or BranchName
+                            sw.WriteLine(regPersonal.Address2.Trim(' ')); // 18 - Address 2
+                            sw.WriteLine(regPersonal.Address3.Trim(' ')); // 19 - Address 3
+                            sw.WriteLine(regPersonal.Address4.Trim(' ')); // 20 - Address 4
+                            sw.WriteLine(regPersonal.Address5.Trim(' ')); // 21 - Address 5
+                            sw.WriteLine(regPersonal.Address6.Trim(' ')); // 22 - Address 6
+                            sw.WriteLine("SECURITY BANK"); // 23 - FIXED
+                            sw.WriteLine(""); // 24 - BLANK
+                            sw.WriteLine(""); // 25 - BLANK
+                            sw.WriteLine(""); // 26 - BLANK
+                            sw.WriteLine(""); // 27 - BLANK
+                            sw.WriteLine(""); // 28 - BLANK
+                            sw.WriteLine(""); // 29 - BLANK
+                            sw.WriteLine(""); // 30 - BLANK
+
+                            string start = regPersonal.StartingSerial.ToString();
+
+                            while (start.Length < 7)
+                                start = "0" + start;
+
+                            sw.WriteLine(start.Trim(' ')); // 31 - StartingSeries
+
+                            string end = regPersonal.EndingSerial.ToString();
+
+                            while (end.Length < 7)
+                                end = "0" + end;
+
+                            sw.WriteLine(end.Trim(' ')); // 32 - EndingSeries
+                        });//END OF USING STREAMWRITER
+                    }//END OF USING
+
+                    if (_batch != "0000")
+                        File.Copy(fileName, fileName.Replace(gcPath, "\\\\192.168.0.254\\PrinterFiles\\SBTC\\GiftCheck\\" + DateTime.Now.Year.ToString() + "\\"), true);
+                }//END IF
             #endregion
         }//END OF FUNCTION
 
@@ -7092,7 +8504,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + check.BRSTN + "','" + check.AccountNo + "','" + RTFirst + "','" + RTLast + "','" + acctNoHypen + "','" +
-                            temp + "','" + check.Name + "','" + check.Name2 + "','','" + check.Address1.Replace("'", "''") + "','" + check.Address2.Replace("'", "''") + "','" + check.Address3.Replace("'", "''") +
+                            temp + "','" + check.Name.Replace("'","''") + "','" + check.Name2.Replace("'", "''") + "','','" + check.Address1.Replace("'", "''") + "','" + check.Address2.Replace("'", "''") + "','" + check.Address3.Replace("'", "''") +
                             "','" + check.Address4.Replace("'", "''") + "','" + check.Address5.Replace("'", "''") + "','" + check.Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries + "','" + endSeries +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + primaryKey + "');";
 
@@ -7176,7 +8588,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
-                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','"
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name.Replace("'","''") + "','" + _orders.CheckOneCommerical[x1].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','"
                             + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
@@ -7201,7 +8613,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
-                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
@@ -7345,7 +8757,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTFirst2 + "','" + acctNoHypen1 + "','" +
-                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" +
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
@@ -7370,7 +8782,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTFirst2 + "','" + acctNoHypen2 + "','" +
-                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
@@ -7408,7 +8820,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTFirst3 + "','" + acctNoHypen3 + "','" +
-                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name + "','" + _orders.CheckOneCommerical[x3].Name2 + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") +
+                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address5.Replace("'", "''") + "','" +
                             _orders.CheckOneCommerical[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
@@ -7590,7 +9002,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x1].BRSTN + "','" + _orders.CheckOneCommerical[x1].AccountNo + "','" + RTFirst1 + "','" + RTLast1 + "','" + acctNoHypen1 + "','" +
-                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name + "','" + _orders.CheckOneCommerical[x1].Name2 + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
+                            temp1 + "','" + _orders.CheckOneCommerical[x1].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x1].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x1].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x1].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries1 + "','" + endSeries1 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber1 + "');";
 
@@ -7613,7 +9025,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x2].BRSTN + "','" + _orders.CheckOneCommerical[x2].AccountNo + "','" + RTFirst2 + "','" + RTLast2 + "','" + acctNoHypen2 + "','" +
-                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name + "','" + _orders.CheckOneCommerical[x2].Name2 + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
+                            temp2 + "','" + _orders.CheckOneCommerical[x2].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x2].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x2].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x2].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries2 + "','" + endSeries2 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber2 + "');";
 
@@ -7649,7 +9061,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x3].BRSTN + "','" + _orders.CheckOneCommerical[x3].AccountNo + "','" + RTFirst3 + "','" + RTLast3 + "','" + acctNoHypen3 + "','" +
-                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name + "','" + _orders.CheckOneCommerical[x3].Name2 + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
+                            temp3 + "','" + _orders.CheckOneCommerical[x3].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x3].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x3].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x3].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries3 + "','" + endSeries3 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber3 + "');";
 
@@ -7685,7 +9097,7 @@ namespace sbtc
                             "Name2, Name3, Address1, Address2, Address3, Address4, Address5, Address6, BankName, StartingSerial, EndingSerial, " +
                             "PcsPerBook, FileName, PrimaryKey, PageNumber, DataNumber) " +
                             "VALUES ('" + _orders.CheckOneCommerical[x4].BRSTN + "','" + _orders.CheckOneCommerical[x4].AccountNo + "','" + RTFirst4 + "','" + RTLast4 + "','" + acctNoHypen4 + "','" +
-                            temp4 + "','" + _orders.CheckOneCommerical[x4].Name + "','" + _orders.CheckOneCommerical[x4].Name2 + "','','" + _orders.CheckOneCommerical[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address3.Replace("'", "''") +
+                            temp4 + "','" + _orders.CheckOneCommerical[x4].Name.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Name2.Replace("'", "''") + "','','" + _orders.CheckOneCommerical[x4].Address1.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address2.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address3.Replace("'", "''") +
                             "','" + _orders.CheckOneCommerical[x4].Address4.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address5.Replace("'", "''") + "','" + _orders.CheckOneCommerical[x4].Address6.Replace("'", "''") + "','SECURITY BANK','" + startSeries4 + "','" + endSeries4 +
                             "','50','" + txtName + "','" + primaryKey + "','0','" + dataNumber4 + "');";
 
@@ -7730,8 +9142,16 @@ namespace sbtc
 
         #region private class
         public static void CheckPaths()
-        {try
+        {
+            try
             {
+                if (Directory.Exists(digiBankerPath))
+                {
+                    DeleteFilesInDirectory(digiBankerPath);
+
+                    Directory.Delete(digiBankerPath);
+                }
+
                 if (Directory.Exists(regPrePath))
                 {
                     DeleteFilesInDirectory(regPrePath);

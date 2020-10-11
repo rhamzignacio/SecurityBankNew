@@ -217,7 +217,7 @@
             this.lblStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 585);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(743, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(746, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -247,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(743, 607);
+            this.ClientSize = new System.Drawing.Size(746, 607);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.label4);
@@ -271,7 +271,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Security Bank 2.25";
+            this.Text = "Security Bank 4.0";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
