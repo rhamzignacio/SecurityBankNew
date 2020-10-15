@@ -173,6 +173,8 @@ namespace sbtc
         public string FileName { get; set; }
 
         public string DeliverTo { get; set; }
+
+        public string DeliverToAddress { get; set; }
     }
 
     public class OrderSorted

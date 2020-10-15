@@ -433,7 +433,7 @@ namespace sbtc
             {
                 var branch = branchList.FirstOrDefault(r => r.BRSTN == order.BRSTN);
 
-                if(branch == null)
+                if (branch == null)
                 {
                     errorMessage += "\nBRSTN=" + order.BRSTN + " is not found on BRANCHES DATABASE";
                 }
@@ -450,6 +450,20 @@ namespace sbtc
                     order.Address5 = branch.Address5;
 
                     order.Address6 = branch.Address6;
+
+                    if (order.BRSTN == order.DeliverTo)
+                    {
+                        order.DeliverToAddress = branch.Address1;
+                    }
+                    else
+                    {
+                        var deliverTo = branchList.FirstOrDefault(r => r.BRSTN == order.DeliverTo);
+
+                        if (deliverTo == null)
+                            errorMessage += "\nBRSTN=" + order.DeliverTo + " is not found on BRANCHES DATABASE";
+                        else
+                            order.DeliverToAddress = deliverTo.Address1;
+                    }
                 }
             });
 
@@ -732,7 +746,17 @@ namespace sbtc
 
                         if(line.Length > 84)
                         {
-                            order.DeliverTo = line.Substring(84, 9);
+                            if (line.Substring(84, 3) == "CKP" || line.Substring(84, 3) == "CKO")
+                            {
+                                if (line.Length > 87)
+                                {
+                                    order.DeliverTo = line.Substring(87, 9);
+                                }
+                                else
+                                    order.DeliverTo = order.BRSTN;
+                            }
+                            else
+                                order.DeliverTo = line.Substring(84, 9);
                         }
                         else
                         {

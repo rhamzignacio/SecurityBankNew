@@ -449,12 +449,13 @@ repeatme:
 
             string recipient_email = "orders@captiveprinting.com.ph,cpc_services@captiveprinting.com.ph";
 
+            //string recipient_email = "ramil.charles.ignacio@gmail.com";
+
             //get the max
             string dbase = "";
             if (ReturnMe.CodesOnly == true)
             {
                 dbase = "captive_database.sbtc_history";
-                recipient_email = "orders@captiveprinting.com.ph";
             }
             if (ReturnMe.CodesOnly == false) dbase = "captive_database.sbtc_history";
 
@@ -493,10 +494,6 @@ repeatme:
             //End get the max
 
 
-
-
-
-
             //All batch
             string all_batch = "";
             
@@ -526,31 +523,17 @@ repeatme:
             //End All batch
 
 
-
-
-
-
-
-
             if (File.Exists("C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls") == true)
             {
                 File.Delete("C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls");
             }
             File.Copy(Application.StartupPath + "\\Delivery_Report_Source.xls", "C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls");
 
-
             var excelApp = new Microsoft.Office.Interop.Excel.Application();
             var workbook = excelApp.Workbooks.Open("C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls");
             Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
-
-           
-
-
-
+       
             //StreamWriter sw = new StreamWriter("C:\\Windows\\Temp\\" + all_batch + ".txt");
-
-
 
 
             sql = "SELECT chequename , batch , brstn , accountno , name1 , name2 , min(startingserial) , max(endingserial) , address1, deliverydate , count(primarykey), Date, DeliverTo, BranchName FROM " + dbase + " WHERE DeliveryDate = '" + DeliveryDate + "' GROUP BY chequename , batch , brstn , accountno , name1 , name2 , address1, deliverydate, Date     ORDER BY ChequeName, Batch, BRSTN, AccountNo, Name1";
@@ -561,11 +544,15 @@ repeatme:
             MyConn2.Open();
             MyReader2 = MyCommand2.ExecuteReader();
 
-
             string subject_email = "";
 
-
             int LoopCount = 0;
+
+            Microsoft.Office.Interop.Excel.Range range = worksheet.Cells[1, 12] as Microsoft.Office.Interop.Excel.Range;
+            range.Value2 = "DELIVER TO";
+
+            range = worksheet.Cells[1, 13] as Microsoft.Office.Interop.Excel.Range;
+            range.Value2 = "BRANCH NAME";
 
             while (MyReader2.Read())
             {
@@ -584,8 +571,7 @@ repeatme:
                 string DeliverTo = MyReader2.GetString(12);
                 string BranchName = MyReader2.GetString(13);
 
-
-                
+               
                 if (LoopCount == 0)
                 {
                     //sw.WriteLine("For Delivery Date: " + deliverydate.ToString("MMMM. dd, yyyy"));
@@ -595,7 +581,7 @@ repeatme:
                 }
                 
 
-                Microsoft.Office.Interop.Excel.Range range = worksheet.Cells[LoopCount + 2, 1] as Microsoft.Office.Interop.Excel.Range;
+                range = worksheet.Cells[LoopCount + 2, 1] as Microsoft.Office.Interop.Excel.Range;
                 range.Value2 = DateProcess;
 
                 range = worksheet.Cells[LoopCount + 2, 2] as Microsoft.Office.Interop.Excel.Range;
@@ -636,7 +622,7 @@ repeatme:
 
 
                 LoopCount = LoopCount + 1;
-            }
+            }//END WHILE
 
 
             //xlWorkBook.Close(true, null, null);
@@ -644,12 +630,8 @@ repeatme:
             workbook.Save();
             workbook.Close();
 
-
-
-
             //for summary
             string summary_batch_email = "";
-
 
             sql = "SELECT Batch, COUNT(PrimaryKey) FROM " + dbase + " WHERE DeliveryDate = '" + DeliveryDate + "' GROUP BY Batch";
             string MyConnection5 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
@@ -669,9 +651,6 @@ repeatme:
                     batch = batch + " ";
                 }
 
-
-
-
                 if (summary_batch_email == "")
                 {
                     summary_batch_email = batch + qty;
@@ -682,11 +661,7 @@ repeatme:
                 }
             }
 
-
-
-
             string summary_chequename_email = "";
-
 
             sql = "SELECT ChequeName, COUNT(PrimaryKey) FROM " + dbase + " WHERE DeliveryDate = '" + DeliveryDate + "' GROUP BY ChequeName";
             string MyConnection6 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
@@ -706,8 +681,6 @@ repeatme:
                     chequename = chequename + " ";
                 }
 
-
-
                 if (summary_chequename_email == "")
                 {
                     summary_chequename_email = chequename + qty;
@@ -718,7 +691,6 @@ repeatme:
                 }
             }
             //End for summary
-
 
             string heading_email = "  Hello and Good Day"
                             + "\r\n"
@@ -755,8 +727,6 @@ repeatme:
 
             string Body_email = heading_email + "\r\n" + Footer;
 
-
-
             sql = "SELECT max(primarykey) FROM captive_database.emails";
             string MyConnection3 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
             MySqlConnection MyConn3 = new MySqlConnection(MyConnection3);
@@ -772,7 +742,6 @@ repeatme:
                 max_pkey = MyReader3.GetInt32(0);
             }
 
-
             sql = "INSERT INTO captive_database.Emails (Bank , Recipient_Email , Subject , Body , DateRequest , TimeRequest , Status , PrimaryKey , source_email) VALUES ('SBTC','" + recipient_email + "','" + subject_email + "','" + Body_email.Replace("'", "''") + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("HH:mm:ss") + "','Received','" + (max_pkey + 1) + "','orders@captiveprinting.com.ph')";
             string MyConnection4 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
             MySqlConnection MyConn4 = new MySqlConnection(MyConnection4);
@@ -781,21 +750,17 @@ repeatme:
             MyConn4.Open();
             MyReader4 = MyCommand4.ExecuteReader();
 
-
-
             //save to file
             byte[] rawData = File.ReadAllBytes("C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls");
             FileInfo info = new FileInfo("C:\\Windows\\Temp\\" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls");
 
             int fileSize = Convert.ToInt32(info.Length);
 
-
             MyConnection2 = "datasource=" + ReturnMe.server + ";port=3306;username=" + ReturnMe.uid + ";password=" + ReturnMe.password;
             MySqlConnection connection = new MySqlConnection(MyConnection2);
             MySqlCommand command = new MySqlCommand();
             command.Connection = connection;
             command.CommandText = "INSERT INTO captive_database.emails_blob (Attachment,filename,primarykey_source) VALUES (?rawData,'" + DateTime.Parse(DeliveryDate).ToString("MMddyyyy") + ".xls','" + (max_pkey + 1) + "');";
-
 
             MySqlParameter fileContentParameter = new MySqlParameter("?rawData", MySqlDbType.MediumBlob, rawData.Length);
             fileContentParameter.Direction = ParameterDirection.Input;
@@ -807,11 +772,6 @@ repeatme:
 
             command.ExecuteNonQuery();
             //End save to file
-
-
-
-
-
 
             //Check until send
             string status = "Received";
@@ -826,8 +786,6 @@ repeatme:
             MySqlDataReader MyReader7;
             MyConn7.Open();
             MyReader7 = MyCommand7.ExecuteReader();
-
-
 
             while (MyReader7.Read())
             {

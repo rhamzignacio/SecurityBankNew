@@ -55,8 +55,6 @@ namespace sbtc
         }
 
 
-
-
         private void frmHashTotal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

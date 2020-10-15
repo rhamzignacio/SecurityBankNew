@@ -395,9 +395,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -624,12 +628,13 @@ namespace sbtc
                             while (end.Length < 10)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
-
+                            sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine(" BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
+                            lineCount++;
 
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -858,11 +863,14 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            lineCount++;
 
                             lineCount++;
 
@@ -1118,9 +1126,10 @@ namespace sbtc
 
                         sw.WriteLine("");
 
-                        sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
+                        sw.WriteLine(" * Batch #:" + _orders.CommercialPreEncoded[0].Batch);
 
                         lineCount = 11;
+
 
                         var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
 
@@ -1301,9 +1310,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -1511,11 +1524,14 @@ namespace sbtc
                             while (end.Length < 10)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            lineCount++;
 
                             if (lineCount >= 60)
                             {
@@ -1742,11 +1758,14 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
+                            lineCount++;
 
                             lineCount++;
 
@@ -1975,12 +1994,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -2206,12 +2226,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -2436,12 +2457,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -2672,12 +2694,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -2909,12 +2932,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -3234,7 +3258,7 @@ namespace sbtc
             #endregion
 
             #region GC
-            if(_orders.GiftCheck != null)
+            if(_orders.GiftCheck.Count >  0)
             {
                 int pageNo = 1, lineCount = 0;
 
@@ -3342,12 +3366,13 @@ namespace sbtc
                             while (end.Length < 7)
                                 end = "0" + end;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
+                            lineCount++;
 
+                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
                             lineCount++;
 
                             sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-
                             lineCount++;
 
                             if (lineCount >= 60)
@@ -5225,13 +5250,14 @@ namespace sbtc
                     while (end.Length < 7)
                         end = "0" + end;
 
+
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," + 
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," + 
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" + 
                         check.AccountNo + "','" + "A" + "','" + 
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5262,11 +5288,12 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "A" + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
+
                     cmd = new OleDbCommand(query, conn);
 
                     cmd.ExecuteNonQuery();
@@ -5324,11 +5351,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5359,11 +5386,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "A" + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5422,11 +5449,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5457,11 +5484,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
-                        check.AccountNo + "','" + "A" + "','" +
+                        check.AccountNo + "','" + "B" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5520,11 +5547,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.Address1 + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5555,7 +5582,7 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
@@ -5618,11 +5645,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + " (MC)'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5681,11 +5708,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn) ;
 
@@ -5744,11 +5771,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -5807,11 +5834,11 @@ namespace sbtc
 
                     //initialize SQL command
                     query = "INSERT INTO PACKING (BATCHNO, BLOCK, RT_NO, BRANCH, ACCT_NO, ACCT_NO_P, CHKTYPE, ACCT_NAME1, ACCT_NAME2," +
-                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
+                        "NO_BKS, CK_NO_P, CK_NO_B, CK_NOE, CK_NO_E, DELIVERTO, DELIVERYTO, BRANCHNAME, M) VALUES('" + check.Batch + "'," +
                         blockNo.ToString() + ",'" + check.BRSTN + "','" + check.Address1 + "','" + check.AccountNo + "','" +
                         check.AccountNo + "','" + "A" + "','" +
                         check.Name.Replace("'", "''") + "','" + check.Name2.Replace("'", "''") + "',1," +
-                        start + ",'" + start + "'," + end + ",'" + end + "','" + check.DeliverTo + "','" + check.Address1 + "','')";
+                        start + ",'" + start + "'," + end + ",'" + end + "','','" + check.DeliverTo + "','" + check.DeliverToAddress + "','')";
 
                     cmd = new OleDbCommand(query, conn);
 
@@ -6755,8 +6782,8 @@ namespace sbtc
             #endregion
 
             #region Gift Check
-            if (_orders.RegularPersonal != null)
-                if (_orders.RegularPersonal.Count > 0)
+            if (_orders.GiftCheck != null)
+                if (_orders.GiftCheck.Count > 0)
                 {
                     if (!Directory.Exists(gcPath))
                         Directory.CreateDirectory(gcPath);

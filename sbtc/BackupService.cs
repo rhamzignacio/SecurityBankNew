@@ -22,7 +22,7 @@ namespace sbtc
 
             string query = "INSERT INTO captive_database.sbtc_history (Date, Time, DeliveryDate, ChkType, ChequeName, BRSTN, " +
                 "AccountNo, Name1, Name2, StartingSerial, ENdingSerial, Batch, FinalBatch, Address1, " +
-                "Address2, Address3, Address4, Address5, Address6) ";
+                "Address2, Address3, Address4, Address5, Address6, DeliverTo, BranchName) ";
 
             #region Regular Personal
             if (_orders.RegularPersonal.Count > 0)
@@ -41,7 +41,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Regular Personal','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -67,7 +68,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Regular Commercial','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -93,7 +95,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Personal Pre-Encoded','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -119,7 +122,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Commercial Pre-Encoded','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -145,7 +149,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','CheckOne Personal','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -171,7 +176,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','CheckOne Commercial','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -197,7 +203,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','CheckPower Personal','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -223,7 +230,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','CheckPower Commercial','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -232,31 +240,6 @@ namespace sbtc
             }//END IF
             #endregion
 
-            #region Regular Commercial Pre-Encoded
-            if (_orders.CommercialPreEncoded.Count > 0)
-            {
-                _orders.CommercialPreEncoded.ForEach(order =>
-                {
-                    string start = order.StartingSerial.ToString(), end = order.EndingSerial.ToString();
-
-                    while (start.Length < 7)
-                        start = "0" + start;
-
-                    while (end.Length < 7)
-                        end = "0" + end;
-
-                    string values = "VALUES('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("H:mm") + "','" +
-                        _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Regular Personal','" +
-                        order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
-                        start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
-
-                    cmd = new MySqlCommand(query + values, myConn);
-
-                    cmd.ExecuteNonQuery();
-                });
-            }//END IF
-            #endregion
 
             #region Manager's Check
             if (_orders.ManagersCheck.Count > 0)
@@ -275,7 +258,8 @@ namespace sbtc
                         _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Manager''s Check','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
@@ -298,16 +282,44 @@ namespace sbtc
                         end = "0" + end;
 
                     string values = "VALUES('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("H:mm") + "','" +
-                        _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Manager''s Check Cont','" +
+                        _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Manager''s Check Continues','" +
                         order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
                         start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
-                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "');";
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
 
                     cmd = new MySqlCommand(query + values, myConn);
 
                     cmd.ExecuteNonQuery();
                 });
             }//END IF
+            #endregion
+
+            #region GiftCheck
+            if (_orders.GiftCheck.Count > 0)
+            {
+                _orders.GiftCheck.ForEach(order =>
+                {
+                    string start = order.StartingSerial.ToString(), end = order.EndingSerial.ToString();
+
+                    while (start.Length < 10)
+                        start = "0" + start;
+
+                    while (end.Length < 10)
+                        end = "0" + end;
+
+                    string values = "VALUES('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("H:mm") + "','" +
+                        _deliveryDate.ToString("yyyy-MM-dd") + "','" + order.CheckType + "','Gift Check','" +
+                        order.BRSTN + "','" + order.AccountNo + "','" + order.Name.Replace("'", "''") + "','" + order.Name2.Replace("'", "''") + "','" +
+                        start + "','" + end + "','" + order.FileName + "','" + _batch + "','" + order.Address1.Replace("'", "''") + "','" + order.Address2.Replace("'", "''") + "','" +
+                        order.Address3.Replace("'", "''") + "','" + order.Address4.Replace("'", "''") + "','" + order.Address5.Replace("'", "''") + "','" + order.Address6.Replace("'", "''") + "', " +
+                        "'" + order.DeliverTo + "','" + order.Address1 + "');";
+
+                    cmd = new MySqlCommand(query + values, myConn);
+
+                    cmd.ExecuteNonQuery();
+                });
+            }
             #endregion
 
             myConn.Close();
@@ -458,7 +470,7 @@ namespace sbtc
             proc.StartInfo.FileName = "\"" + GetWinZipLoc().Replace("\\", "\\\\") + "\"";
                
             proc.StartInfo.Arguments = "-u -r -p " + "\"" + DatabaseConnection.ArchiveOutPut + "\\AFT" + _batchNumber + "_" + _processBy + ".zip\"" + " " +
-                "\\\\192.168.0.254\\captive\\Auto\\SBTC\\SBTC_2.0\\Output\\*.*";
+                "\\\\192.168.0.254\\captive\\Auto\\SBTC\\SBTC_NEW\\Output\\*.*";
 
             proc.Start();
 
