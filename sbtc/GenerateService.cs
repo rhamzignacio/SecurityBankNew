@@ -290,7 +290,7 @@ namespace sbtc
             #region Regular Personal
             if (_orders.RegularPersonal.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
                 var deliverToList = _orders.RegularPersonal.Select(r => r.DeliverTo).Distinct().ToList();
 
@@ -307,119 +307,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Personal Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
-
-                        lineCount = 11;
-
                         var checks = _orders.RegularPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("                               SBTC - Personal Checks Summary");
 
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - Personal Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("");
 
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("");
 
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -427,8 +486,9 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
                     //FOR FRONT COVER
@@ -440,77 +500,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.RegularPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Personal Checks Summary");
-
-                        sw.WriteLine("                                  (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.RegularPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = "";
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (tempStart.Length < 11)
-                                tempStart += " ";
+                            sw.WriteLine("                               SBTC - Personal Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - Personal Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularPersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -518,18 +682,20 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
 
             #endregion
 
             #region Regular Commercial
             if (_orders.RegularCommercial.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
                 var deliverToList = _orders.RegularCommercial.Select(r => r.DeliverTo).Distinct().ToList();
 
@@ -546,112 +712,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
+                        var checks = _orders.RegularCommercial.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - Commercial Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for(int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if(y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - Commercial Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("");
 
-                        sw.WriteLine("");
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -659,11 +891,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -672,74 +905,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.RegularCommercial.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.RegularCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                               SBTC - Commercial Checks Summary");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if(y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - Commercial Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.RegularCommercial[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -747,18 +1087,20 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
 
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region Personal Pre-Encoded
             if (_orders.PersonalPreEncoded.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
                 var deliverToList = _orders.PersonalPreEncoded.Select(r => r.DeliverTo).Distinct().ToList();
 
@@ -775,120 +1117,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
-
-                        lineCount = 11;
-
                         var checks = _orders.PersonalPreEncoded.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 7)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
 
-                            while (start.Length < 11)
-                                start += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (start.Length < 7)
-                                start = "0" + start;
+                            sw.WriteLine("");
 
-                            while (start.Length < 11)
-                                start += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -896,11 +1296,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -909,77 +1310,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.PersonalPreEncoded.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.PersonalPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 7)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 11)
-                                start += " ";
+                            sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - Personal Pre-Encoded Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.PersonalPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -987,17 +1492,20 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
-            #region  Commercial Pre-Encoded
+            #region Commercial Pre-Encoded
             if (_orders.CommercialPreEncoded.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
                 var deliverToList = _orders.CommercialPreEncoded.Select(r => r.DeliverTo).Distinct().ToList();
 
@@ -1014,74 +1522,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
+                        var checks = _orders.CommercialPreEncoded.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        checks.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - Commercial Pre-Encoded Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                               SBTC - Commercial Pre-Encoded Checks Summary");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }
+
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1089,11 +1701,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -1102,75 +1715,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CommercialPreEncoded.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Commercial Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #:" + _orders.CommercialPreEncoded[0].Batch);
-
-                        lineCount = 11;
-
-
-                        var checks = _orders.CommercialPreEncoded.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                               SBTC - Commercial Pre-Encoded Checks Summary");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - Commercial Pre-Encoded Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CommercialPreEncoded[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1178,17 +1897,20 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region CheckOne Personal
             if (_orders.CheckOnePersonal.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
                 var deliverToList = _orders.CheckOnePersonal.Select(r => r.DeliverTo).Distinct().ToList();
 
@@ -1205,77 +1927,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #:" + _orders.CheckOnePersonal[0].Batch);
-
-                        lineCount = 11;
-
                         var checks = _orders.CheckOnePersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 7)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
 
-                            while (start.Length < 10)
-                                start += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOnePersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOnePersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+                            lineCount++;
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }
+
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1283,52 +2106,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
-
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = check.Name;
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("");
-                            lineCount++;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-                            lineCount++;
-
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-                        });
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -1337,77 +2120,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckOnePersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #:" + _orders.CheckOnePersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckOnePersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 7)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start += " ";
+                            sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOnePersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - CheckOne Personal Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOnePersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1415,19 +2302,22 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region CheckOne Commercial
             if (_orders.CheckOneCommerical.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
-                var deliverToList = _orders.CheckOneCommerical.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckOneCommerical.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1442,112 +2332,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckOneCommerical.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        var mainBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
-
-                        mainBranch.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempName + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("");
 
-                        sw.WriteLine("");
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1555,11 +2511,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -1568,74 +2525,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckOneCommerical.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckOneCommerical.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - CheckOne Commercial Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckOneCommerical[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1643,19 +2707,22 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region CheckPower Personal
             if (_orders.CheckPowerPersonal.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
-                var deliverToList = _orders.CheckPowerPersonal.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckPowerPersonal.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1670,120 +2737,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckPowerPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        var mainBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
-
-                        mainBranch.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
 
-                            while (tempStart.Length < 11)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("");
 
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1791,11 +2916,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -1804,77 +2930,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckPowerPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckPowerPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (tempStart.Length < 11)
-                                tempStart += " ";
+                            sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + tempStart + end);
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - CheckPower Personal Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerPersonal[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 7)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 7)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -1882,19 +3112,22 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region CheckPower Commercial
             if (_orders.CheckPowerCommercial.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
-                var deliverToList = _orders.CheckPowerCommercial.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.CheckPowerCommercial.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -1909,116 +3142,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
+                        var checks = _orders.CheckPowerCommercial.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("");
 
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("");
 
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -2026,11 +3321,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -2039,74 +3335,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.CheckPowerCommercial.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CheckPowerCommercial.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - CheckPower Commercial Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.CheckPowerCommercial[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 B  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -2114,19 +3517,22 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region Manager's Check
             if (_orders.ManagersCheck.Count > 0)
             {
-                int pageNo = 1, lineCount = 0;
+                int pageNo = 0, lineCount = 0;
 
-                var deliverToList = _orders.ManagersCheck.Select(r => r.BRSTN).Distinct().ToList();
+                var deliverToList = _orders.ManagersCheck.Select(r => r.DeliverTo).Distinct().ToList();
 
                 StreamWriter sw;
 
@@ -2141,115 +3547,178 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Manager's Check Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH:  " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
+                        var checks = _orders.ManagersCheck.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
                         var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
-                        localBranch.ForEach(check =>
+                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
+
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
+                            lineCount = 0;
 
-                            string tempName = check.Name;
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                               SBTC - Manager's Checks Summary");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBrstn = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBrstn.Count; y++)
+                        {
+                            var brstn = otherBrstn[y];
+
+                            pageNo++;
+                            lineCount = 0;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string tempName = check.Name;
+                            sw.WriteLine("                               SBTC - Manager's Checks Summary");
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("");
 
-                            string tempStart = check.StartingSerial.ToString();
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
+                            sw.WriteLine("");
 
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
+                            sw.WriteLine("");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
 
-                            while (end.Length < 7)
-                                end = "0" + end;
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = check.Name;
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
 
                             sw.WriteLine("");
                             lineCount++;
 
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
                             lineCount++;
 
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
+                            sw.WriteLine("");
 
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
+                            sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            sw.WriteLine("");
 
-                        sw.WriteLine("");
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
 
-                        sw.WriteLine("");
+                        }
 
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -2257,11 +3726,12 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
+
                     }//END FOR
 
-                    //FRONT COVER
+                    //FOR FRONT COVER
                     sw.WriteLine("");
 
                     lineCount = 0;
@@ -2270,74 +3740,181 @@ namespace sbtc
 
                     for (int x = 0; x < deliverToList.Count; x++)
                     {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
+                        var checks = _orders.RegularPersonal.Where(r => r.DeliverTo == deliverToList[x]).ToList();
 
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Manager's Check Summary");
-
-                        sw.WriteLine("                                   (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
+                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
 
                         var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
 
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.ManagersCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
+                        if (localBranch.Count > 0)
                         {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+                            pageNo++;
 
-                            string tempName = check.Name;
+                            lineCount = 0;
 
-                            while (tempName.Length < 35)
-                                tempName += " ";
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                            string start = check.StartingSerial.ToString();
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                            while (start.Length < 10)
-                                start = "0" + start;
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                            string end = check.EndingSerial.ToString();
+                            sw.WriteLine("                               SBTC - Personal Checks Summary");
 
-                            while (end.Length < 10)
-                                end = "0" + end;
+                            sw.WriteLine("                                  (F R O N T  C O V E R)");
 
-                            sw.WriteLine("  " + temp + "                                     1 A  " + start + " " + end);
+                            sw.WriteLine("");
 
-                            lineCount++;
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
 
-                            if (lineCount >= 60)
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
+
+                            lineCount = 11;
+
+
+                            localBranch.ForEach(check =>
                             {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + localBranch.Count.ToString());
+                        }//END IF LOCAL BRANCH
+
+                        //DELIVER TO HEADER
+                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.DeliverTo).ToList();
+
+                        var otherBRSTN = otherBranch.Select(r => r.BRSTN).Distinct().ToList();
+
+                        for (int y = 0; y < otherBRSTN.Count; y++)
+                        {
+                            var brstn = otherBRSTN[y];
+                            pageNo++;
+
+                            if (localBranch.Count > 0)
+                                sw.WriteLine("");
+                            else if (y > 0)
                                 sw.WriteLine("");
 
-                                lineCount = 0;
-                            }
-                        });
+                            lineCount = 0;
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  Page No. " + pageNo.ToString());
 
-                        sw.WriteLine("");
+                            sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
 
-                        sw.WriteLine("");
+                            sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
 
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
+                            sw.WriteLine("                               SBTC - Manager's Checks Summary");
+
+                            sw.WriteLine("                                   (F R O N T  C O V E R)");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * Batch #: " + _orders.ManagersCheck[0].Batch);
+
+                            lineCount = 11;
+
+                            var oCheck = otherBranch.Where(r => r.BRSTN == brstn).ToList();
+
+                            oCheck.ForEach(check =>
+                            {
+                                string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
+
+                                string tempName = "";
+
+                                while (tempName.Length < 35)
+                                    tempName += " ";
+
+                                string tempStart = check.StartingSerial.ToString();
+
+                                while (tempStart.Length < 10)
+                                    tempStart = "0" + tempStart;
+
+                                while (tempStart.Length < 10)
+                                    tempStart += " ";
+
+                                string end = check.EndingSerial.ToString();
+
+                                while (end.Length < 10)
+                                    end = "0" + end;
+
+                                sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + " " + end);
+                                lineCount++;
+
+                                if (lineCount >= 60)
+                                {
+                                    sw.WriteLine("");
+
+                                    lineCount = 0;
+                                }
+                            });
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("  BRANCH OF ACCOUNT: " + oCheck[0].BRSTN + " - " + oCheck[0].Address1);
+                            lineCount++;
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine("");
+
+                            sw.WriteLine(" * * * Sub Total * * *                               " + oCheck.Count.ToString());
+
+                        }//END OF OTHER BRANCH
 
                         if (x + 1 < deliverToList.Count)
                         {
@@ -2345,11 +3922,14 @@ namespace sbtc
 
                             sw.WriteLine("");
 
-                            pageNo++;
+                            //pageNo++;
                         }
                     }//END FOR
+
                 }//END USING
             }//END IF
+
+
             #endregion
 
             #region Manager's Contl Check
@@ -2581,483 +4161,6 @@ namespace sbtc
                         }
                     }//END FOR
 
-                }//END USING
-            }//END IF
-            #endregion
-
-            #region Customized Check
-            if (_orders.CustomizedCheck.Count > 0)
-            {
-                int pageNo = 1, lineCount = 0;
-
-                var deliverToList = _orders.CustomizedCheck.Select(r => r.BRSTN).Distinct().ToList();
-
-                StreamWriter sw;
-
-                string fileName = regPath + "\\PackingA.txt";
-
-                sw = File.CreateText(fileName);
-                sw.Close();
-
-                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
-                {
-                    sw.WriteLine("");
-
-                    for (int x = 0; x < deliverToList.Count; x++)
-                    {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Customized Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH: " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
-
-                        localBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = check.Name;
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-
-                        });
-
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
-
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = check.Name;
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("");
-                            lineCount++;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-                            lineCount++;
-
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-                        });
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
-
-                        if (x + 1 < deliverToList.Count)
-                        {
-                            sw.WriteLine("");
-
-                            sw.WriteLine("");
-
-                            pageNo++;
-                        }
-                    }//END FOR
-
-                    //FOR FRONT COVER
-                    sw.WriteLine("");
-
-                    lineCount = 0;
-
-                    pageNo++;
-
-                    for (int x = 0; x < deliverToList.Count; x++)
-                    {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Customized Checks Summary");
-
-                        sw.WriteLine("                                  (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheck[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CustomizedCheck.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = "";
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 11)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-                        });
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
-
-                        if (x + 1 < deliverToList.Count)
-                        {
-                            sw.WriteLine("");
-
-                            sw.WriteLine("");
-
-                            pageNo++;
-                        }
-                    }//END FOR
-                }//END USING
-            }//END IF
-            #endregion
-
-            #region Customized Check Personal
-            if (_orders.CustomizedCheckPersonal != null)
-            {
-                int pageNo = 1, lineCount = 0;
-
-                var deliverToList = _orders.CustomizedCheckPersonal.Select(r => r.BRSTN).Distinct().ToList();
-
-                StreamWriter sw;
-
-                string fileName = regPath + "\\PackingA.txt";
-
-                sw = File.CreateText(fileName);
-                sw.Close();
-
-                using (sw = new StreamWriter(File.Open(fileName, FileMode.Append)))
-                {
-                    sw.WriteLine("");
-
-                    for (int x = 0; x < deliverToList.Count; x++)
-                    {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Customized Personal Checks Summary");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** RELEASING BRANCH " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheckPersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CustomizedCheckPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        var localBranch = checks.Where(r => r.BRSTN == r.DeliverTo).ToList();
-
-                        localBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = check.Name;
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-
-                        });
-
-                        var otherBranch = checks.Where(r => r.BRSTN != r.DeliverTo).OrderBy(r => r.BRSTN).ToList();
-
-                        otherBranch.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = check.Name;
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 10)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("");
-                            lineCount++;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-                            lineCount++;
-
-                            sw.WriteLine("  BRANCH OF ACCOUNT: " + check.BRSTN + " - " + check.Address1);
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-                        });
-
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
-
-                        if (x + 1 < deliverToList.Count)
-                        {
-                            sw.WriteLine("");
-
-                            sw.WriteLine("");
-
-                            pageNo++;
-                        }
-                    }//END FOR
-
-                    //FOR FRONT COVER
-                    sw.WriteLine("");
-
-                    lineCount = 0;
-
-                    pageNo++;
-
-                    for (int x = 0; x < deliverToList.Count; x++)
-                    {
-                        sw.WriteLine("  Page No. " + pageNo.ToString());
-
-                        sw.WriteLine("  " + DateTime.Now.ToString("MMMM dd yyyy"));
-
-                        sw.WriteLine("                                CAPTIVE PRINTING CORPORATION");
-
-                        sw.WriteLine("                               SBTC - Customized Personal Checks Summary");
-
-                        sw.WriteLine("                                  (F R O N T  C O V E R)");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("  ACCT_NO         ACCOUNT NAME                     QTY CT START #    END #");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        var branch = _branches.FirstOrDefault(r => r.BRSTN == deliverToList[x]);
-
-                        sw.WriteLine(" ** ORDERS OF BRSTN " + deliverToList[x] + " " + branch.Address1);
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * Batch #: " + _orders.CustomizedCheckPersonal[0].Batch);
-
-                        lineCount = 11;
-
-                        var checks = _orders.CustomizedCheckPersonal.Where(r => r.BRSTN == deliverToList[x]).ToList();
-
-                        checks.ForEach(check =>
-                        {
-                            string temp = check.AccountNo.Substring(0, 3) + "-" + check.AccountNo.Substring(3, 6) + "-" + check.AccountNo.Substring(9, 3);
-
-                            string tempName = "";
-
-                            while (tempName.Length < 35)
-                                tempName += " ";
-
-                            string tempStart = check.StartingSerial.ToString();
-
-                            while (tempStart.Length < 7)
-                                tempStart = "0" + tempStart;
-
-                            while (tempStart.Length < 11)
-                                tempStart += " ";
-
-                            string end = check.EndingSerial.ToString();
-
-                            while (end.Length < 7)
-                                end = "0" + end;
-
-                            sw.WriteLine("  " + temp + "  " + tempName + " 1 A  " + tempStart + end);
-
-                            lineCount++;
-
-                            if (lineCount >= 60)
-                            {
-                                sw.WriteLine("");
-
-                                lineCount = 0;
-                            }
-                        });
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine("");
-
-                        sw.WriteLine(" * * * Sub Total * * *                               " + checks.Count.ToString());
-
-                        if (x + 1 < deliverToList.Count)
-                        {
-                            sw.WriteLine("");
-
-                            sw.WriteLine("");
-
-                            pageNo++;
-                        }
-                    }//END FOR
                 }//END USING
             }//END IF
             #endregion
@@ -3455,7 +4558,7 @@ namespace sbtc
                             while (tempStart.Length < 7)
                                 tempStart = "0" + tempStart;
 
-                            while (tempStart.Length < 11)
+                            while (tempStart.Length < 10)
                                 tempStart += " ";
 
                             string end = check.EndingSerial.ToString();
